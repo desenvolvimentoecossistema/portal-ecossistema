@@ -1,0 +1,1 @@
+import {backup} from 'node:sqlite';import {getSqliteDatabase} from '../db/sqlite.mjs';import {mkdirSync} from 'node:fs';import {resolve} from 'node:path';mkdirSync('backups',{recursive:true,mode:0o700});const dest=resolve('backups/portal-'+new Date().toISOString().replace(/[:.]/g,'-')+'.sqlite');await backup(getSqliteDatabase(),dest);console.log(dest);

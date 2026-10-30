@@ -1,0 +1,60 @@
+/* The map uses the portal's reading scale while keeping its controls compact. */
+html:has(>body.portal-map-shell){scrollbar-gutter:auto}
+.portal-map-shell{font-size:16px}
+.portal-map-shell,.portal-map-shell .programs-wrap,.portal-map-shell .sidebar{overflow-anchor:none}
+.portal-map-shell .sidebar>.kw-search{flex-shrink:0}
+.portal-map-shell .program-card h3{font-family:Montserrat,Arial,sans-serif;font-size:18px;line-height:1.35}
+.portal-map-shell .program-intro h3{font-family:Montserrat,Arial,sans-serif;font-size:16px;line-height:1.4}
+.portal-map-shell .program-card .desc,.portal-map-shell .program-card p.desc{font-family:Cabin,Arial,sans-serif;font-size:14px;line-height:1.65}
+.portal-map-shell .program-intro p{font-size:14px;line-height:1.65}
+.portal-map-shell .program-card .org-badge{display:inline-flex;align-items:center;font-size:11px;line-height:1.3;padding:3px 9px;border:0;border-radius:999px;background:var(--org-color)!important;color:var(--org-text,#fff)!important}
+.portal-map-shell .program-card .org-badges{gap:14px}
+.portal-map-shell .dim-block .dim-label{font-size:11px;line-height:1.4}
+.portal-map-shell .dim-block .dim-value{font-size:13px;line-height:1.55}
+.portal-map-shell .chip{font-size:12px;line-height:1.4}
+.portal-map-shell .title-block h2{font-size:22px;line-height:1.3}
+.portal-map-shell .title-block p{font-size:14px;line-height:1.6}
+.portal-map-shell .filter-group summary,.portal-map-shell .filter-sub summary{font-size:13px;line-height:1.5}
+.portal-map-shell .filter-opt{font-size:13px;line-height:1.5;padding-top:5px;padding-bottom:5px}
+.portal-map-shell .filter-group summary .fcount,.portal-map-shell .filter-opt .fo-n,.portal-map-shell .filter-sub summary .fo-n{font-size:12px}
+.portal-map-shell .kw-search input{font-size:14px}
+.portal-map-shell .filters-actions button{font-size:12px;line-height:1.4}
+.portal-map-shell .detail-panel,.portal-map-shell .filter-hint,.portal-map-shell .filter-tools input[type=text],.portal-map-shell .filter-tools .tool-link{font-size:13px;line-height:1.6}
+.portal-map-shell .filter-opt .fo-only,.portal-map-shell .filter-opt .fo-sub{font-size:12px}
+.portal-map-shell .strat-toggle summary,.portal-map-shell .strat-col li,.portal-map-shell .strat-none{font-size:13px;line-height:1.55}
+.portal-map-shell .strat-meta,.portal-map-shell .strat-col-title,.portal-map-shell .strat-tipo{font-size:12px}
+.portal-map-shell .data-toolbar button,.portal-map-shell .data-toolbar a,.portal-map-shell .data-toolbar-label,.portal-map-shell .data-toolbar-status{font-size:13px}
+.portal-map-shell .l2-tabs .tab-btn{font-size:14px}
+.portal-map-shell .l2-tabs .tab-n{font-size:12px}
+.portal-map-shell .portal-hero-inner h1{font-size:28px}
+.portal-map-shell .portal-hero-inner .hub-intro{font-size:14px}
+.portal-map-shell .program-description>summary{font-size:14px}
+.portal-map-shell .empty-state{font-size:16px}
+@media(max-width:760px){
+ .portal-map-shell .program-card h3{font-size:18px}
+ .portal-map-shell .program-card .desc{font-size:15px}
+ .portal-map-shell .dim-block .dim-value{font-size:14px}
+ .portal-map-shell .kw-search input{font-size:16px}
+ .portal-map-shell .filter-group summary,.portal-map-shell .filter-sub summary,.portal-map-shell .filter-opt{font-size:14px}
+ .portal-map-shell .portal-hero-inner h1{font-size:24px}
+ .portal-map-shell .data-toolbar button,.portal-map-shell .data-toolbar a{font-size:12px}
+ .portal-map-shell .mobile-filter-toggle,.portal-map-shell .mobile-filter-results{font-size:14px}
+}
+
+.portal-map-shell .desktop-filter-toggle{display:none;align-items:center;gap:8px;border:1px solid #052b4730;border-radius:8px;padding:7px 11px;background:white;color:#052b47;font:700 13px Cabin,Arial,sans-serif;cursor:pointer}.desktop-filter-toggle svg{width:18px;height:18px}.portal-map-shell .portal-map-hero{transition:margin-top .18s ease}.portal-map-shell .portal-map-hero.map-hero-hidden{margin-top:calc(-1 * var(--map-hero-height,82px))}@media(min-width:761px){.portal-map-shell:has(#l2-view-programas.active) .desktop-filter-toggle{display:inline-flex}.portal-map-shell #programs-app.desktop-filters-hidden{grid-template-columns:minmax(0,1fr)}.portal-map-shell .desktop-filters-hidden>.sidebar{display:none}}@media(prefers-reduced-motion:reduce){.portal-map-shell .portal-map-hero{transition:none}}
+.portal-map-shell .data-toolbar{transition:margin-top .18s ease}.portal-map-shell .data-toolbar.map-toolbar-hidden{margin-top:calc(-1 * var(--map-toolbar-height,50px))}@media(prefers-reduced-motion:reduce){.portal-map-shell .data-toolbar{transition:none}}
+
+.portal-map-shell .l2-tabs .tab-btn:not(.active):hover{background:#fff;color:#052b47;border-color:#052b47}.portal-map-shell .l2-tabs .tab-btn.active:hover{background:#052b47;color:#fff;border-color:#052b47}
+.portal-map-shell .portal-map-hero{background:#052b47}
+.portal-map-shell .portal-map-hero h1,.portal-map-shell .portal-map-hero .hub-intro{color:#fff}
+.portal-map-shell .portal-map-hero .l2-tabs .tab-btn{background:transparent;color:#fff;border-color:#ffffff80}
+.portal-map-shell .portal-map-hero .l2-tabs .tab-btn.active,.portal-map-shell .portal-map-hero .l2-tabs .tab-btn.active:hover{background:#fff;color:#052b47;border-color:#fff}
+.portal-map-shell .portal-map-hero .l2-tabs .tab-btn:not(.active):hover{background:#ffffff18;color:#fff;border-color:#fff}
+.portal-map-shell .data-toolbar-status{text-wrap:pretty}
+@media(min-width:761px){
+ .portal-map-shell .data-toolbar-right:has(#data-status:not([hidden])){display:contents}
+ .portal-map-shell .data-toolbar-actions{margin-left:auto}
+ .portal-map-shell .data-toolbar-status{flex:1 0 100%;width:100%;max-width:none;margin-left:0}
+ .portal-map-shell .data-toolbar-right:has(#data-status:not([hidden]))>.preview-diff{flex-basis:100%;margin-left:auto}
+}
+@media(min-width:1024px){.portal-map-shell .data-toolbar-status{white-space:nowrap}}

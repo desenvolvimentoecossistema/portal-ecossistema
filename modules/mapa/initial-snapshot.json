@@ -1,0 +1,1296 @@
+{
+  "dims": {
+    "abc": {
+      "EpV — Educar pra Valer": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Secretários e Técnicos da Secretaria Municipal de Educação; Estudantes; Professores; Gestores Escolares",
+        "esfera": "Municipal",
+        "desc": "Assessoria técnica aos municípios, com atuação mais direta que a da PARC — a Bem Comum chega até a escola formando professores e apoiando de perto a gestão municipal do Ensino Fundamental I (1º ao 5º ano). Fundamentada na vitoriosa reforma educacional de Sobral/CE, a iniciativa tem como foco assegurar a alfabetização na idade certa e o domínio em Língua Portuguesa e Matemática. O trabalho é ancorado em cinco eixos estratégicos: Gestão da Rede, Gestão Pedagógica, Formação, Acompanhamento e Sustentabilidade. O processo começa com o diagnóstico da rede pública para, em seguida, coorganizar um plano de ação com os gestores locais. Para assegurar resultados duradouros, a proposta inclui mecanismos de sustentabilidade, como apoio na elaboração de leis municipais e programas de incentivo para redes, escolas e educadores que alcançam suas metas.",
+        "segmento_niveis": [
+          "Anos iniciais - 1º ao 5º"
+        ],
+        "especialidades": [
+          "Língua Portuguesa e Matemática"
+        ],
+        "estrategias": [
+          "Alfabetização > Implementação > Recomposição das aprendizagens 3º a 5º",
+          "Alfabetização > Implementação > Aplicação de avaliações",
+          "Alfabetização > Implementação > Devolutiva de avaliações",
+          "Alfabetização > Implementação > Formação de professores",
+          "Alfabetização > Implementação > Planejamento de aula",
+          "Alfabetização > Implementação > Acompanhamento pedagógico",
+          "Alfabetização > Implementação > Monitoramento de implementação"
+        ],
+        "etapas": [
+          "Política municipal",
+          "Implementação"
+        ],
+        "tipos": [
+          "Pedagógico",
+          "Gestão escolar",
+          "Desenvolvimento de capacidade municipal"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "PARC — Parceria pela Alfabetização em Regime de Colaboração": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Técnicos das Secretarias Estaduais e das Regionais de Ensino; Estudantes.",
+        "esfera": "Estadual",
+        "desc": "A iniciativa consiste em uma estratégia estadual de alfabetização baseada no regime de colaboração e em uma visão sistêmica. A atuação integra institucionalização, incentivos, formação continuada de gestores e professores, disponibilização de material didático e avaliações diagnósticas com devolutiva, visando garantir a alfabetização das crianças até o fim do 2º ano do Ensino Fundamental. Os estados aderem em coortes e operam sob marcas próprias (como Alfabetiza Pará, AlfaMais Goiás, MS Alfabetiza e Alfabetiza Tchê), progredindo por quatro estágios de implementação: Estruturação, Desenvolvimento Básico, Desenvolvimento Regular e Sustentação. Adicionalmente, a PARC irá ampliar a frente em Matemática (abrangendo todos os estados) e em Pré-Escola integrada de acordo com o nível de maturidade de cada rede, ambas alinhadas às diretrizes da BNCC.",
+        "segmento_niveis": [
+          "Pré-escola",
+          "Alfabetização"
+        ],
+        "especialidades": [
+          "Língua Portuguesa e Matemática"
+        ],
+        "estrategias": [
+          "Alfabetização > Política Nacional > CNCA",
+          "Alfabetização > Política no Território > Compromisso político",
+          "Alfabetização > Política no Território > Desenho de políticas estaduais de alfabetização por meio de Regime de Colaboração",
+          "Alfabetização > Política no Território > Currículo",
+          "Alfabetização > Política no Território > Pré escola",
+          "Alfabetização > Política no Território > Inovação no ensino da matemática",
+          "Alfabetização > Política no Território > Avaliações e monitoramento",
+          "Alfabetização > Política no Território > Desenvolvimento de capacidades de professores",
+          "Alfabetização > Política no Território > Material didático e metodologias",
+          "Alfabetização > Política no Território > Engajamento e conversão de liderança política",
+          "Alfabetização > Política no Território > Fortalecimento de lideranças locais",
+          "Alfabetização > Política no Território > Políticas de incentivo",
+          "Alfabetização > Política no Território > Fortalecimento de regionais",
+          "Alfabetização > Política no Território > Metas e ações",
+          "Alfabetização > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Alfabetização > Implementação > Aplicação de avaliações",
+          "Alfabetização > Implementação > Devolutiva de avaliações",
+          "Alfabetização > Implementação > Formação de professores",
+          "Alfabetização > Implementação > Gestão para resultados"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território",
+          "Implementação"
+        ],
+        "tipos": [
+          "Regime de Colaboração",
+          "Pedagógico",
+          "Desenvolvimento de Capacidade Estatal"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      }
+    },
+    "cls": {
+      "Advocacy": {
+        "segmento_categoria": "Liderança; Educação",
+        "publico_beneficiario": "Redes de Ensino",
+        "esfera": "Nacional",
+        "desc": "O <strong>advocacy</strong> do CLS atua principalmente com a Frente Nacional de Prefeitos (FNP), associações regionais de prefeitos, Undime e os Tribunais de Contas (via Atricon), para garantir que as políticas de gestão escolar construídas nas jornadas sejam implementadas nas redes. Inclui imersões com conselheiros de Tribunais de Contas e apoio a uma auditoria nacional da alfabetização em curso. A RelGov atua como parceira financiadora dessa frente, com o CLS entrando com apoio técnico.<br><br><strong>Coalizão de Gestão Escolar</strong><br>A Coalizão de Gestão Escolar é uma articulação de organizações e lideranças que busca transformar a educação brasileira por meio do fortalecimento e da profissionalização da gestão escolar. Sua atuação se organiza em duas frentes complementares: a formulação e o aprimoramento de diretrizes nacionais de qualidade da gestão escolar e o apoio às redes de ensino na implementação de políticas que promovam processos qualificados de seleção, formação, acompanhamento, avaliação e desenvolvimento dos gestores escolares. A Coalizão trabalha para que cada escola brasileira seja liderada por profissionais de excelência, capazes de promover a aprendizagem, o desenvolvimento dos estudantes e a equidade educacional. O CLS apoiou o MEC na construção do Referencial para Qualidade e Equidade da Gestão Escolar, documento nacional que estabelece os princípios e critérios de referência para a gestão escolar no país.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política Nacional > Referencial para Qualidade e Equidade da Gestão Escolar",
+          "Alfabetização > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Fundamental 2 > Política Nacional > Referencial para Qualidade e Equidade da Gestão Escolar",
+          "Fundamental 2 > Política no Território > Seleção e desenvolvimento de gestores escolares"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Desenvolvimento de Capacidade Estatal"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Lideranças pela Educação — Jornada 1 (Mobilização de Lideranças Públicas)": {
+        "segmento_categoria": "Liderança; Educação",
+        "publico_beneficiario": "Prefeitos; Secretários Municipais de Educação",
+        "esfera": "Municipal",
+        "desc": "A Jornada das Lideranças Políticas <strong>inspira e orienta prefeitas(os) e secretárias(os) para atuarem como embaixadoras(es) da educação</strong>, priorizando objetivos em comum e alavancando a aprendizagem do município, especialmente de estudantes em situação de maior vulnerabilidade.<br><br><strong>Prefeitas(os)</strong><br>No trabalho com os prefeitos, o objetivo é que ele exerça quatro papéis: <strong>embaixador</strong> (fala com propriedade e mobiliza o município em torno da educação), <strong>criador de condições</strong> (garante recursos orçamentários e políticos), <strong>guardião</strong> (protege a educação de interferências partidárias e externas) e <strong>articulador</strong> (conecta a educação a outras pastas da prefeitura e a parceiros externos). Isso é trabalhado em três frentes: construção de confiança, com programa de relacionamento com interações proativas (visitas presenciais, agendas estruturadas) e reativas (atendimento a demandas e assuntos emergentes); entrega de valor, com espaços de articulação política (Congresso, MEC, Atricon), viagens internacionais, conteúdos formativos e divulgação de casos exemplares; e conexão entre lideranças, com encontros coletivos (Embaixadoras(es) da Educação), apoio técnico a entidades representativas (FNP, Consec, Undime, associações regionais) e troca entre pares. O CLS atua principalmente via as redes do G46 e dos Municípios FNP (Frente Nacional de Prefeitos), funcionando como uma &quot;rampa&quot; de entrada para outras organizações do ecossistema nesses territórios.<br><br><strong>Secretárias(os) de educação</strong><br>Com os secretários, apoiamos a definição/atualização dos objetivos estratégicos prioritários para a educação, em articulação com o(a) prefeito(a) e a equipe gestora, e o estabelecimento de formas de atuação para sua implementação e acompanhamento, visando uma atuação mais estratégica, articulada, mobilizadora e pautada em evidências.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política no Território > Engajamento e conversão de liderança política",
+          "Alfabetização > Política no Território > Fortalecimento de lideranças locais",
+          "Fundamental 2 > Política no Território > Engajamento e conversão de liderança política",
+          "Fundamental 2 > Política no Território > Fortalecimento de lideranças locais",
+          "Lideranças > Em exercício > Atuação temática – impacto direto > Engajamento político",
+          "Lideranças > Em exercício > Atuação temática – impacto direto > Redes",
+          "Lideranças > Em exercício > Atuação temática – impacto via governo > Compromisso político"
+        ],
+        "etapas": [
+          "Política no Território",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Desenvolvimento de Capacidade Estatal",
+          "Atuação temática – impacto direto",
+          "Atuação temática – impacto via governo"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Lideranças pela Educação — Jornada 2 (Formação das Equipes Técnicas da SME)": {
+        "segmento_categoria": "Liderança; Educação",
+        "publico_beneficiario": "Equipe técnica da Secretaria",
+        "esfera": "Municipal",
+        "desc": "<strong>Formação de um grupo de lideranças estratégicas da Secretaria Municipal de Educação, </strong>responsáveis pela formulação e implementação de políticas educacionais nos âmbitos pedagógico, administrativo-financeiro e de gestão de pessoas, estruturada em visita técnica presencial, com autodiagnóstico das capacidades institucionais; sessões de vivência, com trocas online entre pares para aprofundar desafios mapeados; reuniões online individuais com as redes, para apoio personalizado; e sessões temáticas online, conduzidas por especialistas e ex-secretários, cobrindo gestão integrada e o fortalecimento das capacidades institucionais. O percurso culmina na elaboração de um diagnóstico das capacidades institucionais da rede, seguido de um Plano de Melhoria e de sua implementação nas frentes que envolvem a melhoria da governança, rituais de gestão e articulação interna.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política no Território > Fortalecimento de lideranças locais",
+          "Alfabetização > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Alfabetização > Implementação > Gestão para resultados",
+          "Fundamental 2 > Política no Território > Fortalecimento de lideranças locais",
+          "Fundamental 2 > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Lideranças > Em exercício > Atuação temática – impacto direto > Desafios e lacunas na gestão pública",
+          "Lideranças > Em exercício > Atuação temática – impacto direto > Formação",
+          "Lideranças > Em exercício > Atuação temática – impacto direto > Redes",
+          "Lideranças > Em exercício > Atuação temática – impacto via governo > Desafios e lacunas na gestão pública",
+          "Lideranças > Em exercício > Atuação temática – impacto via governo > Desenvolvimento de capacidade no governo"
+        ],
+        "etapas": [
+          "Política no Território",
+          "Implementação",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Desenvolvimento de Capacidade Estatal",
+          "Atuação temática – impacto direto",
+          "Atuação temática – impacto via governo"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Lideranças pela Educação — Jornada 3 (Fortalecimento da Liderança Escolar)": {
+        "segmento_categoria": "Liderança; Educação",
+        "publico_beneficiario": "Diretores e gestores escolares",
+        "esfera": "Municipal",
+        "desc": "O CLS ajuda uma equipe multidisciplinar da secretaria a desenhar as políticas necessárias para <strong>fortalecer o diretor escolar</strong>. Cinco políticas são trabalhadas: <strong>marco de gestão</strong>, que define atribuições, competências e princípios que devem reger a gestão escolar; <strong>seleção</strong>, com critérios técnicos para a escolha de diretores, alinhados ao marco de gestão; <strong>formação</strong>, com formação continuada dos diretores para o exercício da função; <strong>avaliação</strong>, com acompanhamento do desempenho do diretor frente às atribuições do cargo; e <strong>acompanhamento escolar</strong>, com protocolos para que o diretor não atue isolado, com apoio contínuo da secretaria. A construção dessas políticas acontece por meio de imersão em redes de referência, apoio técnico personalizado, troca entre secretarias parceiras, que vão desenhando e ajustando juntas, com apoio de ferramentas de inteligência artificial (LídIA) para agilizar o processo — por exemplo, redigindo uma primeira versão do marco de gestão a partir dos insumos da rede.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Fundamental 2 > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Lideranças > Em exercício > Atuação temática – impacto via governo > Desenvolvimento de capacidade no governo",
+          "Lideranças > Em exercício > Atuação temática – impacto via governo > Formação de público-chave",
+          "Lideranças > Em exercício > Atuação temática – impacto via governo > Redes",
+          "Lideranças > Em exercício > Atuação temática – impacto direto > Atração e seleção"
+        ],
+        "etapas": [
+          "Política no Território",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Desenvolvimento de Capacidade Estatal",
+          "Atuação temática – impacto direto",
+          "Atuação temática – impacto via governo"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "LídIA — Plataforma de IA para Lideranças": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos; Diretores e gestores escolares",
+        "esfera": "Nacional",
+        "desc": "Plataforma de <strong>inteligência artificial</strong> (o nome vem de &quot;Lideranças com IA&quot;) que dá suporte a lideranças políticas, educacionais e escolares por meio de agentes especializados: <strong>LídIA Dados</strong>, para consultas sobre indicadores municipais (como o IDEB) a partir de dados curados do Inep e de outras fontes oficiais; <strong>LídIA Marco de Gestão</strong>, agente que redige uma primeira versão do marco de gestão escolar a partir dos insumos fornecidos pela rede; e o <strong>agente de apoio ao diretor escolar</strong> (em desenvolvimento), para orientação nas dúvidas do dia a dia da gestão escolar. Materiais e agentes ficam disponíveis publicamente no site do CLS.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [],
+        "etapas": [
+          "N/A"
+        ],
+        "tipos": [
+          "N/A"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Programa Internacional (South-South)": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Gestores públicos",
+        "esfera": "Internacional",
+        "desc": "Atua em 9 países via o programa South-South, apoiando governos nacionais e subnacionais a avançar em <strong>alfabetização e numeracia</strong> (FLN — Foundational Literacy and Numeracy) através de imersões em Sobral, visitas técnicas e parcerias com organizações locais: no Quênia, apoio técnico ao parceiro local (Mizizi Afrika) na promoção de eventos formativos, incluindo oficina de advocacy; na Índia, imersão em Sobral inspirando avanços em governança, acompanhamento pedagógico e uso de dados para políticas de alfabetização e numeracia, nos estados de Uttar Pradesh e Haryana; na África do Sul, lideranças de governos provinciais participando de fóruns organizados pelo parceiro local (BCL) para avaliar políticas de alfabetização; e no México, organizações locais mobilizando governos estaduais a priorizar a alfabetização, apoiando o desenvolvimento de uma avaliação nacional inspirada no Brasil.",
+        "segmento_niveis": [
+          "Alfabetização"
+        ],
+        "especialidades": [
+          "Matemática"
+        ],
+        "estrategias": [],
+        "etapas": [
+          "N/A"
+        ],
+        "tipos": [
+          "N/A"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      }
+    },
+    "traj": {
+      "Bolsas de governo": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos; Estudantes",
+        "esfera": "Nacional e Estadual",
+        "desc": "Editais de bolsas para mestrado em universidades de excelência no exterior, construídos em parceria com governos estaduais e municipais e com a Escola Nacional de Administração Pública (Enap) do governo federal. O Instituto atua como parceiro técnico, apoiando o desenho dos editais e do processo seletivo e a preparação dos candidatos. As bolsas são financiadas com recursos públicos e atendem dois públicos: o público geral, por meio de editais das Fundações de Amparo à Pesquisa, e os servidores públicos. Os editais incluem obrigação de retorno ao Brasil.",
+        "segmento_niveis": [],
+        "especialidades": [
+          "Pós-graduação"
+        ],
+        "estrategias": [
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Formação",
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Atração e seleção",
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Formação"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto",
+          "Outras teses fora da gestão pública"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Bússola": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Estudantes",
+        "esfera": "N/A",
+        "desc": "Ferramenta gratuita que guia estudantes brasileiros, etapa por etapa, na pré-candidatura ao mestrado no exterior. Reúne conteúdos organizados por etapa, ferramentas interativas, dicas de preparação para testes e essays, e uma área de suporte com perguntas frequentes.",
+        "segmento_niveis": [],
+        "especialidades": [
+          "Pós-graduação"
+        ],
+        "estrategias": [
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Atração e seleção"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Outras teses fora da gestão pública"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Crédito Talentos Globais": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Estudantes",
+        "esfera": "N/A",
+        "desc": "Financiamento estudantil para brasileiros aprovados em cursos de mestrado em universidades no exterior, operado pelo Pravaler. O acesso se dá por chamamentos abertos, com duas etapas de avaliação: a acadêmica, conduzida pelo Instituto; e a de análise de crédito, conduzida pelo operador. O financiamento pode ser acumulado com as bolsas dos editais do Instituto. O programa estimula o retorno dos estudantes ao Brasil, para que o conhecimento adquirido no exterior seja aplicado no desenvolvimento do país.",
+        "segmento_niveis": [],
+        "especialidades": [
+          "Pós-graduação"
+        ],
+        "estrategias": [
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Formação"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Outras teses fora da gestão pública"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Parcerias com universidades no exterior": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Estudantes",
+        "esfera": "N/A",
+        "desc": "Negociação de <strong>acordos com universidades no exterior</strong> para ampliar o acesso dos estudantes apoiados pelo Instituto: obtenção de desconto na mensalidade e abertura de vagas nos programas parceiros. Inclui ações conjuntas com as universidades de apresentação dos programas e de orientação à candidatura.",
+        "segmento_niveis": [],
+        "especialidades": [
+          "Pós-graduação"
+        ],
+        "estrategias": [
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Atração e seleção",
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Formação"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Outras teses fora da gestão pública"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Rede de Estudantes": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Estudantes",
+        "esfera": "N/A",
+        "desc": "Comunidade que reúne os Fellows do Instituto, bolsistas e beneficiários do crédito, com encontros, ações de escuta e de conexão durante o mestrado. A rede apoia o retorno, com iniciativas de carreira e conexão com organizações parceiras.",
+        "segmento_niveis": [],
+        "especialidades": [
+          "Pós-graduação"
+        ],
+        "estrategias": [
+          "Lideranças > Pipeline > Outras teses fora da gestão pública > Redes",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Redes"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto",
+          "Outras teses fora da gestão pública"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      }
+    },
+    "megaedu": {
+      "Conectividade": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino",
+        "esfera": "Nacional, Estadual e Municipal",
+        "desc": "Conectividade é a <strong>infraestrutura básica para garantir a inclusão digital</strong> de todos os alunos das escolas públicas do Brasil. Quando a internet chega, a gestão passa a estar conectada; quando o wi-fi chega na sala de aula, os professores conseguem usar a tecnologia com os alunos em atividades rotineiras; quando os dispositivos chegam, os alunos passam a utilizar a tecnologia e, ao terem contato com ela ao longo de sua formação, chegam mais preparados para o mercado de trabalho. Para isso, é necessário levar internet em velocidade adequada, wi-fi na sala de aula e equipamentos às escolas públicas, conforme os parâmetros da Enec. Em <strong>internet e wi-fi</strong>, garante-se que todas as escolas sejam contempladas por políticas públicas e acompanham-se as escolas já conectadas para que os parâmetros de qualidade sejam mantidos. Na esfera subnacional, trabalhamos com as redes parceiras no apoio ao processo de contratação; já na esfera federal, fazemos o monitoramento e a articulação para a inclusão de todas as escolas. Já em <strong>dispositivos</strong>, há concentração de esforço nas escolas estaduais, onde há recurso disponível, avançando via redes parceiras e por indução junto ao MEC nas demais. Também há acompanhamento da execução de recursos de quatro políticas federais estruturantes de conectividade (Aprender Conectado/5G, FUST, PIEC e Lei 14.172), qualificando as listas de escolas a serem contempladas e incidindo sobre os critérios e o ritmo de execução. Também dá apoio técnico ao painel público de conectividade do MEC. O apoio varia em intensidade: em redes onde há Acordo de Cooperação Técnica (ACT), é escopo completo, com diagnóstico, plano de ação e apoio em compras públicas (alta intensidade); em redes não parceiras, o apoio é pontual em tópicos específicos ou via MEC.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política Nacional > Conectividade",
+          "Alfabetização > Política no Território > Conectividade local",
+          "Fundamental 2 > Política Nacional > Conectividade",
+          "Fundamental 2 > Política no Território > Conectividade local"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Conectividade"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Sistemas de Gestão (IPD)": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino",
+        "esfera": "Nacional",
+        "desc": "O objetivo desta frente é <strong>construir a capacidade de gerir e implementar políticas educacionais</strong> a partir de dados atualizados e contínuos de toda a jornada do estudante, e que esses dados sejam utilizados para otimizar a gestão escolar nas secretarias, beneficiando diretamente o aluno. A Jornada do Estudante engloba a digitalização em um só lugar do histórico escolar, do atestado escolar e do boletim digital, ancorada num ID único do estudante, viabilizando transferências entre secretarias e acesso integrado aos dados do aluno. Atualmente, a operação se dá em três frentes: <strong>Sistema Nacional de Dados da Educação</strong>, construindo um roadmap das alavancas que sustentam esse sistema e apoiando entregas do governo federal nessa direção; <strong>Mobilização</strong>, disseminando a relevância da pauta e coordenando discussões com formadores de opinião, especialistas, terceiro setor e entidades representativas (Consed, Consec, Undime), buscando co-construir a proposta; e <strong>Sistemas para secretarias e escolas</strong>, desenvolvendo soluções para alocação de professores, enturmação de alunos e acompanhamento da frequência, alavancando o que já existe no mercado e assegurando que seja disponibilizado como Infraestrutura Pública Digital em código aberto, para poder ser melhorado e reaproveitado por redes menos estruturadas.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política Nacional > Sistema de gestão",
+          "Alfabetização > Política no Território > Sistema de gestão",
+          "Fundamental 2 > Política Nacional > Sistema de gestão",
+          "Fundamental 2 > Política no Território > Sistema de gestão"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Sistema de gestão"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      }
+    },
+    "motriz": {
+      "Motriz Educação": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino; Professores; Diretores e gestores escolares",
+        "esfera": "Subnacional (municipal e estadual)",
+        "desc": "Apoio às redes na melhoria de suas políticas educacionais, em quatro frentes: <strong>Alfabetização</strong>, com acompanhamento pedagógico presencial e remoto, apoio à formação de professores alfabetizadores e realização de avaliações com devolutiva às escolas; <strong>Anos Finais em tempo integral</strong>, com apoio aos planos de expansão da oferta de tempo integral nas redes, priorizando escolas com maior proporção de estudantes pretos, pardos e indígenas, e apoio técnico às ações não-pedagógicas que a expansão exige; <strong>Recomposição intensiva de aprendizagem (TARL)</strong>, com ciclos rápidos de intervenção para estudantes com grandes defasagens em habilidades básicas de Língua Portuguesa e Matemática, implementados dentro dos sistemas de ensino com o desenvolvimento das lideranças escolares e dos professores que aplicam a metodologia; e <strong>Dados de aprendizagem</strong>, com sistematização de dados de aprendizagem em Matemática dos Anos Finais a partir das avaliações locais das redes e da Avaliação de Pulso, pactuada rede a rede, para orientar decisões de gestão.",
+        "segmento_niveis": [
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [
+          "Educação integral",
+          "Matemática",
+          "Equidade Racial"
+        ],
+        "estrategias": [
+          "Alfabetização > Política no Território > Avaliações e monitoramento",
+          "Alfabetização > Política no Território > Desenvolvimento de capacidades de professores",
+          "Alfabetização > Implementação > Aplicação de avaliações",
+          "Alfabetização > Implementação > Devolutiva de avaliações",
+          "Alfabetização > Implementação > Formação de professores",
+          "Alfabetização > Implementação > Acompanhamento pedagógico",
+          "Fundamental 2 > Política no Território > Recomposição das aprendizagens",
+          "Fundamental 2 > Política no Território > Avaliação",
+          "Fundamental 2 > Política no Território > Focalização de ações para equidade",
+          "Fundamental 2 > Política no Território > Desenho de políticas de educação integral",
+          "Fundamental 2 > Política no Território > Planejamento de viabilizadores do tempo integral",
+          "Fundamental 2 > Implementação > Recomposição das aprendizagens",
+          "Fundamental 2 > Implementação > Formação de professores",
+          "Alfabetização > Política no Território > Currículo",
+          "Alfabetização > Política no Território > Revisão curricular para equidade racial",
+          "Alfabetização > Política no Território > Material didático e metodologias",
+          "Alfabetização > Política no Território > Focalização de ações para equidade",
+          "Alfabetização > Política no Território > Plano estratégico de atuação",
+          "Alfabetização > Política no Território > Fortalecimento de regionais",
+          "Alfabetização > Política no Território > Metas e ações",
+          "Alfabetização > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Alfabetização > Implementação > Planejamento de aula",
+          "Alfabetização > Implementação > Monitoramento de implementação",
+          "Alfabetização > Implementação > Gestão para resultados",
+          "Fundamental 2 > Política no Território > Revisão curricular para equidade racial",
+          "Fundamental 2 > Política no Território > Fortalecimento de regionais",
+          "Fundamental 2 > Política no Território > Plano estratégico de atuação",
+          "Fundamental 2 > Política no Território > Metas e ações",
+          "Fundamental 2 > Política no Território > Seleção e desenvolvimento de gestores escolares",
+          "Fundamental 2 > Implementação > Aplicação de avaliações",
+          "Fundamental 2 > Implementação > Devolutiva de avaliações",
+          "Fundamental 2 > Implementação > Acompanhamento pedagógico",
+          "Fundamental 2 > Implementação > Monitoramento de implementação",
+          "Fundamental 2 > Implementação > Gestão para resultados",
+          "Alfabetização > Política no Território > Pré escola",
+          "Alfabetização > Implementação > Recomposição das aprendizagens 3º a 5º",
+          "Fundamental 2 > Política no Território > Material didático e metodologias",
+          "Alfabetização > Política no Território > Fortalecimento de lideranças locais",
+          "Fundamental 2 > Política no Território > Fortalecimento de lideranças locais"
+        ],
+        "etapas": [
+          "Política no Território",
+          "Implementação"
+        ],
+        "tipos": [
+          "Pedagógico",
+          "Desenvolvimento de Capacidade Estatal"
+        ],
+        "publico_alvo": "Estudantes das redes parceiras",
+        "cliente": "Secretarias Municipais e Estaduais de Educação",
+        "area_interlocutora": "Coordenadoria Pedagógica",
+        "momento_politica": "Implementação + Monitoramento"
+      },
+      "Motriz Educação Comunidade": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino",
+        "esfera": "Subnacional (municipal)",
+        "desc": "Programa voltado a redes que já passaram por ciclos intensivos de apoio da organização e passam a atuar em formato de <strong>comunidade de práticas</strong>. A troca entre pares é o motor: são espaços de compartilhamento de desafios, soluções e estratégias entre <strong>lideranças públicas</strong>, com foco em fortalecimento contínuo das lideranças, implementação de práticas inovadoras e consolidação das capacidades institucionais para dar continuidade às políticas educacionais já estabelecidas.",
+        "segmento_niveis": [
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Implementação > Monitoramento de implementação",
+          "Fundamental 2 > Implementação > Monitoramento de implementação"
+        ],
+        "etapas": [
+          "Implementação"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "Estudantes das redes parceiras",
+        "cliente": "Secretarias Municipais de Educação",
+        "area_interlocutora": "Coordenadoria Pedagógica",
+        "momento_politica": "Implementação + Monitoramento"
+      },
+      "Motriz Educação Estados": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino",
+        "esfera": "Subnacional (estadual e municipal)",
+        "desc": "Atua no nível estadual para estruturar <strong>regimes de colaboração</strong> entre estados e municípios voltados à expansão de escolas em tempo integral nos Anos Finais, coordenando redes que compartilham as matrículas dessa etapa entre as duas esferas de governo.",
+        "segmento_niveis": [
+          "Fundamental 2"
+        ],
+        "especialidades": [
+          "Educação integral"
+        ],
+        "estrategias": [
+          "Fundamental 2 > Política no Território > Regime de Colaboração",
+          "Fundamental 2 > Política no Território > Desenho de políticas de educação integral"
+        ],
+        "etapas": [
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico",
+          "Desenvolvimento de Capacidade Estatal"
+        ],
+        "publico_alvo": "Estudantes das redes parceiras",
+        "cliente": "Secretarias Estaduais e Municipais de Educação",
+        "area_interlocutora": "Coordenadoria Pedagógica",
+        "momento_politica": "Formulação + Implementação"
+      },
+      "Motriz Lideranças": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos",
+        "esfera": "Subnacional (estadual e municipal)",
+        "desc": "Programa de desenvolvimento de lideranças públicas da Motriz, realizado no modelo institucional. Fortalece governos estaduais e municipais para que estruturem e conduzam seus próprios programas de atração, seleção, avaliação de desempenho e desenvolvimento de lideranças. O escopo pode incluir seleção; desenvolvimento por meio de PDLs (Programas de Desenvolvimento de Lideranças), com trilhas formativas voltadas a secretários, superintendentes, gerentes e cargos correlatos; Programas de Embarque, voltados ao pipeline de lideranças em início de carreira e ao desenvolvimento de profissionais de média gerência com foco em representatividade negra e indígena; e programas focalizados para o desenvolvimento de lideranças negras, como o Programa Lideranças Negras (PLN), voltado à formação de profissionais negros de média gestão para enfrentar a sub-representação racial no setor público.",
+        "segmento_niveis": [],
+        "especialidades": [
+          "Equidade Racial"
+        ],
+        "estrategias": [
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Atração e seleção",
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Formação",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Formação",
+          "Lideranças > Pipeline > Gestão pública – impacto via governo > Atração e seleção",
+          "Lideranças > Pipeline > Gestão pública – impacto via governo > Formação",
+          "Lideranças > Em exercício > Gestão pública – impacto via governo > Desenvolvimento de capacidade no governo",
+          "Lideranças > Em exercício > Gestão pública – impacto via governo > Avaliação de desempenho",
+          "Lideranças > Em exercício > Gestão pública – impacto via governo > Formação de público-chave",
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Desafios e lacunas na gestão pública",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Desafios e lacunas na gestão pública",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Engajamento político",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Atração e seleção",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Alocação",
+          "Lideranças > Pipeline > Gestão pública – impacto via governo > Desafios e lacunas na gestão pública",
+          "Lideranças > Pipeline > Gestão pública – impacto via governo > Alocação",
+          "Lideranças > Em exercício > Gestão pública – impacto via governo > Diagnóstico e lacunas na agenda",
+          "Lideranças > Em exercício > Gestão pública – impacto via governo > Compromisso político"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto",
+          "Gestão pública – impacto via governo"
+        ],
+        "publico_alvo": "Servidores e lideranças públicas de governos estaduais e municipais parceiros",
+        "cliente": "Governos Estaduais e Municipais Parceiros",
+        "area_interlocutora": "Secretarias de Gestão, Administração e Planejamento",
+        "momento_politica": "Implementação"
+      },
+      "Programa de Lideranças Executivas": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos",
+        "esfera": "Nacional",
+        "desc": "Formação de <strong>lideranças executivas</strong> do setor público, organizada em edições com imersão presencial e conduzida em parceria com o Insper. As edições mais recentes incorporaram formação em <strong>inteligência artificial</strong> com tutoria especializada e a pauta de <strong>sustentabilidade</strong> com foco em emergência climática e energética.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Formação"
+        ],
+        "etapas": [
+          "Em exercício"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto"
+        ],
+        "publico_alvo": "Lideranças executivas de governos em diferentes áreas",
+        "cliente": "Governos estaduais e municipais",
+        "area_interlocutora": "Gabinete / Secretarias de gestão e administração",
+        "momento_politica": "Implementação"
+      },
+      "Rede Motriz": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos",
+        "esfera": "Nacional",
+        "desc": "Rede de lideranças públicas ligadas à organização, com ações de apoio à progressão de carreira em três eixos: <strong>Matching</strong>, aproximação entre membros da Rede e oportunidades de trabalho; <strong>Networking</strong>, comunidades virtuais e comunidades temáticas, entre elas Educação e Liderança Inclusiva, como espaços de troca e construção coletiva; e <strong>Carreira</strong>, acompanhamento de casos de estagnação e apoio à construção de planos de carreira.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Redes",
+          "Lideranças > Em exercício > Gestão pública – impacto direto > Redes",
+          "Lideranças > Pipeline > Gestão pública – impacto via governo > Redes",
+          "Lideranças > Em exercício > Gestão pública – impacto via governo > Redes"
+        ],
+        "etapas": [
+          "Pipeline",
+          "Em exercício"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto",
+          "Gestão pública – impacto via governo"
+        ],
+        "publico_alvo": "Egressos dos programas da Motriz",
+        "cliente": "Não aplicável",
+        "area_interlocutora": "Não aplicável",
+        "momento_politica": "Não aplicável"
+      },
+      "Residência em Gestão Pública": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos",
+        "esfera": "Subnacional (estadual e municipal)",
+        "desc": "Programa de pós-graduação lato sensu em gestão pública oferecido a governos estaduais e municipais parceiros, com foco na <strong>especialização técnica profunda</strong>, proporcionando imersão em áreas específicas para formar especialistas em políticas públicas e análise governamental.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Formação"
+        ],
+        "etapas": [
+          "Pipeline"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto"
+        ],
+        "publico_alvo": "Profissionais em formação em gestão pública",
+        "cliente": "Governos Estaduais e Municipais Parceiros",
+        "area_interlocutora": "Secretarias de Gestão, Administração e Planejamento",
+        "momento_politica": "Implementação"
+      },
+      "Trainee de Gestão Pública (TGP)": {
+        "segmento_categoria": "Liderança",
+        "publico_beneficiario": "Gestores públicos",
+        "esfera": "Subnacional (estadual e municipal)",
+        "desc": "<strong>Programa de trainee</strong> voltado a jovens em início de carreira com <strong>interesse em se desenvolver profissionalmente no setor público</strong>. Atrai, pré-seleciona e desenvolve tanto recém-formados quanto profissionais que já atuam na área, para compor equipes de alto desempenho em governos estaduais e municipais parceiros, por meio de um processo de pareamento com o órgão público e formações presenciais ao longo do programa. Fundado no Vetor Brasil, hoje é um dos programas de liderança da Motriz.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Atração e seleção",
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Formação",
+          "Lideranças > Pipeline > Gestão pública – impacto direto > Alocação"
+        ],
+        "etapas": [
+          "Pipeline"
+        ],
+        "tipos": [
+          "Gestão pública – impacto direto"
+        ],
+        "publico_alvo": "Jovens em início de carreira",
+        "cliente": "Governos estaduais e municipais parceiros",
+        "area_interlocutora": "Secretarias de gestão e administração; gabinetes municipais e estaduais",
+        "momento_politica": "Implementação"
+      }
+    },
+    "ane": {
+      "Conectando Saberes": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Professores",
+        "esfera": "N/A",
+        "desc": "Comunidade de professores da rede pública organizada em núcleos regionais, coordenada pela Nova Escola, reunindo docentes engajados que buscam trocar com seus pares as potencialidades e os desafios da profissão. Inclui professores que atuam como <strong>autores de planos de aula, mobilizadores da causa docente e formadores de outros educadores</strong>, em espaços presenciais e virtuais de troca de experiências e disseminação de boas práticas. A rede fortalece a carreira docente, ajuda a enfrentar a solidão pedagógica e mantém um diálogo direto entre os professores e a Nova Escola.",
+        "segmento_niveis": [],
+        "especialidades": [],
+        "estrategias": [],
+        "etapas": [
+          "N/A"
+        ],
+        "tipos": [
+          "N/A"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Site / Plataforma": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Professores",
+        "esfera": "N/A",
+        "desc": "Plataforma de <strong>conteúdo e formação pedagógica</strong> voltada a professores e gestores escolares, com alcance nacional direto ao professor, reunindo planos de aula, reportagens e vídeos em linguagem acessível, além de cursos assíncronos com certificação para aprofundamento em temas específicos.",
+        "segmento_niveis": [
+          "Educação Infantil",
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política no Território > Material didático e metodologias",
+          "Alfabetização > Implementação > Planejamento de aula",
+          "Fundamental 2 > Implementação > Planejamento de aula"
+        ],
+        "etapas": [
+          "Política no Território",
+          "Implementação"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "WhatsApp Nacional": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Professores",
+        "esfera": "N/A",
+        "desc": "Solução de <strong>apoio pedagógico</strong> nativa no WhatsApp, aberta a qualquer professor. A <strong>Professora ANE</strong> gera <strong>planos de aula alinhados à BNCC</strong> a partir de tema, componente curricular e ano da turma, e a experiência conversacional permite descrever o contexto em linguagem livre — por exemplo, turma com estudantes neurodivergentes, conteúdo específico, necessidade de adaptação — e tirar dúvidas pedagógicas e sobre políticas educacionais. A qualidade dos planos gerados é acompanhada por critérios de avaliação aplicados à produção do modelo, entre eles alinhamento à BNCC, objetivo de aprendizagem e tempo de aula.",
+        "segmento_niveis": [
+          "Educação Infantil",
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Implementação > Planejamento de aula",
+          "Fundamental 2 > Implementação > Planejamento de aula"
+        ],
+        "etapas": [
+          "Implementação"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "WhatsApp Regional (Territórios)": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Professores",
+        "esfera": "Estadual e Municipal",
+        "desc": "Versão do WhatsApp implementada junto à rede de ensino, com dois diferenciais em relação à versão aberta: o <strong>planejador de aulas regionalizado</strong>, que integra os dados da rede e alinha os planos ao currículo e aos materiais adotados; e as <strong>devolutivas pedagógicas</strong>, que conectam a solução aos dados de avaliação de cada sala de aula, com foco em Língua Portuguesa e Matemática, de modo que o plano de aula responda ao que a turma precisa. A rede envia a documentação e os dados, que são integrados à solução antes da liberação aos professores.",
+        "segmento_niveis": [
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [
+          "Matemática"
+        ],
+        "estrategias": [
+          "Alfabetização > Implementação > Devolutiva de avaliações",
+          "Alfabetização > Implementação > Planejamento de aula",
+          "Fundamental 2 > Implementação > Devolutiva de avaliações",
+          "Fundamental 2 > Implementação > Recomposição das aprendizagens",
+          "Fundamental 2 > Implementação > Planejamento de aula"
+        ],
+        "etapas": [
+          "Implementação"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      }
+    },
+    "reuna": {
+      "Recomposição das Aprendizagens": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino",
+        "esfera": "Nacional, Estadual e Municipal",
+        "desc": "Como parceiro técnico do MEC, CONSED e UNDIME, contribui para o Pacto Nacional pela Recomposição das Aprendizagens, produzindo materiais como a Matriz Curricular Priorizada e o Guia de Formação Continuada para a Recomposição das Aprendizagens. A partir desse pacto, o Reúna também apoia redes de ensino em ações locais de recomposição, como o Laboratório de Letramento, iniciativa de recomposição de aprendizagens em Língua Portuguesa, o ImpulsiONar, parceria com a Quintessa voltada a redes municipais para reduzir e prevenir lacunas de aprendizagem em Língua Portuguesa e Matemática nos Anos Finais, e o projeto de recomposição realizado com o SESI. Produziu os Mapas de Foco da BNCC, desenvolvidos com o Itaú Social, que priorizam as habilidades essenciais de cada componente curricular para orientar redes, escolas e professores.",
+        "segmento_niveis": [
+          "Fundamental 2",
+          "Ensino Médio"
+        ],
+        "especialidades": [
+          "Matemática"
+        ],
+        "estrategias": [
+          "Alfabetização > Política Nacional > Recomposição das aprendizagens",
+          "Fundamental 2 > Política Nacional > Recomposição das aprendizagens",
+          "Fundamental 2 > Política no Território > Recomposição das aprendizagens",
+          "Fundamental 2 > Política no Território > Priorização curricular"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Avalia & Aprende": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino; Professores",
+        "esfera": "Estadual e Municipal",
+        "desc": "Frente de construção de base pedagógica para avaliação, alinhada à BNCC. Reúne três componentes: <strong>Descrições de Aprendizagem</strong>, detalhamentos baseados na BNCC e nos Mapas de Foco que identificam as aprendizagens esperadas ao fim de cada ano escolar; <strong>Avaliações Diagnósticas</strong> para Língua Portuguesa e Matemática no Ensino Fundamental, para identificar defasagens; e <strong>Avaliações Formativas</strong>, aplicadas ao longo do processo.",
+        "segmento_niveis": [
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política no Território > Avaliações e monitoramento",
+          "Fundamental 2 > Política no Território > Avaliação"
+        ],
+        "etapas": [
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Avançar": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino; Professores",
+        "esfera": "Estadual e Municipal",
+        "desc": "<strong>Recomposição de aprendizagens</strong> em Matemática para estudantes do 4º ao 9º ano do Ensino Fundamental, realizada em conjunto com a Motriz, por meio de um escopo e sequência estruturado de aulas que articula o ensino da disciplina ao engajamento, ao desenvolvimento de competências socioemocionais e a hábitos de estudo. Inclui materiais de Estudos Orientados, que ampliam o tempo de exposição do estudante aos conteúdos, e instrumentos de apoio como rubricas de autoavaliação para estudantes e docentes.",
+        "segmento_niveis": [
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [
+          "Matemática"
+        ],
+        "estrategias": [
+          "Alfabetização > Política Nacional > Recomposição das aprendizagens",
+          "Fundamental 2 > Política no Território > Recomposição das aprendizagens",
+          "Fundamental 2 > Política no Território > Material didático e metodologias",
+          "Alfabetização > Política no Território > Material didático e metodologias"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Currículo e Alinhamento à BNCC": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino; Professores",
+        "esfera": "Nacional, Estadual e Municipal",
+        "desc": "Desenvolve referências técnico-pedagógicas para apoiar redes e escolas na implementação e no alinhamento curricular à BNCC. Isso inclui: apoio técnico à revisão curricular de redes de ensino, da Educação Infantil ao Ensino Médio; produção de insumos técnicos para a revisão da própria BNCC, em articulação com o Movimento pela Base e o Todos pela Educação.",
+        "segmento_niveis": [
+          "Educação Infantil",
+          "Alfabetização",
+          "Fundamental 2",
+          "Ensino Médio"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Alfabetização > Política Nacional > BNCC",
+          "Fundamental 2 > Política Nacional > BNCC",
+          "Alfabetização > Política no Território > Currículo",
+          "Fundamental 2 > Política no Território > Currículos locais",
+          "Fundamental 2 > Política no Território > Priorização curricular",
+          "Alfabetização > Política no Território > Pré escola"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Ensino Médio": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Professores; Diretores e gestores escolares",
+        "esfera": "Nacional e Estadual",
+        "desc": "Atua em múltiplas frentes de apoio ao Ensino Médio junto às secretarias estaduais, no âmbito de um acordo de cooperação técnica que também contempla essa etapa junto ao MEC: apoio à implementação da política do <strong>Novo Ensino Médio</strong> e ao desenho de itinerários formativos (<strong>Trilhares</strong>); o <strong>Nosso Ensino Médio</strong>, plataforma de formação para professores e gestores escolares, desenvolvida com o Instituto iungo e o Itaú Educação e Trabalho, com trilhas de aprendizagem sobre currículo, projeto de vida e itinerários; e o <strong>Fortalecimento da Aprendizagem</strong>, iniciativa com o Instituto Unibanco voltada à recomposição de aprendizagens no Ensino Médio, com sequências didáticas e protocolo de avaliação formativa para identificar defasagens e planejar intervenções.",
+        "segmento_niveis": [
+          "Ensino Médio"
+        ],
+        "especialidades": [],
+        "estrategias": [],
+        "etapas": [
+          "N/A"
+        ],
+        "tipos": [
+          "N/A"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Escola das Adolescências (EDA)": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Redes de Ensino; Formadores de professores",
+        "esfera": "Nacional, Estadual e Municipal",
+        "desc": "Como parceiro técnico do MEC, ajudou a tirar a Política Nacional Escola das Adolescências do papel, produzindo os instrumentos centrais (guias de apoio) com foco em desenvolvimento integral e equidade. Contribui com a formulação de materiais de apoio à implementação da política pelas redes, incluindo guias temáticos, documentos orientadores e o Clube de Letramento, iniciativa focada em aulas de diversos temas adaptadas às adolescências. A frente inclui a atuação de advocacy: articulação com MEC, Consed e Undime e a promoção de encontros de inspiração e construção conjunta entre organizações parceiras do ecossistema.",
+        "segmento_niveis": [
+          "Fundamental 2"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Fundamental 2 > Política Nacional > Escola das Adolescências"
+        ],
+        "etapas": [
+          "Política Nacional"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Inglês (Skills for Prosperity)": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Estudantes; Professores",
+        "esfera": "Estadual e Municipal",
+        "desc": "Programa Skills for Prosperity (S4P), consórcio formado por Reúna, Fundação Lemann, Associação Nova Escola e o British Council, com apoio do fundo britânico Prosperity Fund, voltado ao aprimoramento do ensino de <strong>Língua Inglesa</strong> nos Anos Finais do Ensino Fundamental, no Ensino Médio e na Educação Técnica e Profissionalizante. O Reúna desenvolve referenciais técnico-pedagógicos alinhados à BNCC, em diálogo com o Quadro Comum Europeu de Referência para Línguas.",
+        "segmento_niveis": [
+          "Fundamental 2",
+          "Ensino Médio"
+        ],
+        "especialidades": [
+          "Língua Inglesa"
+        ],
+        "estrategias": [],
+        "etapas": [
+          "N/A"
+        ],
+        "tipos": [
+          "N/A"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Compromisso Nacional Toda Matemática": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Equipe técnica da Secretaria",
+        "esfera": "Nacional, Estadual e Municipal",
+        "desc": "Como parceiro técnico do MEC, ajudou a idealizar e construir as bases e os eixos de atuação do Compromisso Nacional Toda Matemática. A política se estrutura em cinco eixos — governança e gestão, formação de profissionais, orientação curricular, avaliação e compartilhamento de boas práticas —, operacionalizados em regime de colaboração com estados e municípios, com cadernos de orientação curricular como um dos principais instrumentos. O Reúna também apoia a atuação da Renamat - rede de articuladores que apoiam as redes na elaboração de diagnósticos de Matemática, que orientam a construção de planos estratégicos locais.",
+        "segmento_niveis": [
+          "Educação Infantil",
+          "Alfabetização",
+          "Fundamental 2",
+          "Ensino Médio"
+        ],
+        "especialidades": [
+          "Matemática"
+        ],
+        "estrategias": [
+          "Alfabetização > Política Nacional > Toda Matemática",
+          "Fundamental 2 > Política Nacional > Toda Matemática",
+          "Alfabetização > Política no Território > Inovação no ensino da matemática",
+          "Fundamental 2 > Política no Território > Inovações no ensino de matemática"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Percurso Formativo": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Professores; Formadores de professores",
+        "esfera": "Nacional",
+        "desc": "Conjunto de cerca de 20 <strong>trilhas formativas</strong>, desenvolvido com a Fundação Lemann, que servem de referência para a formação de formadores e professores da Educação Infantil e do Ensino Fundamental na implementação da BNCC e dos novos currículos. Cada trilha reúne pautas com atividades recomendadas, ajustáveis à realidade de cada rede ou escola.",
+        "segmento_niveis": [
+          "Educação Infantil",
+          "Alfabetização",
+          "Fundamental 2"
+        ],
+        "especialidades": [],
+        "estrategias": [
+          "Fundamental 2 > Política no Território > Formação de professores",
+          "Alfabetização > Política no Território > Desenvolvimento de capacidades de professores"
+        ],
+        "etapas": [
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Plataforma de Anos Finais": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Equipe técnica da Secretaria",
+        "esfera": "Estadual e Municipal",
+        "desc": "Curso online autoinstrucional e certificado (16h) para equipes técnicas de secretaria, desenvolvido com o Itaú Social, sobre a implementação da <strong>Educação Integral</strong> nos Anos Finais. Inclui instrumentos de diagnóstico da realidade escolar e orientações para elaboração de planos de ação.",
+        "segmento_niveis": [
+          "Fundamental 2"
+        ],
+        "especialidades": [
+          "Educação integral"
+        ],
+        "estrategias": [
+          "Fundamental 2 > Política Nacional > Escola Integral em tempo integral",
+          "Fundamental 2 > Política no Território > Desenho de políticas de educação integral"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      },
+      "Trilha de Formação para Formadores — Anos Finais": {
+        "segmento_categoria": "Educação",
+        "publico_beneficiario": "Formadores de professores",
+        "esfera": "Estadual",
+        "desc": "Conjunto de materiais formativos — pautas e roteiros para formadores, apresentações de apoio e rubricas de autoavaliação — organizado em uma arquitetura formativa para apoiar as equipes técnicas das Secretarias de Educação na implementação do <strong>Referencial Pedagógico de Educação Integral</strong> nos Anos Finais, com foco na multiplicação da formação continuada entre os diferentes atores escolares da rede.",
+        "segmento_niveis": [
+          "Fundamental 2"
+        ],
+        "especialidades": [
+          "Educação integral"
+        ],
+        "estrategias": [
+          "Fundamental 2 > Política Nacional > Escola Integral em tempo integral",
+          "Fundamental 2 > Política no Território > Formação de professores"
+        ],
+        "etapas": [
+          "Política Nacional",
+          "Política no Território"
+        ],
+        "tipos": [
+          "Pedagógico"
+        ],
+        "publico_alvo": "",
+        "cliente": "",
+        "area_interlocutora": "",
+        "momento_politica": ""
+      }
+    }
+  },
+  "ext": {
+    "Alfabetização > Política Nacional > BNCC": [
+      "MPB"
+    ],
+    "Alfabetização > Política Nacional > SAEB": [
+      "FL"
+    ],
+    "Fundamental 2 > Política Nacional > BNCC": [
+      "MPB"
+    ],
+    "Fundamental 2 > Política Nacional > SAEB": [
+      "FL"
+    ],
+    "Fundamental 2 > Política Nacional > Escola Integral em tempo integral": [
+      "ISG"
+    ],
+    "Fundamental 2 > Política no Território > Inovações no ensino de matemática": [
+      "E. criativas"
+    ],
+    "Fundamental 2 > Política no Território > Desenho de políticas de educação integral": [
+      "ISG"
+    ],
+    "Fundamental 2 > Política no Território > Material didático e metodologias": [
+      "E. criativas"
+    ],
+    "Fundamental 2 > Política no Território > Planejamento de viabilizadores do tempo integral": [
+      "ISG"
+    ],
+    "Fundamental 2 > Implementação > Aplicação de avaliações": [
+      "E. criativas"
+    ],
+    "Fundamental 2 > Implementação > Formação de professores": [
+      "E. criativas"
+    ],
+    "Fundamental 2 > Implementação > Planejamento de aula": [
+      "E. criativas"
+    ],
+    "Fundamental 2 > Implementação > Acompanhamento pedagógico": [
+      "E. criativas"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto direto > Desafios e lacunas na gestão pública": [
+      "RIL"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto direto > Atração e seleção": [
+      "ENAP",
+      "RIL"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto direto > Formação": [
+      "ENAP",
+      "RIL"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto direto > Redes": [
+      "ENAP",
+      "RIL"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto via governo > Advocacy por políticas de lideranças": [
+      "Movimento pessoas à frente"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto via governo > Redes": [
+      "Movimento pessoas à frente"
+    ],
+    "Lideranças > Em exercício > Políticos em exercício – cargos eletivos > Atração": [
+      "Legisla Brasil"
+    ],
+    "Lideranças > Em exercício > Políticos em exercício – cargos eletivos > Formação": [
+      "Legisla Brasil"
+    ],
+    "Lideranças > Em exercício > Políticos em exercício – cargos eletivos > Redes": [
+      "Legisla Brasil"
+    ],
+    "Lideranças > Pipeline > Atuação temática – impacto direto > Desafios e lacunas na gestão pública": [
+      "Ensina Brasil"
+    ],
+    "Lideranças > Pipeline > Atuação temática – impacto direto > Atração e seleção": [
+      "Ensina Brasil"
+    ],
+    "Lideranças > Pipeline > Atuação temática – impacto direto > Formação": [
+      "Ensina Brasil"
+    ],
+    "Lideranças > Pipeline > Atuação temática – impacto direto > Alocação": [
+      "Ensina Brasil"
+    ],
+    "Lideranças > Pipeline > Atuação temática – impacto direto > Redes": [
+      "Ensina Brasil"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto direto > Desafios e lacunas na gestão pública": [
+      "Leme",
+      "IEPS",
+      "Ensina Brasil"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto direto > Engajamento político": [
+      "Leme",
+      "IEPS",
+      "Ensina Brasil"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto direto > Atração e seleção": [
+      "Leme",
+      "IEPS",
+      "Ensina Brasil"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto direto > Formação": [
+      "Leme",
+      "IEPS",
+      "Ensina Brasil"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto direto > Redes": [
+      "Leme",
+      "IEPS",
+      "Ensina Brasil"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Advocacy por políticas públicas temáticas": [
+      "Leme",
+      "IEPS"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Desafios e lacunas na gestão pública": [
+      "Leme",
+      "IEPS"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Compromisso político": [
+      "Leme",
+      "IEPS"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Desenvolvimento de capacidade no governo": [
+      "Leme",
+      "IEPS"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Avaliação de desempenho": [
+      "Leme",
+      "IEPS"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Redes": [
+      "Leme",
+      "IEPS"
+    ],
+    "Lideranças > Pipeline > Outras teses fora da gestão pública > Atração e seleção": [
+      "Alcance",
+      "Estudar"
+    ],
+    "Lideranças > Pipeline > Outras teses fora da gestão pública > Formação": [
+      "Unis",
+      "Alcance",
+      "Estudar"
+    ],
+    "Lideranças > Pipeline > Outras teses fora da gestão pública > Redes": [
+      "Estudar",
+      "BoC",
+      "RLFL"
+    ],
+    "Lideranças > Em exercício > Outras teses fora da gestão pública > Redes": [
+      "RLFL"
+    ]
+  },
+  "colors": {
+    "Alcance": "#9CC829",
+    "BoC": "#7ED957",
+    "E. criativas": "#3E47D1",
+    "ENAP": "#027E7B",
+    "Ensina Brasil": "#134D7B",
+    "Estudar": "#4FC2E9",
+    "FL": "#134D7B",
+    "IEPS": "#FFC72E",
+    "ISG": "#134D7B",
+    "Legisla Brasil": "#651337",
+    "Leme": "#025370",
+    "MPB": "#EDD701",
+    "Movimento pessoas à frente": "#0055B8",
+    "RIL": "#58A4A0",
+    "RLFL": "#027E7B",
+    "Unis": "#134D7B"
+  },
+  "extra": {
+    "Alfabetização > Política Nacional > CNCA": [
+      "reuna"
+    ],
+    "Fundamental 2 > Implementação > Planejamento de aula": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto direto > Atração e seleção": [
+      "traj"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto direto > Alocação": [
+      "traj"
+    ],
+    "Lideranças > Em exercício > Gestão pública – impacto via governo > Advocacy por políticas de lideranças": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Advocacy por políticas públicas temáticas": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Desafios e lacunas na gestão pública": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Compromisso político": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Desenvolvimento de capacidade no governo": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Avaliação de desempenho": [
+      "motriz"
+    ],
+    "Lideranças > Em exercício > Atuação temática – impacto via governo > Redes": [
+      "motriz"
+    ],
+    "Lideranças > Pipeline > Outras teses fora da gestão pública > Alocação": [
+      "traj"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+name: Verificar portal
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --global pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm run typecheck
+      - run: pnpm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+      - run: pnpm run test:integration
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portal-ecossistema
+          path: |
+            .next/standalone
+            .next/static
+            public
+            database
+          include-hidden-files: true
