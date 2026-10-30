@@ -1,0 +1,11 @@
+node_modules/
+.next/
+lib/generated-map.js
+data/
+backups/
+.env*
+!.env.example
+*.sqlite*
+*.pem
+*.tsbuildinfo
+outputs/
