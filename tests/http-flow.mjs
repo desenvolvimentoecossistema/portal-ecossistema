@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {DatabaseSync} from 'node:sqlite';
-import {mkdtempSync,readFileSync,writeFileSync} from 'node:fs';
+import {mkdirSync,mkdtempSync,readFileSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {createHash,randomBytes} from 'node:crypto';
@@ -31,5 +31,5 @@ try{
  const page=await(await request('/mapa')).text();assert(page.includes('Mapas Programáticos e de Atuação'));assert(page.includes('Imersões em Eventos'));assert(!/chatgpt|openai|oai-authenticated|cloudflare:/.test(page));const asset=page.match(/\/mapa\/assets\/[a-f0-9]+\.(?:png|webp)/)[0];assert.equal((await request(asset)).status,200);assert.equal((await request('/fonts/Cabin/Cabin-variable-ea743dde.woff2')).status,200);check('mapa, imagens e fontes locais sem chamadas à plataforma de origem');
  await stop();await start();r=await request('/mapa/api/data');assert.equal((await r.json()).revision,saved.revision);assert.equal(db.prepare('SELECT count(*) AS n FROM registrations').get().n,3);assert.equal((await request('/api/events')).status,200);check('eventos, inscrições, sessão e mapa persistem após reinício');
  r=await request('/auth/logout');assert([302,307].includes(r.status));assert.equal((await request('/api/session')).status,401);check('sessão deixa de funcionar depois da saída');
- const report={date:new Date().toISOString(),checks,passed:checks.length,errors:0};writeFileSync(resolve('data/http-verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
+ const report={date:new Date().toISOString(),checks,passed:checks.length,errors:0};mkdirSync(resolve('data'),{recursive:true});writeFileSync(resolve('data/http-verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
 }catch(e){console.error(logs);throw e;}finally{await stop();db.close();await new Promise(r=>webhook.close(r));}
