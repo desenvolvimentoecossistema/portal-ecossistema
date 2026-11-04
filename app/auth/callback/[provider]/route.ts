@@ -13,7 +13,7 @@ export async function GET(request: Request, context: { params: Promise<{ provide
   const provider = name as OAuthProvider;
   const origin = siteOrigin();
   const settings = providerSettings(provider);
-  if (!origin || !settings || new URL(request.url).origin !== origin) return new Response("Endereço de login inválido.", { status: 400 });
+  if (!origin || !settings) return new Response("Endereço de login inválido.", { status: 400 });
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");

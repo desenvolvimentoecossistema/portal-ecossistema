@@ -17,6 +17,8 @@ Também há Dockerfile com saída standalone. O volume /data deve ser persistent
 
 O acesso usa Google OAuth. Cadastrar no cliente a URL `<SITE_ORIGIN>/auth/callback/google`. O segredo e a conta de serviço do Google Sheets ficam somente nas variáveis protegidas da hospedagem. A conta de serviço precisa de leitura da planilha configurada. Administradores da agenda e do mapa são definidos separadamente em BOOTSTRAP_ADMIN_EMAILS e MAP_ADMIN_EMAILS.
 
+Em hospedagem com proxy HTTPS, `SITE_ORIGIN` deve conter o domínio público exato, sem caminho, como `https://portalecossistema.fundacaolemann.codebit.biz`. O endereço interno de escuta, definido por `HOSTNAME` e `PORT`, pode ser diferente. A aplicação usa a origem pública configurada para login, redirecionamentos e validação das gravações, sem confiar em cabeçalhos de origem encaminhados pelo visitante.
+
 Sem EMAIL_WEBHOOK_URL e EMAIL_WEBHOOK_SECRET as inscrições são gravadas, mas não há confirmação por e-mail. O webhook recebe POST JSON com secret e os dados da mensagem e deve devolver {"ok":true}. A interface informa quando a confirmação não é enviada.
 
 ## Dados e manutenção

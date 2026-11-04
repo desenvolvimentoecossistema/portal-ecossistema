@@ -21,6 +21,10 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: '1'
       - run: pnpm run test:integration
+      - run: pnpm run test:integration
+        name: Verificar origem pública atrás do proxy HTTPS
+        env:
+          TEST_PROXY: '1'
       - uses: actions/upload-artifact@v4
         with:
           name: portal-ecossistema

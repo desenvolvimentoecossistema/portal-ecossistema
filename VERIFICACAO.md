@@ -1,5 +1,16 @@
 # Verificação da entrega
 
+## Correção para proxy HTTPS — 04/11/2026
+
+- A validação das gravações usa `SITE_ORIGIN`, pois o endereço interno do Next.js standalone pode diferir do domínio público. Origens externas, ausentes ou inválidas continuam bloqueadas; os cabeçalhos de encaminhamento não substituem a origem configurada.
+- O início e o retorno do OAuth usam o domínio configurado. O redirecionamento do mapa para o login também usa esse domínio.
+- 31 testes automatizados aprovados, TypeScript e build de produção concluídos.
+- 12 fluxos HTTP integrados aprovados em acesso local e os mesmos 12 atrás de proxy HTTPS simulado, com `HOSTNAME=0.0.0.0` e domínio público diferente do endereço de escuta. Foram verificados login inicial, retorno inválido, cadastro e edição de agendas, inscrições, permissões de usuários, exclusão, concorrência e persistência.
+- A integração contínua passa a executar também o cenário de proxy. O login real com a conta Google ainda exige o callback cadastrado no cliente e validação no domínio de hospedagem.
+- A carga de dados de produção é entregue separadamente. Dados pessoais, sessões e segredos não fazem parte do repositório.
+
+## Verificação inicial
+
 Verificação em 30/10/2026 da versão para hospedagem independente.
 
 - Instalação com lockfile, TypeScript e build de produção concluídos.

@@ -13,7 +13,6 @@ export async function GET(request: Request, context: { params: Promise<{ provide
   const settings = providerSettings(provider);
   const origin = siteOrigin();
   if (!settings || !origin || !hasLoginAllowlist()) return new Response("Configuração de login pendente.", { status: 503 });
-  if (new URL(request.url).origin !== origin) return new Response("Endereço de login inválido.", { status: 400 });
 
   const state = randomToken();
   const nonce = randomToken();

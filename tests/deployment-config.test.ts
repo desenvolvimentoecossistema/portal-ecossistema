@@ -32,3 +32,25 @@ test("escritas com cookies recusam outra origem, inclusive sites irmãos", () =>
   assert.equal(isSameOriginMutation(request("null")), false);
   assert.equal(isSameOriginMutation(request()), false);
 });
+
+test("origem pública configurada funciona atrás do proxy sem aceitar origens forjadas", () => {
+  const previous = process.env.SITE_ORIGIN;
+  try {
+    process.env.SITE_ORIGIN = "https://portal.example.org";
+    const request = (origin?: string) => new Request("https://0.0.0.0:3000/api/events", {
+      method: "POST",
+      headers: { ...(origin ? { origin } : {}), host: "evil.example", "x-forwarded-host": "evil.example", "x-forwarded-proto": "https" },
+    });
+    assert.equal(isSameOriginMutation(request("https://portal.example.org")), true);
+    for (const origin of ["https://0.0.0.0:3000", "https://evil.example", "https://sibling.example.org", "http://portal.example.org", "null", undefined]) {
+      assert.equal(isSameOriginMutation(request(origin)), false, String(origin));
+    }
+    for (const invalid of ["not-a-url", "https://portal.example.org/path", "http://portal.example.org"]) {
+      process.env.SITE_ORIGIN = invalid;
+      assert.equal(isSameOriginMutation(request("https://0.0.0.0:3000")), false);
+    }
+  } finally {
+    if (previous === undefined) delete process.env.SITE_ORIGIN;
+    else process.env.SITE_ORIGIN = previous;
+  }
+});
