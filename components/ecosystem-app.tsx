@@ -612,11 +612,13 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       <Dialog open={Boolean(selected)} onOpenChange={(open) => !open && setSelected(null)}>
         {selected && (
           <DialogContent className={`${dialogCloseButtonClass} max-h-[94vh] w-[calc(100%-1.5rem)] overflow-x-hidden overflow-y-auto rounded-[22px] border-[#052B47]/20 p-0 sm:max-w-4xl`}>
-            <div className="px-6 py-7 pr-14 sm:px-8" style={{ backgroundColor: getOrganizationBrand(selected.organization).color, color: getOrganizationBrand(selected.organization).foreground }}>
+            <div className="px-6 py-7 pr-14 sm:px-8 sm:pr-16" style={{ backgroundColor: getOrganizationBrand(selected.organization).color, color: getOrganizationBrand(selected.organization).foreground }}>
               <DialogHeader>
-                <p className="text-sm font-extrabold opacity-80">{selected.organization}</p>
+                <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+                  <p className="text-sm font-extrabold opacity-80">{selected.organization}</p>
+                  <p className="text-xs font-normal leading-normal opacity-70" data-event-last-edited>Editado em {eventLastEditedDate(selected)}</p>
+                </div>
                 <DialogTitle className="text-2xl font-black leading-tight tracking-normal sm:text-3xl">{selected.title}</DialogTitle>
-                <p className="flex items-start justify-center gap-1.5 text-xs font-medium opacity-85 sm:justify-start sm:text-sm"><Pencil className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" /><span data-event-last-edited>Última edição em {eventLastEditedDate(selected)}</span></p>
                 <DialogDescription className="text-base leading-relaxed" style={{ color: getOrganizationBrand(selected.organization).foreground }}>{selected.description}</DialogDescription>
               </DialogHeader>
             </div>
