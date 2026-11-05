@@ -22,6 +22,8 @@ test("mantém o destinatário do aviso à organização", () => {
   assert.equal(email.contactEmail, "anfitria@example.org");
   assert.equal(email.participantEmail, "maria@example.org");
   assert.equal(email.eventLocation, "São Paulo - SP");
+  assert.equal(email.eventOrganization, "Motriz");
+  assert.equal(email.notificationType, "host_notification");
 });
 
 test("endereça a confirmação a cada pessoa com os dados da própria inscrição", () => {
@@ -33,6 +35,8 @@ test("endereça a confirmação a cada pessoa com os dados da própria inscriç�
     assert.equal(email.contactEmail, participant.email);
     assert.equal(email.recipientEmail, participant.email);
     assert.equal(email.notificationType, "participant_confirmation");
+    assert.equal(email.replyToEmail, event.contactEmail);
+    assert.equal(email.eventOrganization, event.organization);
     assert.match(email.text, new RegExp(participant.name));
     assert.match(email.text, /Sua inscrição em “Visita à escola” foi recebida/);
     assert.match(email.text, /anfitria@example.org/);

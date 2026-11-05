@@ -25,6 +25,7 @@ export type RegistrationEmailParticipant = {
 function registrationDetails(event: RegistrationEmailEvent, participant: RegistrationEmailParticipant) {
   return {
     eventFormat: event.type,
+    eventOrganization: event.organization,
     eventTitle: event.title,
     eventDate: `${formatEventDateRange(event.startDate, event.endDate)} · ${formatEventTimeRange(event.startTime, event.endTime)}`,
     eventLocation: [event.venue, `${event.city} - ${event.state}`].filter(Boolean).join(", "),
@@ -37,6 +38,7 @@ function registrationDetails(event: RegistrationEmailEvent, participant: Registr
 
 export function hostNotification(event: RegistrationEmailEvent, participant: RegistrationEmailParticipant) {
   return {
+    notificationType: "host_notification" as const,
     contactName: event.contactName,
     contactEmail: event.contactEmail,
     ...registrationDetails(event, participant),
