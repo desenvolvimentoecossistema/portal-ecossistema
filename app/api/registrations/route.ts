@@ -5,7 +5,10 @@ import { z } from "zod";
 import { getSqliteDatabase, getDb } from "@/db";
 import { events, registrations } from "@/db/schema";
 import { DEMO_EVENTS } from "@/lib/event-data";
-import { getSiteUser } from "@/app/site-auth";
+import {getPortalUser as getSiteUser} from "@/app/portal-access";
+import {formTermsVersionError} from '@/lib/legal-acceptance';
+import {acceptanceRecord} from '@/lib/record-legal-acceptance';
+import {acceptedMutation} from '@/lib/accepted-mutation.mjs';
 import { isEventReadyForRegistration, isRegistrationOpen, todayInSaoPaulo } from "@/lib/event-rules";
 import { registrationInsert, registrationSchema } from "@/lib/registration-rules";
 import { hostNotification, participantConfirmation } from "@/lib/registration-email";
@@ -48,7 +51,9 @@ export async function POST(request: Request) {
   try {
     const user = await getSiteUser();
     if (!user) return NextResponse.json({ error: "Faça login para se inscrever." }, { status: 401 });
-    const payload = registrationSchema.parse(await request.json());
+    const input=await request.json(),acceptanceError=formTermsVersionError(input);
+    if(acceptanceError)return NextResponse.json({error:acceptanceError},{status:400});
+    const payload = registrationSchema.parse(input);
     const db = getDb();
     const demoEvent = DEMO_EVENTS.find((event) => event.id === payload.eventId);
     if (demoEvent) {
@@ -64,7 +69,7 @@ export async function POST(request: Request) {
 
     const createdAt = new Date().toISOString();
     const insert = registrationInsert(payload.participants, payload.eventId, payload.organization, today, createdAt);
-    const result = getSqliteDatabase().prepare(insert.sql).run(...insert.values);
+    const result = acceptedMutation({sql:insert.sql,params:insert.values},await acceptanceRecord(user.userId,'registration',payload.eventId),payload.participants.length);
 
     if (Number(result.changes ?? 0) !== payload.participants.length) {
       const [currentEvent, duplicate, organizationCount, totalCount] = await Promise.all([

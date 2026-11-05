@@ -45,9 +45,9 @@ async function handleData(request,env,user) {
       onlyIf:body.revision===null?new Headers({'If-None-Match':'*'}):{etagMatches:body.revision},
       httpMetadata:{contentType:'application/json',cacheControl:'no-store'}
     });
-    if(!saved)return json({error:'Outra atualização foi salva enquanto você trabalhava. Baixe sua cópia antes de recarregar o mapa e conferir as mudanças.'},409);
+    if(!saved)return json({error:'Outra atualização foi publicada enquanto você trabalhava. Sua prévia foi preservada. Volte aos dados publicados e leia a planilha novamente antes de publicar.'},409);
     return json({snapshot,revision:saved.etag,updatedAt});
-  }catch(_){return json({error:'Não foi possível salvar. Sua prévia foi preservada; tente novamente ou baixe uma cópia.'},503);}
+  }catch(_){return json({error:'Não foi possível salvar. Sua prévia foi preservada; tente publicar novamente.'},503);}
 }
 export default {
   async fetch(request,env){

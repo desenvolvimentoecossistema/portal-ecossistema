@@ -4,6 +4,7 @@ import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { oauthSessions } from '@/db/schema';
 import {emailIsAllowed,SESSION_COOKIE,tokenHash,safeReturnPath} from '@/lib/oauth-config';
+import {hasPortalConsent} from '@/lib/portal-consent-store';
 export type SiteUser={userId:string;displayName:string;email:string;fullName:string|null;sessionExpiresAt?:number};
 export async function getSiteUser():Promise<SiteUser|null>{
  const token=(await cookies()).get(SESSION_COOKIE)?.value;
@@ -12,5 +13,5 @@ export async function getSiteUser():Promise<SiteUser|null>{
  if(!session||session.expiresAt<=Math.floor(Date.now()/1000)||!session.userId.startsWith('google:')||!emailIsAllowed(session.email))return null;
  return {...session,fullName:session.displayName,sessionExpiresAt:session.expiresAt*1000};
 }
-export async function requireSiteUser(returnTo:string):Promise<SiteUser>{const user=await getSiteUser();if(user)return user;redirect('/login?return_to='+encodeURIComponent(safeReturnPath(returnTo)));}
+export async function requireSiteUser(returnTo:string):Promise<SiteUser>{const user=await getSiteUser();if(user){if(!/^\/(termos-de-uso|privacidade|aceite)(\/|\?|$)/.test(returnTo)&&!await hasPortalConsent(user.userId))redirect('/aceite?return_to='+encodeURIComponent(safeReturnPath(returnTo)));return user;}redirect('/login?return_to='+encodeURIComponent(safeReturnPath(returnTo)));}
 export function siteSignOutPath(){return '/auth/logout';}

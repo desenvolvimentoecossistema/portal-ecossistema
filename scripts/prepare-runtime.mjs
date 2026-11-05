@@ -5,4 +5,9 @@ mkdirSync(join(target,'.next'),{recursive:true});
 cpSync('.next/static',join(target,'.next/static'),{recursive:true});
 cpSync('public',join(target,'public'),{recursive:true});
 cpSync('database',join(target,'database'),{recursive:true});
+// Keep local maintenance commands available in the standalone/Docker image.
+for(const file of ['scripts/import-data.mjs','scripts/migrate.mjs','scripts/backup.mjs','db/sqlite.mjs','lib/portal-import.ts','lib/map-storage.mjs','lib/generated-map.js']){
+ mkdirSync(join(target,file.slice(0,file.lastIndexOf('/'))),{recursive:true});
+ cpSync(file,join(target,file));
+}
 console.log('Aplicação independente preparada em .next/standalone.');

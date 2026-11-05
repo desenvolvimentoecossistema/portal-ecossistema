@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PortalNavigation from "@/components/portal-navigation";
+import {PortalLegalFooter} from "@/components/portal-legal";
+import "../public/portal-legal.css";
+import "../public/portal-map-menu.css";
 import { siteSignOutPath } from "@/app/site-auth";
 import { portalFonts,portalFontFaceCSS } from "@/lib/portal-fonts";
 
@@ -25,7 +28,7 @@ export default function RootLayout({
         {portalFonts.map(font=><link key={font.family} rel="preload" href={font.href} as="font" type="font/woff2" crossOrigin="anonymous" fetchPriority="high"/>)}
         <style dangerouslySetInnerHTML={{__html:portalFontFaceCSS}}/>
       </head>
-      <body className="antialiased"><PortalNavigation signOutPath={siteSignOutPath()} />{children}</body>
+      <body className="antialiased"><PortalNavigation signOutPath={siteSignOutPath()} />{children}<PortalLegalFooter/><script src="/portal-legal.js" defer /></body>
     </html>
   );
 }

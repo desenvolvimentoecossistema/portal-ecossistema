@@ -1,6 +1,6 @@
 # Portal do Ecossistema
 
-Organizações Core, Mapas Programáticos e de Atuação e Imersões em Eventos em um portal. As Áreas Funcionais permanecem ocultas, com conteúdo preservado para retomada.
+Organizações Core, Mapa Programático, Mapas de Atuação e Imersões em Eventos em um portal. As Áreas Funcionais permanecem ocultas, com conteúdo preservado para retomada.
 
 Aplicação Next.js para Node.js 24, com banco SQLite persistente. As fontes, imagens, páginas e os dados iniciais do mapa fazem parte do projeto. O funcionamento não utiliza serviços de criação de sites nem modelos de IA.
 
@@ -24,6 +24,10 @@ Sem EMAIL_WEBHOOK_URL e EMAIL_WEBHOOK_SECRET as inscrições são gravadas, mas 
 ## Dados e manutenção
 
 As migrações são aplicadas antes da primeira consulta. `pnpm run db:backup` cria uma cópia consistente do banco em backups/. Dados reais e segredos não pertencem ao repositório. A importação inicial é executada somente por comando local: `pnpm run db:import -- caminho/agenda.json [caminho/mapa.json]`. Não há importador administrativo aberto na internet. Sessões antigas não são importadas.
+
+O artefato standalone e a imagem Docker também incluem os comandos locais de manutenção. Na imagem, executar `node --experimental-strip-types scripts/import-data.mjs /caminho/agenda.json`, com o JSON montado por um volume restrito e `DATABASE_PATH` apontando para o volume persistente. O importador recusa uma agenda já preenchida; fazer backup antes da carga e não publicar o JSON no GitHub.
+
+O primeiro acesso exige aceite dos Termos de Uso e ciência do Aviso de Privacidade. Os documentos são servidos pelo próprio portal. A migração `0003_legal_acceptances.sql` cria o registro das versões e impressões dos documentos sem apagar os dados existentes. Alterações no conteúdo dos documentos exigem novo aceite; cadastro e inscrição também registram a versão apresentada no formulário.
 
 O mapa continua funcionando com seus dados publicados mesmo sem acesso ao Sheets; o Sheets é necessário apenas para obter uma nova prévia. Confira a prévia antes de publicar. O banco conserva a revisão anterior até uma atualização válida.
 

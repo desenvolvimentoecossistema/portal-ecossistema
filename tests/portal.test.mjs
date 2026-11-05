@@ -15,7 +15,7 @@ const origin='https://portal.example.test',admin={userId:'site:owner',email:'own
 const config=()=>({BUCKET:new Bucket(),MAP_ORIGIN:origin,MAP_ADMIN_EMAILS:admin.email,PORTAL_SIGN_OUT:'/auth/logout',GOOGLE_SHEETS_ID:'1lzSTCKlcUU7BdzsQeseQ1AFVDCihXesEcINLM6S99bQ'});
 test('o mapa usa o acesso do portal e mantém API e recursos no seu caminho',async()=>{
  const env=config(),response=await map.fetch(new Request(origin+'/'),env,admin),page=await response.text();
- assert.equal(response.status,200);assert(page.includes('aria-label="Áreas do portal"'));assert(page.includes('href="/imersoes"'));assert(page.includes('href="/mapa"'));assert(page.includes("fetch('/mapa/api/data'"));assert(!page.includes("fetch('/api/data'"));assert(!page.includes('class="portal-signout"'));assert(page.includes('<script nonce="'));
+ assert.equal(response.status,200);assert(page.includes('aria-label="Áreas do portal"'));assert(page.includes('href="/imersoes"'));assert(page.includes('href="/mapa-programatico"'));assert(page.includes("fetch('/mapa/api/data'"));assert(!page.includes("fetch('/api/data'"));assert(!page.includes('class="portal-signout"'));assert(page.includes('<script nonce="'));
  assert(page.includes('rel="preload" href="/fonts/Cabin/'));const asset=page.match(/\/mapa\/assets\/[a-f0-9]+\.(?:png|webp)/)[0];const resource=await map.fetch(new Request(origin+asset.slice('/mapa'.length)),env,admin);assert.equal(resource.status,200);assert((await resource.arrayBuffer()).byteLength>0);
 });
 test('os dados atuais e complementares estão completos e a gravação respeita o administrador',async()=>{

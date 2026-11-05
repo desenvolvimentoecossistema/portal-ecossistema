@@ -26,6 +26,8 @@ export type EcosystemEvent = {
   creatorEmail?: string;
   isDemo?: boolean;
   dateNote?: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export const DEMO_EVENTS: EcosystemEvent[] = [

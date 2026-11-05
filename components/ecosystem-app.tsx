@@ -1,4 +1,5 @@
 "use client";
+import {LegalFormNotice} from "@/components/portal-legal";
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
@@ -52,6 +53,7 @@ import {
 } from "@/components/ui/select";
 import { Toaster } from "@/components/ui/sonner";
 import type { EcosystemEvent } from "@/lib/event-data";
+import {eventLastEditedDate} from '@/lib/publication-dates';
 import { isEventOwner } from "@/lib/event-ownership";
 import {
   formatEventDateRange,
@@ -451,7 +453,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
     const participants = [{ name: fields.name, email: fields.email, role: fields.role }];
     if (includeSecondParticipant) participants.push({ name: fields.secondName, email: fields.secondEmail, role: fields.secondRole });
     try {
-      const response = await fetch("/api/registrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ eventId: registrationEvent.id, organization: registrationOrganization, participants }) });
+      const response = await fetch("/api/registrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ eventId: registrationEvent.id, organization: registrationOrganization, participants, termsVersion:fields.termsVersion }) });
       const result = await response.json() as { error?: string; status?: string; confirmationsRequested?: number };
       if (!response.ok) throw new Error(result.error);
       setEvents((current) => current.map((item) => item.id === registrationEvent.id ? { ...item, availableSpots: Math.max(0, item.availableSpots - participants.length) } : item));
@@ -513,7 +515,8 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
     }
     setSubmitting(true);
     const form = event.currentTarget;
-    const payload = { ...Object.fromEntries(new FormData(form)), organization: publishOrganization };
+    const fields=Object.fromEntries(new FormData(form));
+    const payload = { ...fields, organization: publishOrganization };
     try {
       const response = await fetch(editingEvent ? `/api/events/${editingEvent.id}` : "/api/events", { method: editingEvent ? "PATCH" : "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       const result = await response.json() as EcosystemEvent & { error?: string };
@@ -620,6 +623,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                 {selected.meals && <InfoRow icon={Utensils} title="Alimentação">{selected.meals}</InfoRow>}
 
                 {selected.additionalNotes && <InfoRow icon={FileText} title="Observações adicionais">{selected.additionalNotes}</InfoRow>}
+                <InfoRow icon={Pencil} title="Última edição"><span data-event-last-edited>{eventLastEditedDate(selected)}</span></InfoRow>
               </div>
               <aside className="h-fit rounded-2xl bg-[#E8F3EF] p-5 lg:sticky lg:top-0">
                 <p className="text-xs font-extrabold uppercase tracking-normal text-[#007F68]">Prazo máximo de inscrição</p><p className="mt-1 text-xl font-black">{selected.registrationDeadline ? new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "long", year: "numeric" }).format(asDate(selected.registrationDeadline)) : "A definir"}</p><div className="my-4 h-px bg-[#052B47]/20" /><p className="flex items-center gap-2 text-sm font-bold"><Users className="size-4" /> {isEventReadyForRegistration(selected) ? `${selected.availableSpots} vagas disponíveis` : "Vagas a definir"}</p><p className="mt-2 text-xs leading-relaxed text-[#052B47]">Limite de duas pessoas por organização.</p>
@@ -627,7 +631,6 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                 {!selected.isDemo && (isEventOwner(selected, user) || user.role === "admin") && <Button variant="outline" onClick={() => openEditForm(selected)} className="mt-3 h-11 w-full rounded-full border-[#052B47]/30 bg-transparent font-extrabold text-[#052B47] hover:bg-white"><Pencil className="mr-1.5 size-4" />Editar agenda</Button>}
                 {!selected.isDemo && (isEventOwner(selected, user) || user.role === "admin") && <Button variant="outline" onClick={() => void openRegistrations(selected)} className="mt-3 h-11 w-full rounded-full border-[#052B47]/30 bg-transparent font-extrabold text-[#052B47] hover:bg-white"><ClipboardList className="mr-1.5 size-4" />Ver inscrições recebidas</Button>}
                 {(user.role === "admin" || (!selected.isDemo && isEventOwner(selected, user))) && <Button variant="outline" onClick={() => setEventToDelete(selected)} className="mt-3 h-11 w-full rounded-full border-[#B42318]/40 bg-transparent font-extrabold text-[#B42318] hover:border-[#B42318] hover:bg-[#B42318]/10 hover:text-[#B42318]"><Trash2 className="mr-1.5 size-4" />Excluir atividade</Button>}
-                <p className="mt-5 text-xs leading-relaxed text-[#052B47]">Dúvidas: {selected.contactName}<br /><a className="font-bold underline" href={`mailto:${selected.contactEmail}`}>{selected.contactEmail}</a></p>
               </aside>
             </div>
           </DialogContent>
@@ -697,6 +700,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                 <Field label="Nome completo" name="secondName" className="sm:col-span-2" /><Field label="E-mail" name="secondEmail" type="email" autoComplete="off" /><Field label="Cargo ou função" name="secondRole" />
               </div> : registrationEvent.availableSpots > 1 ? <Button type="button" variant="outline" onClick={() => setIncludeSecondParticipant(true)} className="w-fit rounded-full border-[#052B47]/30 font-bold sm:col-span-2">Adicionar mais uma pessoa</Button> : <p className="text-sm text-[#052B47]/75 sm:col-span-2">Há apenas uma vaga disponível nesta atividade.</p>}
               <p className="text-xs leading-relaxed text-[#052B47] sm:col-span-2">Os dados e e-mails informados serão compartilhados com a organização anfitriã para organizar a participação.</p>
+              <LegalFormNotice/>
               <DialogFooter className="mt-1 sm:col-span-2"><Button type="submit" disabled={submitting} className="h-11 rounded-full bg-[#052B47] px-6 font-extrabold text-white hover:bg-[#007F68]">{submitting ? "Confirmando…" : includeSecondParticipant ? "Confirmar duas inscrições" : "Confirmar inscrição"}</Button></DialogFooter>
             </form>
           </DialogContent>
@@ -747,6 +751,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
               <TextArea label="Observações adicionais" name="additionalNotes" defaultValue={editingEvent?.additionalNotes} required={false} className="sm:col-span-2 lg:col-span-3" placeholder="Compartilhe orientações importantes que não estejam contempladas nos itens anteriores." />
             </fieldset>
             <fieldset className="grid min-w-0 gap-4 border-t border-[#052B47]/15 pt-6 sm:grid-cols-2"><Field label="Pessoa de contato" name="contactName" defaultValue={editingEvent?.contactName} /><Field label="E-mail" name="contactEmail" type="email" defaultValue={editingEvent?.contactEmail} /></fieldset>
+            <LegalFormNotice action="event"/>
             <DialogFooter><Button type="submit" disabled={submitting} className="h-12 rounded-full bg-[#052B47] px-7 font-extrabold text-white hover:bg-[#007F68]">{submitting ? (editingEvent ? "Salvando…" : "Publicando…") : (editingEvent ? "Salvar alterações" : "Publicar agenda")}</Button></DialogFooter>
           </form>
         </DialogContent>

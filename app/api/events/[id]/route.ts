@@ -3,7 +3,10 @@ import { and, eq, sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getAppRole } from "@/app/authz";
-import { getSiteUser } from "@/app/site-auth";
+import {getPortalUser as getSiteUser} from "@/app/portal-access";
+import {formTermsVersionError} from '@/lib/legal-acceptance';
+import {acceptanceRecord} from '@/lib/record-legal-acceptance';
+import {acceptedMutation} from '@/lib/accepted-mutation.mjs';
 import { getDb } from "@/db";
 import { events, registrations, removedDemoEvents } from "@/db/schema";
 import { DEMO_EVENTS } from "@/lib/event-data";
@@ -34,6 +37,8 @@ export async function PATCH(
     }
 
     const input = await request.json();
+    const acceptanceError=formTermsVersionError(input);
+    if(acceptanceError)return NextResponse.json({error:acceptanceError},{status:400});
     const pending = pendingEventSchema.parse(input);
     const ready = isEventReadyForRegistration(pending);
     if (!ready && isEventReadyForRegistration(existing)) {
@@ -73,8 +78,9 @@ export async function PATCH(
       state: payload.state.toUpperCase(),
       updatedAt: new Date().toISOString(),
     };
-    const changed=await db.update(events).set(updated).where(and(eq(events.id,id),sql`(SELECT count(*) FROM registrations WHERE event_id = ${id}) <= ${payload.maxParticipants}`)).returning({id:events.id});
-    if(!changed.length)return NextResponse.json({error:'As inscrições mudaram durante a edição. Recarregue a atividade e confira as vagas.'},{status:409});
+    const mutation=db.update(events).set(updated).where(and(eq(events.id,id),sql`(SELECT count(*) FROM registrations WHERE event_id = ${id}) <= ${payload.maxParticipants}`)).toSQL();
+    const changed=acceptedMutation(mutation,await acceptanceRecord(user.userId,'agenda-update',id),1);
+    if(!changed.changes)return NextResponse.json({error:'As inscrições mudaram durante a edição. Recarregue a atividade e confira as vagas.'},{status:409});
 
     return NextResponse.json({
       ...existing,

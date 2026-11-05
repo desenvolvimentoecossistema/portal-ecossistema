@@ -1,5 +1,15 @@
 import { integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
+export const legalAcceptances = sqliteTable("legal_acceptances",{
+ id:text("id").primaryKey(),
+ userId:text("user_id").notNull(),
+ termsVersion:text("terms_version").notNull(),
+ termsHash:text("terms_hash").notNull(),
+ acceptedAt:text("accepted_at").notNull(),
+ action:text("action").notNull(),
+ resourceId:text("resource_id").notNull(),
+});
+
 export const portalImports = sqliteTable("portal_imports", {
   id: text("id").primaryKey(),
   createdAt: text("created_at").notNull(),

@@ -3,10 +3,14 @@ import { asc, sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getDb } from "@/db";
-import { events, registrations, removedDemoEvents } from "@/db/schema";
+import { events, registrations, removedDemoEvents,legalAcceptances } from "@/db/schema";
+import {formTermsVersionError} from '@/lib/legal-acceptance';
+import {acceptanceRecord} from '@/lib/record-legal-acceptance';
 import { DEMO_EVENTS } from "@/lib/event-data";
 import { demoEventsEnabled } from "@/lib/runtime-config";
-import { getSiteUser } from "@/app/site-auth";
+import {getPortalUser as getSiteUser} from "@/app/portal-access";
+import { getAppRole } from "@/app/authz";
+import { eventForViewer } from "@/lib/event-ownership";
 import { eventSchema, eventValidationMessage } from "@/lib/event-validation";
 import { normalizeEventType, sortEventsByStartDate } from "@/lib/event-rules";
 
@@ -17,13 +21,14 @@ export async function GET() {
     const user = await getSiteUser();
     if (!user) return NextResponse.json({ error: "Faça login para acessar a agenda." }, { status: 401 });
     const db = getDb();
-    const [storedEvents, counts, removedDemos] = await Promise.all([
+    const [storedEvents, counts, removedDemos, role] = await Promise.all([
       db.select().from(events).orderBy(asc(events.startDate)),
       db
         .select({ eventId: registrations.eventId, count: sql<number>`count(*)` })
         .from(registrations)
         .groupBy(registrations.eventId),
       db.select({ eventId: removedDemoEvents.eventId }).from(removedDemoEvents),
+      getAppRole(user),
     ]);
     const registrationsByEvent = new Map(counts.map((row) => [row.eventId, Number(row.count)]));
     const removedDemoIds = new Set(removedDemos.map((row) => row.eventId));
@@ -35,7 +40,9 @@ export async function GET() {
         dateNote: !event.startDate ? event.additionalNotes.match(/^Prevista para[^.]*\./)?.[0] ?? "Data a confirmar" : undefined,
         availableSpots: Math.max(0, event.maxParticipants - (registrationsByEvent.get(event.id) ?? 0)),
       })),
-    ]));
+    ]).map((event) => eventForViewer(event, user, role === "admin")), {
+      headers: { "Cache-Control": "private, no-store" },
+    });
   } catch (error) {
     console.error("Unable to load stored events", error);
     return NextResponse.json(
@@ -50,7 +57,10 @@ export async function POST(request: Request) {
   try {
     const user = await getSiteUser();
     if (!user) return NextResponse.json({ error: "Faça login para publicar uma experiência." }, { status: 401 });
-    const payload = eventSchema.parse(await request.json());
+    const input=await request.json();
+    const acceptanceError=formTermsVersionError(input);
+    if(acceptanceError)return NextResponse.json({error:acceptanceError},{status:400});
+    const payload = eventSchema.parse(input);
     if (
       payload.endDate < payload.startDate ||
       payload.registrationDeadline > payload.startDate ||
@@ -75,7 +85,8 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-    await getDb().insert(events).values(event);
+    const db=getDb();
+    await db.batch([db.insert(events).values(event),db.insert(legalAcceptances).values(await acceptanceRecord(user.userId,'agenda-create',event.id))]);
     return NextResponse.json({ ...event, availableSpots: event.maxParticipants }, { status: 201 });
   } catch (error) {
     if (error instanceof z.ZodError) {

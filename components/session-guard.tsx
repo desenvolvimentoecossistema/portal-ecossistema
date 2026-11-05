@@ -10,6 +10,7 @@ export default function SessionGuard() {
       try {
         const response = await fetch("/api/session", { cache: "no-store", credentials: "same-origin", signal: AbortSignal.timeout(5000) });
         if (active && response.status === 401) location.replace("/login?sso=skip");
+        if(active&&response.ok){const state=await response.json() as {consentRequired?:boolean};if(state.consentRequired===true)location.replace('/aceite?return_to='+encodeURIComponent(location.pathname+location.search));}
       } catch { /* A temporary network failure does not end a valid session. */ }
       finally { checking = false; }
     };

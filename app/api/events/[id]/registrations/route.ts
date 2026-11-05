@@ -1,6 +1,6 @@
 import { desc, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import { getSiteUser } from "@/app/site-auth";
+import {getPortalUser as getSiteUser} from "@/app/portal-access";
 import { getAppRole } from "@/app/authz";
 import { getDb } from "@/db";
 import { events, registrations } from "@/db/schema";

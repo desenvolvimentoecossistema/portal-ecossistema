@@ -706,11 +706,11 @@ let MAP_ORGS_EXTRA = {"Alfabetização > Política Nacional > CNCA":["reuna"],"F
 function tagEsfera(s) {
   const tags = new Set();
   if (/Internacional/i.test(s)) tags.add('Internacional');
-  if (/Não aplicável|N\/A/i.test(s)) tags.add('N/A');
+  if (/Não aplicável|Não se aplica|N\/A/i.test(s)) tags.add('Não se aplica');
   if (/estadual/i.test(s)) tags.add('Estadual');
   if (/municipal/i.test(s)) tags.add('Municipal');
   if (/\bNacional\b/i.test(s) && !/Internacional/i.test(s)) tags.add('Nacional');
-  if (tags.size === 0) tags.add('N/A');
+  if (tags.size === 0) tags.add('Sem esfera especificada');
   return [...tags];
 }
 /* ================= MAPA DE ATUAÇÃO (catálogo das estratégias) ================= */
@@ -817,7 +817,7 @@ function estrategiasHtml(items) {
   });
   return `<details class="strat-toggle"><summary>Ver conexão com o mapa de atuação (${items.length})</summary><div class="strat-body">${body}</div></details>`;
 }
-const SEM_MAPA = 'N/A';
+const SEM_MAPA = 'Sem estratégia vinculada';
 // Rótulo do grupo: Lideranças mostra primeiro a tese e depois a fase; os mapas de Educação mostram a etapa
 function estrategiaGroupLabel(it) {
   const etapa = ETAPA_SHORT[it.etapa] || it.etapa;
@@ -841,14 +841,14 @@ function declaredTags(d, field, tab, fallback) {
   const other = field === 'etapas'
     ? (tab === 'educacao' ? ['Pipeline','Em exercício'] : ETAPAS)
     : (tab === 'educacao' ? TIPOS_LID : TIPOS);
-  const values = d[field].filter(v => !other.includes(v));
-  return values.length ? values : [SEM_MAPA];
+  const values = classificationValues(d[field],'Sem classificação informada').filter(v => !other.includes(v));
+  return values.length ? values : ['Sem classificação nesta área'];
 }
 
 /* ================= Build a flat list of entries (org(s) + all dims) ================= */
 /* ================= Abas: Educação | Lideranças ================= */
 let activeTab = 'educacao';
-const SEM_NIVEL = 'Geral';
+const SEM_NIVEL = 'Sem nível especificado';
 const TAB_METAS = { educacao: ['Alfabetização', 'Fundamental 2'], liderancas: ['Lideranças'] };
 const TAB_CATEGORIA = { educacao: 'Educação', liderancas: 'Liderança' };
 const segList = d => String((d && d.segmento_categoria) || '').split(';').map(x => x.trim()).filter(Boolean);
@@ -873,9 +873,9 @@ function buildProgramEntries() {
         orgs: [orgKey],
         name, d,
         _idx: idx++,
-        segmentos: segList(d).length ? segList(d) : ['N/A'],
-        niveis: d.segmento_niveis && d.segmento_niveis.length ? d.segmento_niveis : [SEM_NIVEL],
-        especialidades: d.especialidades && d.especialidades.length ? d.especialidades : ['N/A'],
+        segmentos: segList(d).length ? segList(d) : ['Sem segmento especificado'],
+        niveis: classificationValues(d.segmento_niveis,SEM_NIVEL),
+        especialidades: classificationValues(d.especialidades,'Sem especialidade especificada'),
         esferaTags: tagEsfera(d.esfera || ''),
         publicoTags: publicoTagsFor(d.publico_beneficiario || ''),
         estrItems: tabItems,
@@ -1124,7 +1124,7 @@ function uniqueSorted(entries, getValues, customOrder) {
     const vals = getValues(e);
     (Array.isArray(vals) ? vals : [vals]).forEach(v => s.add(v));
   });
-  const isNone = v => /^(não|nenhum|n\/a)/i.test(v);
+  const isNone = v => /^(não|nenhum|n\/a|sem )/i.test(v);
   const none = [...s].filter(isNone).sort();
   let normal = [...s].filter(v => !isNone(v));
   if (customOrder) {
@@ -1293,8 +1293,9 @@ function syncStrategyGroup() {
     if (tg.touched && !it.tipos.some(t => tg.state.has(t))) return;
     opts.push({ value: key, label: it.nome, group: `${estrategiaGroupLabel(it)}`, count: counts[key] });
   });
-  if (counts[SEM_MAPA] && (!eg.touched || eg.state.has(SEM_MAPA)) && (!tg.touched || tg.state.has(SEM_MAPA))) {
-    opts.push({ value: SEM_MAPA, label: SEM_MAPA, count: counts[SEM_MAPA] });
+  const withoutStrategy=progEntries.filter(e=>e.estrKeys.includes(SEM_MAPA)&&(!eg.touched||groupMatch(eg,e))&&(!tg.touched||groupMatch(tg,e)));
+  if (withoutStrategy.length) {
+    opts.push({ value: SEM_MAPA, label: SEM_MAPA, count: withoutStrategy.length });
   }
   const optSet = new Set(opts.map(o => o.value));
   g.hidden = false;
@@ -1478,10 +1479,8 @@ function renderProgramsGrid() {
     const nivelList = activeTab === 'educacao' ? e.niveis : (d.segmento_niveis || []);
     const segmentoHtml = segs.length
       ? `<div class="chip-row">${segs.map(c => `<span class="chip chip-parent">${escapeHtml(c)}</span>`).join('')}${nivelList.map(n => `<span class="chip">${escapeHtml(n)}</span>`).join('')}</div>`
-      : `<span class="dim-value muted">N/A</span>`;
-    const especialidadesHtml = (d.especialidades && d.especialidades.length)
-      ? `<div class="chip-row">${d.especialidades.map(s => `<span class="chip">${escapeHtml(s)}</span>`).join('')}</div>`
-      : `<span class="dim-value muted">N/A</span>`;
+      : `<span class="dim-value muted">Sem segmento especificado</span>`;
+    const especialidadesHtml = `<div class="chip-row">${e.especialidades.map(s => `<span class="chip">${escapeHtml(s)}</span>`).join('')}</div>`;
     html += `
       <div class="program-card" style="--card-color:${cardColor}">
         <div class="org-badges">${orgBadges}</div>
@@ -1492,7 +1491,7 @@ function renderProgramsGrid() {
           <div class="dim-block"><div class="dim-label">Segmento</div>${segmentoHtml}</div>
           <div class="dim-block"><div class="dim-label">Especialidades</div>${especialidadesHtml}</div>
           <div class="dim-block"><div class="dim-label">Público Atendido</div><div class="dim-value">${escapeHtml(publicoDisplay(d.publico_beneficiario))}</div></div>
-          <div class="dim-block"><div class="dim-label">Esfera de governo</div><div class="dim-value">${escapeHtml(d.esfera)}</div></div>
+          <div class="dim-block"><div class="dim-label">Esfera de governo</div><div class="dim-value">${escapeHtml(classificationText(d.esfera,'Sem esfera especificada'))}</div></div>
           <div class="dim-block"><div class="dim-label">${activeTab === 'liderancas' ? 'Fase da liderança' : 'Momento da política pública'}</div><div class="chip-row">${e.etapaTags.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div></div>
           <div class="dim-block"><div class="dim-label">${activeTab === 'liderancas' ? 'Tese de atuação' : 'Tipo de estratégia'}</div><div class="chip-row">${e.tipoTags.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div></div>
           ${[['publico_alvo','Público-alvo'],['cliente','Cliente'],['area_interlocutora','Área interlocutora'],['momento_politica','Momento da política pública informado pela organização']].filter(([key])=>d[key]).map(([key,label])=>`<div class="dim-block"><div class="dim-label">${label}</div><div class="dim-value">${escapeHtml(d[key])}</div></div>`).join('')}

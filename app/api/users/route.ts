@@ -3,7 +3,7 @@ import { asc, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { bootstrapAdminEmails, getAppRole } from "@/app/authz";
-import { getSiteUser } from "@/app/site-auth";
+import {getPortalUser as getSiteUser} from "@/app/portal-access";
 import { getDb } from "@/db";
 import { appUserRoles } from "@/db/schema";
 
