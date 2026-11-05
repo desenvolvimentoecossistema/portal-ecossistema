@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {FileText,ShieldCheck,ChevronRight} from 'lucide-react';
 import {LegalDocumentBody} from '@/components/legal-document-body';
-import {legalDocumentVersion,legalDocumentUpdatedAt} from '@/lib/portal-legal';
+import {legalDocumentVersion} from '@/lib/portal-legal';
 export function PortalConsentGate({preview,returnTo}:{preview:boolean;returnTo:string}){
  const dialog=useRef<HTMLDialogElement>(null),reader=useRef<HTMLDivElement>(null);
  const [document,setDocument]=useState<0|1|null>(null),[read,setRead]=useState([false,false]),[terms,setTerms]=useState(false),[privacy,setPrivacy]=useState(false),[saving,setSaving]=useState(false),[error,setError]=useState('');
@@ -37,7 +37,6 @@ export function PortalConsentGate({preview,returnTo}:{preview:boolean;returnTo:s
    {preview&&<button className="consent-secondary" type="button" onClick={()=>location.assign(returnTo)}>Fechar prévia</button>}
   </form>:<section className="consent-reader-section">
    <h2>{document===0?'Termos de Uso':'Aviso de Privacidade'}</h2>
-   <p className="consent-document-date">Atualizado em {legalDocumentUpdatedAt}.</p>
    <div className="legal-document consent-reader" ref={reader} onScroll={checkEnd} tabIndex={0}><LegalDocumentBody index={document}/></div>
    <button className="consent-primary" type="button" onClick={()=>setDocument(null)}>{read[document]?'Voltar às confirmações':'Voltar'}</button>
   </section>}

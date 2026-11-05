@@ -612,7 +612,14 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       <Dialog open={Boolean(selected)} onOpenChange={(open) => !open && setSelected(null)}>
         {selected && (
           <DialogContent className={`${dialogCloseButtonClass} max-h-[94vh] w-[calc(100%-1.5rem)] overflow-x-hidden overflow-y-auto rounded-[22px] border-[#052B47]/20 p-0 sm:max-w-4xl`}>
-            <div className="px-6 py-7 pr-14 sm:px-8" style={{ backgroundColor: getOrganizationBrand(selected.organization).color, color: getOrganizationBrand(selected.organization).foreground }}><DialogHeader><p className="text-sm font-extrabold opacity-80">{selected.organization}</p><DialogTitle className="text-2xl font-black leading-tight tracking-normal sm:text-3xl">{selected.title}</DialogTitle><DialogDescription className="text-base leading-relaxed" style={{ color: getOrganizationBrand(selected.organization).foreground }}>{selected.description}</DialogDescription></DialogHeader></div>
+            <div className="px-6 py-7 pr-14 sm:px-8" style={{ backgroundColor: getOrganizationBrand(selected.organization).color, color: getOrganizationBrand(selected.organization).foreground }}>
+              <DialogHeader>
+                <p className="text-sm font-extrabold opacity-80">{selected.organization}</p>
+                <DialogTitle className="text-2xl font-black leading-tight tracking-normal sm:text-3xl">{selected.title}</DialogTitle>
+                <p className="flex items-start justify-center gap-1.5 text-xs font-medium opacity-85 sm:justify-start sm:text-sm"><Pencil className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" /><span data-event-last-edited>Última edição em {eventLastEditedDate(selected)}</span></p>
+                <DialogDescription className="text-base leading-relaxed" style={{ color: getOrganizationBrand(selected.organization).foreground }}>{selected.description}</DialogDescription>
+              </DialogHeader>
+            </div>
             <div className="grid gap-6 px-6 pb-7 sm:px-8 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div>
                 <InfoRow icon={CalendarDays} title="Datas">{dateRange(selected)}</InfoRow>
@@ -623,7 +630,6 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                 {selected.meals && <InfoRow icon={Utensils} title="Alimentação">{selected.meals}</InfoRow>}
 
                 {selected.additionalNotes && <InfoRow icon={FileText} title="Observações adicionais">{selected.additionalNotes}</InfoRow>}
-                <InfoRow icon={Pencil} title="Última edição"><span data-event-last-edited>{eventLastEditedDate(selected)}</span></InfoRow>
               </div>
               <aside className="h-fit rounded-2xl bg-[#E8F3EF] p-5 lg:sticky lg:top-0">
                 <p className="text-xs font-extrabold uppercase tracking-normal text-[#007F68]">Prazo máximo de inscrição</p><p className="mt-1 text-xl font-black">{selected.registrationDeadline ? new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "long", year: "numeric" }).format(asDate(selected.registrationDeadline)) : "A definir"}</p><div className="my-4 h-px bg-[#052B47]/20" /><p className="flex items-center gap-2 text-sm font-bold"><Users className="size-4" /> {isEventReadyForRegistration(selected) ? `${selected.availableSpots} vagas disponíveis` : "Vagas a definir"}</p><p className="mt-2 text-xs leading-relaxed text-[#052B47]">Limite de duas pessoas por organização.</p>
