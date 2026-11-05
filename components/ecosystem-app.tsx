@@ -612,15 +612,13 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       <Dialog open={Boolean(selected)} onOpenChange={(open) => !open && setSelected(null)}>
         {selected && (
           <DialogContent className={`${dialogCloseButtonClass} max-h-[94vh] w-[calc(100%-1.5rem)] overflow-x-hidden overflow-y-auto rounded-[22px] border-[#052B47]/20 p-0 sm:max-w-4xl`}>
-            <div className="px-6 py-7 pr-14 sm:px-8 sm:pr-16" style={{ backgroundColor: getOrganizationBrand(selected.organization).color, color: getOrganizationBrand(selected.organization).foreground }}>
-              <DialogHeader>
-                <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-                  <p className="text-sm font-extrabold opacity-80">{selected.organization}</p>
-                  <p className="text-xs font-normal leading-normal opacity-70" data-event-last-edited>Editado em {eventLastEditedDate(selected)}</p>
-                </div>
+            <div className="relative px-6 pb-10 pt-7 sm:px-8" style={{ backgroundColor: getOrganizationBrand(selected.organization).color, color: getOrganizationBrand(selected.organization).foreground }}>
+              <DialogHeader className="pr-8">
+                <p className="text-sm font-extrabold opacity-80">{selected.organization}</p>
                 <DialogTitle className="text-2xl font-black leading-tight tracking-normal sm:text-3xl">{selected.title}</DialogTitle>
                 <DialogDescription className="text-base leading-relaxed" style={{ color: getOrganizationBrand(selected.organization).foreground }}>{selected.description}</DialogDescription>
               </DialogHeader>
+              <p className="absolute bottom-3 right-6 text-xs font-normal leading-normal opacity-70 sm:right-8" data-event-last-edited>Editado em {eventLastEditedDate(selected)}</p>
             </div>
             <div className="grid gap-6 px-6 pb-7 sm:px-8 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div>
