@@ -93,7 +93,7 @@ function buildHtml_(data, hasLogo, hasCircle) {
 <html lang="pt-BR"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
-<style>@media only screen and (max-width:480px){.outer{padding:16px 8px!important}.section{padding:24px 20px!important}.email-title{font-size:26px!important}.orbit-cell{width:70px!important}.orbit-image{width:64px!important;height:auto!important}.brand-name{font-size:12px!important}.brand-section{font-size:11px!important}.row-label,.row-value{padding:12px 10px!important;font-size:13px!important}}</style>
+<style>@media only screen and (max-width:480px){.outer{padding:16px 8px!important}.section{padding:24px 20px!important}.email-header{padding:24px 20px 0!important}.email-title{font-size:26px!important}.orbit-cell{width:70px!important}.orbit-image{width:64px!important;height:auto!important}.brand-name{font-size:12px!important}.brand-section{font-size:11px!important}.row-label,.row-value{padding:12px 10px!important;font-size:13px!important}}</style>
 </head>
 <body style="margin:0;padding:0;background:#F1F4EE;font-family:Helvetica,Arial,sans-serif;color:#052B47;">
 <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;opacity:0;color:transparent;">${title}: ${escapeHtml_(data.eventTitle)}.</div>
@@ -101,7 +101,7 @@ function buildHtml_(data, hasLogo, hasCircle) {
 <tr><td class="outer" align="center" style="padding:32px 16px;">
 <!--[if mso]><table role="presentation" width="620" cellspacing="0" cellpadding="0" border="0"><tr><td><![endif]-->
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:620px;table-layout:fixed;background:#FFFFFF;border:1px solid #D8E0DC;border-radius:22px;overflow:hidden;">
-<tr><td class="section" style="padding:28px 32px;background:#052B47;border-bottom:5px solid #B2C530;">
+<tr><td class="email-header" style="padding:28px 32px 0;background:#052B47;border-bottom:5px solid #B2C530;">
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed;">
 <tr><td width="112" valign="middle">${hasLogo ? '<img src="cid:flLogo" width="112" alt="Fundação Lemann" style="display:block;width:112px;max-width:100%;height:auto;border:0;">' : '<strong style="font-size:18px;color:#FFFFFF;">Fundação Lemann</strong>'}</td>
 <td align="right" valign="middle" style="padding-left:12px;text-align:right;">
@@ -110,7 +110,7 @@ function buildHtml_(data, hasLogo, hasCircle) {
 </td></tr>
 </table>
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed;margin-top:24px;">
-<tr><td valign="middle" style="padding-right:12px;">
+<tr><td valign="bottom" style="padding:0 12px 28px 0;">
 <h1 class="email-title" style="margin:0;color:#FFFFFF;font-size:30px;line-height:1.2;overflow-wrap:break-word;">${title}</h1>
 </td><td class="orbit-cell" width="160" align="right" valign="bottom">${hasCircle ? '<img class="orbit-image" src="cid:ecosystemCircle" width="160" height="96" alt="" role="presentation" style="display:block;width:160px;height:96px;border:0;">' : ''}</td></tr>
 </table>
