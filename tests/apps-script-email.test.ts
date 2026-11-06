@@ -40,6 +40,11 @@ test('Apps Script distingue aviso ao responsável de confirmação ao participan
   assert.match(participant.body,/Recebemos sua inscrição/);
   assert.doesNotMatch(participant.body,/Uma pessoa se inscreveu/);
   assert.notEqual(host.htmlBody,participant.htmlBody);
+  assert.match(host.body,/Para entrar em contato com Maria Exemplo/);
+  assert.match(host.body,/Sua resposta será enviada diretamente para maria@example.org/);
+  assert.match(participant.body,/Para entrar em contato com Equipe anfitriã/);
+  assert.match(participant.body,/Sua resposta será enviada diretamente para anfitria@example.org/);
+  assert.doesNotMatch(participant.body,/Se tiver dúvidas/);
   for(const message of messages){
     assert.match(message.body,/Organização anfitriã: Motriz/);
     assert.match(message.body,/10 nov\. de 2026 · 9h–12h/);

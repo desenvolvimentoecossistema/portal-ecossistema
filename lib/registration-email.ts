@@ -65,6 +65,7 @@ export function participantConfirmation(event: RegistrationEmailEvent, participa
     ...details,
     notificationType: "participant_confirmation",
     recipientEmail: participant.email,
+    replyToName: event.contactName,
     replyToEmail: event.contactEmail,
     subject: `Inscrição recebida: ${event.title}`,
     text,

@@ -83,9 +83,9 @@ function buildHtml_(data, hasLogo, hasCircle) {
     ? 'Recebemos sua inscrição na agenda abaixo.'
     : 'Uma pessoa se inscreveu em uma agenda da sua organização.';
   const buttonLabel = participant ? 'Acessar o portal' : 'Consultar inscrições no portal';
-  const replyHint = participant
-    ? 'Se tiver dúvidas, responda a este e-mail para falar com a organização anfitriã.'
-    : 'Para entrar em contato com <strong>' + escapeHtml_(data.participantName) + '</strong>, responda a este e-mail. Sua resposta será enviada diretamente para <strong>' + escapeHtml_(data.participantEmail) + '</strong>.';
+  const replyName = participant ? (data.replyToName || data.eventOrganization || 'a organização anfitriã') : data.participantName;
+  const replyEmail = participant ? data.replyToEmail : data.participantEmail;
+  const replyHint = 'Para entrar em contato com <strong>' + escapeHtml_(replyName) + '</strong>, responda a este e-mail. Sua resposta será enviada diretamente para <strong>' + escapeHtml_(replyEmail) + '</strong>.';
   const eventOrganization = data.eventOrganization
     ? '<p style="margin:8px 0 0;font-size:14px;line-height:1.5;"><strong>Organização anfitriã:</strong> ' + escapeHtml_(data.eventOrganization) + '</p>'
     : '';
@@ -156,6 +156,8 @@ function detailRow_(label, value, withTopBorder) {
 
 function buildPlainText_(data) {
   const participant = isParticipantConfirmation_(data);
+  const replyName = participant ? (data.replyToName || data.eventOrganization || 'a organização anfitriã') : data.participantName;
+  const replyEmail = participant ? data.replyToEmail : data.participantEmail;
   const lines = [
     participant ? 'Sua inscrição foi recebida' : 'Nova inscrição recebida',
     '',
@@ -174,7 +176,7 @@ function buildPlainText_(data) {
     'Organização: ' + data.participantOrganization,
     'Cargo ou função: ' + data.participantRole,
     '', (participant ? 'Acessar o portal: ' : 'Consultar inscrições no portal: ') + SITE_URL,
-    '', participant ? 'Se tiver dúvidas, responda a este e-mail para falar com a organização anfitriã.' : 'Para entrar em contato com ' + data.participantName + ', responda a este e-mail. Sua resposta será enviada diretamente para ' + data.participantEmail + '.',
+    '', 'Para entrar em contato com ' + replyName + ', responda a este e-mail. Sua resposta será enviada diretamente para ' + replyEmail + '.',
     '', 'Portal do Ecossistema · Imersões em Eventos',
     'Desenvolvimento de Ecossistema · Fundação Lemann',
     'Termos de Uso: ' + SITE_ORIGIN + '/termos-de-uso',

@@ -36,6 +36,7 @@ test("endereça a confirmação a cada pessoa com os dados da própria inscriç�
     assert.equal(email.recipientEmail, participant.email);
     assert.equal(email.notificationType, "participant_confirmation");
     assert.equal(email.replyToEmail, event.contactEmail);
+    assert.equal(email.replyToName, event.contactName);
     assert.equal(email.eventOrganization, event.organization);
     assert.match(email.text, new RegExp(participant.name));
     assert.match(email.text, /Sua inscrição em “Visita à escola” foi recebida/);
