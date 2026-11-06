@@ -908,8 +908,10 @@ function makeEmptyFilterState() {
 // so unchecking everything and picking e.g. one organization doesn't zero out
 // every other filter panel.
 let kwQuery = '';
+let portalSelectedProgram = '';
 const normTxt = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 function kwMatch(e) {
+  if (portalSelectedProgram) return e.name === portalSelectedProgram;
   const toks = normTxt(kwQuery).split(/\s+/).filter(Boolean);
   return !toks.length || toks.every(t => e.searchText.includes(t));
 }
@@ -935,14 +937,60 @@ function autoFillUntouched(groups, entries) {
 
 const subOpen = {};
 let stratSearch = '';
+function preservePortalFilterViewport(container, update) {
+  const root = container.ownerDocument, marker = root.documentElement.dataset;
+  const revision = String(Number(marker.portalFilterRevision || 0) + 1);
+  marker.portalFilterRevision = revision;
+  marker.portalFilterUpdating = revision;
+  const positions = [];
+  for (let parent = container; parent; parent = parent.parentElement) positions.push([parent, parent.scrollTop, parent.scrollLeft]);
+  const focused = root.activeElement;
+  const anchorKey = container.contains?.(focused) ? focused.dataset.focusKey : null;
+  const anchorTop = anchorKey ? focused.getBoundingClientRect().top : null;
+  const anchorScroller = anchorKey ? positions.map(([element]) => element).find(element => /auto|scroll/.test(root.defaultView.getComputedStyle(element).overflowY)) : null;
+  const restore = () => {
+    if (marker.portalFilterUpdating !== revision) return;
+    positions.forEach(([element, top, left]) => { element.scrollTop = top; element.scrollLeft = left; });
+    if (anchorScroller) {
+      const anchor = [...container.querySelectorAll('[data-focus-key]')].find(element => element.dataset.focusKey === anchorKey);
+      if (anchor) anchorScroller.scrollTop += anchor.getBoundingClientRect().top - anchorTop;
+    }
+  };
+  try {
+    const result = update();
+    restore();
+    const frame = root.defaultView?.requestAnimationFrame?.bind(root.defaultView);
+    if (frame) frame(() => { restore(); frame(() => { restore(); if (marker.portalFilterUpdating === revision) delete marker.portalFilterUpdating; }); });
+    else delete marker.portalFilterUpdating;
+    return result;
+  } catch (error) {
+    restore();
+    if (marker.portalFilterUpdating === revision) delete marker.portalFilterUpdating;
+    throw error;
+  }
+}
+const filterUICache = new WeakMap();
 function buildFilterUI(container, groups, entries, onChange) {
+  const signature = JSON.stringify([stratSearch, groups.map(g => [g.key, g.label, g.hidden, g.options])]);
+  const cached = filterUICache.get(container);
+  if (cached?.entries === entries && cached.signature === signature) {
+    const groupsByKey = new Map(groups.map(g => [g.key, g]));
+    container.querySelectorAll('input[type="checkbox"][data-focus-key]').forEach(input => {
+      const [key, value] = JSON.parse(input.dataset.focusKey);
+      input.checked = groupsByKey.get(key)?.state.has(value) || false;
+    });
+    groups.forEach(g => updateFilterCount(container, g));
+    return;
+  }
   const focusKey = document.activeElement?.dataset?.focusKey;
+  const ancestors = [];
+  for (let parent = container.parentElement; parent; parent = parent.parentElement) ancestors.push([parent, parent.scrollTop]);
   const openMap = {}, scrollMap = {};
   container.querySelectorAll('details.filter-group').forEach(d => {
     openMap[d.dataset.key] = d.open;
     scrollMap[d.dataset.key] = d.querySelector('.filter-group-body')?.scrollTop || 0;
   });
-  container.innerHTML = '';
+  const fragment = document.createDocumentFragment();
   groups.forEach(g => {
     if (g.hidden && !g.cascade) return;
     const det = document.createElement('details');
@@ -960,15 +1008,17 @@ function buildFilterUI(container, groups, entries, onChange) {
       hint.textContent = 'Não há estratégias vinculadas à combinação atual. Você pode continuar explorando os programas pelos demais filtros.';
       body.appendChild(hint);
       det.appendChild(body);
-      container.appendChild(det);
+      fragment.appendChild(det);
       return;
     }
     const rebuild = () => {
-      syncStrategyGroup();
-      autoFillUntouched(groups, entries);
-      syncStrategyGroup();
-      buildFilterUI(container, groups, entries, onChange);
-      onChange();
+      preservePortalFilterViewport(container, () => {
+        syncStrategyGroup();
+        autoFillUntouched(groups, entries);
+        syncStrategyGroup();
+        buildFilterUI(container, groups, entries, onChange);
+        onChange();
+      });
     };
     const makeOpt = opt => {
       const label = document.createElement('label');
@@ -1097,11 +1147,17 @@ function buildFilterUI(container, groups, entries, onChange) {
     }
 
     det.appendChild(body);
-    container.appendChild(det);
-    updateFilterCount(container, g);
-    body.scrollTop = scrollMap[g.key] || 0;
+    fragment.appendChild(det);
+  });
+  container.replaceChildren(fragment);
+  groups.forEach(g => updateFilterCount(container, g));
+  container.querySelectorAll('details.filter-group').forEach(d => {
+    const body = d.querySelector('.filter-group-body');
+    if (body) body.scrollTop = scrollMap[d.dataset.key] || 0;
   });
   if (focusKey) [...container.querySelectorAll('[data-focus-key]')].find(el => el.dataset.focusKey === focusKey)?.focus({ preventScroll: true });
+  ancestors.forEach(([parent, top]) => { parent.scrollTop = top; });
+  filterUICache.set(container, { entries, signature });
 }
 function updateFilterCount(container, g) {
   const el = container.querySelector(`[data-fcount="${g.key}"]`);
@@ -1372,6 +1428,7 @@ function entryMatchesFilters(e, groups) {
 }
 
 function highlightKeywords(root) {
+  if (portalSelectedProgram) return;
   const toks = normTxt(kwQuery).split(/\s+/).filter(Boolean);
   if (!toks.length) return;
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -1522,8 +1579,8 @@ document.addEventListener('keydown', ev => {
   if (ev.key === 'Escape' && document.getElementById('programs-app').classList.contains('mobile-filters-open')) setMobileFiltersOpen(false, true);
 });
 buildFilterUI(document.getElementById('programs-filters'), progFilterGroups, progEntries, renderProgramsGrid);
-document.getElementById('kw-input').addEventListener('input', ev => { kwQuery = ev.target.value; renderProgramsGrid(); });
-const clearKw = () => { kwQuery = ''; document.getElementById('kw-input').value = ''; };
+document.getElementById('kw-input').addEventListener('input', ev => { portalSelectedProgram = ''; kwQuery = ev.target.value; renderProgramsGrid(); });
+const clearKw = () => { portalSelectedProgram = ''; kwQuery = ''; document.getElementById('kw-input').value = ''; };
 document.getElementById('programs-select-all').addEventListener('click', () => {
   clearKw();
   stratSearch = '';

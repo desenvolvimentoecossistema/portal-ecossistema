@@ -11,7 +11,7 @@ export default async function Home(){
  await requireSiteUser('/');
  return <HubLayout hero={<PortalHero home title="Quanto mais nos aproximamos, mais possibilidades criamos juntos."/>}><SessionGuard/>
  <div className="hub-tools hub-tools-three">
-  <a href="/imersoes" className="hub-tool"><CalendarDays aria-hidden="true"/><div><h2>Imersões em Eventos</h2><p>Encontre agendas das organizações e participe de momentos de troca no Ecossistema.</p></div><ArrowRight aria-hidden="true"/></a>
+  <a href="/imersoes" className="hub-tool"><CalendarDays aria-hidden="true"/><div><h2>Imersões em Eventos</h2><p>Acompanhe as agendas das organizações e participe de encontros, trocas e momentos de conexão no Ecossistema.</p></div><ArrowRight aria-hidden="true"/></a>
   <a href="/mapa-programatico" className="hub-tool"><MapIcon aria-hidden="true"/><div><h2>Mapa Programático</h2><p>Consulte os programas das organizações e compare públicos, níveis e estratégias de atuação.</p></div><ArrowRight aria-hidden="true"/></a>
   <a href="/mapa-de-atuacao/alfabetizacao" className="hub-tool"><Network aria-hidden="true"/><div><h2>Mapas de Atuação</h2><p>Veja a atuação das organizações em Alfabetização, Fundamental 2 e Lideranças.</p></div><ArrowRight aria-hidden="true"/></a>
  </div>

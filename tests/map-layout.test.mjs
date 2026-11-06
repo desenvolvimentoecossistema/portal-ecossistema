@@ -1,6 +1,47 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {bindPortalMapLayout} from '../lib/portal-map-layout.js';
+import vm from 'node:vm';
+import {readFile} from 'node:fs/promises';
+
+test('selecionar e desmarcar mantém os campos existentes e o foco do painel',async()=>{
+ const source=await readFile(new URL('../modules/mapa/index.html',import.meta.url),'utf8');
+ const input={dataset:{focusKey:JSON.stringify(['niveis','Alfabetização'])},checked:false};
+ const container={querySelectorAll:()=>[input]};
+ const groups=[{key:'niveis',label:'Nível',options:[{value:'Alfabetização',count:12}],state:new Set(['Alfabetização'])}],entries=[];
+ const cache=new WeakMap([[container,{entries,signature:JSON.stringify(['',groups.map(g=>[g.key,g.label,g.hidden,g.options])])}]]);
+ const document={activeElement:input,createElement:()=>{throw Error('Não deve recriar o campo durante uma seleção.');}};
+ const context=vm.createContext({document,stratSearch:'',filterUICache:cache,updateFilterCount:()=>{}});
+ vm.runInContext(source.slice(source.indexOf('function buildFilterUI('),source.indexOf('function updateFilterCount(')),context);
+ context.buildFilterUI(container,groups,entries,()=>{});assert.equal(input.checked,true);assert.equal(document.activeElement,input);
+ groups[0].state.clear();context.buildFilterUI(container,groups,entries,()=>{});assert.equal(input.checked,false);assert.equal(document.activeElement,input);
+});
+
+test('a atualização dos resultados preserva rolagem após o navegador recalcular o layout',async()=>{
+ const source=await readFile(new URL('../modules/mapa/index.html',import.meta.url),'utf8'),frames=[];
+ const root={documentElement:{dataset:{}},defaultView:{requestAnimationFrame:cb=>frames.push(cb)}};
+ const sidebar={scrollTop:480,scrollLeft:0,parentElement:null};
+ const container={ownerDocument:root,scrollTop:0,scrollLeft:0,parentElement:sidebar};
+ const context=vm.createContext({});vm.runInContext(source.slice(source.indexOf('function preservePortalFilterViewport('),source.indexOf('const filterUICache')),context);
+ context.preservePortalFilterViewport(container,()=>{sidebar.scrollTop=0;});assert.equal(sidebar.scrollTop,480);
+ sidebar.scrollTop=15;frames.shift()();assert.equal(sidebar.scrollTop,480);
+ sidebar.scrollTop=25;frames.shift()();assert.equal(sidebar.scrollTop,480);assert.equal(root.documentElement.dataset.portalFilterUpdating,undefined);
+});
+
+test('o resumo de filtros ativos pode crescer sem deslocar a opção selecionada',async()=>{
+ const source=await readFile(new URL('../modules/mapa/index.html',import.meta.url),'utf8'),frames=[];let extraHeight=0;
+ const sidebar={scrollTop:480,scrollLeft:0,parentElement:null};
+ const input={dataset:{focusKey:'nivel-alfa'},getBoundingClientRect:()=>({top:800+extraHeight-sidebar.scrollTop})};
+ const root={activeElement:input,documentElement:{dataset:{}},defaultView:{requestAnimationFrame:cb=>frames.push(cb),getComputedStyle:element=>({overflowY:element===sidebar?'auto':'visible'})}};
+ const container={ownerDocument:root,scrollTop:0,scrollLeft:0,parentElement:sidebar,contains:element=>element===input,querySelectorAll:()=>[input]};
+ const context=vm.createContext({});vm.runInContext(source.slice(source.indexOf('function preservePortalFilterViewport('),source.indexOf('const filterUICache')),context);
+ const initialTop=input.getBoundingClientRect().top;
+ context.preservePortalFilterViewport(container,()=>{extraHeight=72;});
+ assert.equal(sidebar.scrollTop,552);assert.equal(input.getBoundingClientRect().top,initialTop);
+ frames.shift()();frames.shift()();assert.equal(input.getBoundingClientRect().top,initialTop);
+ context.preservePortalFilterViewport(container,()=>{extraHeight=0;});
+ frames.shift()();frames.shift()();assert.equal(sidebar.scrollTop,480);assert.equal(input.getBoundingClientRect().top,initialTop);
+});
 test('mostrar filtros preserva a rolagem mesmo quando o navegador reajusta o conteúdo',()=>{
  const main={scrollTop:360,scrollLeft:0},page={scrollTop:0,scrollLeft:0},frames=[];
  let click,hidden=true;

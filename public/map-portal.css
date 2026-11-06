@@ -58,3 +58,10 @@ html:has(>body.portal-map-shell){scrollbar-gutter:auto}
  .portal-map-shell .data-toolbar-right:has(#data-status:not([hidden]))>.preview-diff{flex-basis:100%;margin-left:auto}
 }
 @media(min-width:1024px){.portal-map-shell .data-toolbar-status{white-space:nowrap}}
+
+/* Keep filter options in the sidebar scroll, without nested scroll traps. */
+.portal-map-shell .filter-group .filter-group-body{max-height:none;overflow:visible}
+.portal-map-shell .filter-opt .fo-only{display:inline;visibility:hidden}
+.portal-map-shell .filter-opt:hover .fo-only,.portal-map-shell .filter-opt:focus-within .fo-only{visibility:visible}
+.portal-map-shell .map-bar .map-hint{font-size:14px;line-height:1.5}
+@media(hover:none){.portal-map-shell .filter-opt .fo-only{visibility:visible}}

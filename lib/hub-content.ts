@@ -11,8 +11,8 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       368
     ],
     "summary": "Apoio às redes públicas para fortalecer a alfabetização e a gestão educacional.",
-    "description": "A Associação Bem Comum é uma organização sem fins lucrativos, fundada em 2018, que apoia o poder público na melhoria da educação, com foco na alfabetização das crianças e na aprendizagem nos anos iniciais do Ensino Fundamental.\n\nSua atuação se organiza nos programas Educar pra Valer (EpV) e Parceria pela Alfabetização em Regime de Colaboração (PARC). Inspirados na experiência de Sobral e do Ceará, os programas apoiam estados e municípios no fortalecimento da gestão educacional e na implementação de políticas de aprendizagem.",
-    "source": "https://abemcomum.org/"
+    "description": "A Associação Bem Comum, fundada em 2018, é uma pessoa jurídica de direito privado, sem fins lucrativos, constituída sob a forma de associação civil, de caráter educacional, que tem como objetivo, dentre outros, contribuir para elaborar e/ou executar políticas públicas em áreas que promovam o desenvolvimento humano integral nos aspectos da educação. É formada por experientes profissionais da gestão pública com atuação na rede de escolas municipais e na gestão da educação dos diversos estados. Somos a instituição responsável pelos programas Educar pra Valer (EpV) e da Parceria pela Alfabetização em Regime em Colaboração (PARC), em parceria com outras conceituadas organizações não governamentais (ONGs).",
+    "source": "https://abemcomum.org/#quemSomos"
   },
   "cls": {
     "logo": "/organizacoes/cls.png",
@@ -25,8 +25,8 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       1232
     ],
     "summary": "Desenvolvimento de lideranças e fortalecimento da gestão escolar com equidade.",
-    "description": "O Centro Lemann foi criado em 2021, em Sobral, no Ceará, para fortalecer lideranças comprometidas com uma Educação Básica de qualidade e com equidade. Sua atuação alcança lideranças políticas, equipes das secretarias de educação e gestoras e gestores escolares no Brasil e em outros países do Sul Global.\n\nA organização oferece formação e apoio técnico à implementação de políticas de gestão escolar. Também articula atores públicos e produz conhecimentos e ferramentas para apoiar decisões baseadas em evidências.",
-    "source": "https://centrolemann.org.br/"
+    "description": "Somos um centro internacional de referência em liderança na educação. Nossa missão é fortalecer o compromisso e a capacidade de lideranças políticas, educacionais e escolares de promover Educação Básica com qualidade e equidade no Brasil e no Sul Global. Fazemos parte de uma rede internacional que conecta pesquisadoras(es), gestoras(es) públicos e lideranças comprometidas em enfrentar os principais desafios nacionais com foco em soluções aplicadas que contribuam para a garantia de aprendizagem com qualidade e equidade na Educação Básica. São cinco Centros Lemann no exterior: Stanford, Columbia, Illinois, Oxford e Zurique, além de Harvard, onde a Fundação Lemann mantém um fundo para apoiar pesquisas sobre o Brasil, em parceria com o David Rockefeller Center for Latin American Studies (DRCLAS).",
+    "source": "https://centrolemannorgbr.com/quem-somos/"
   },
   "megaedu": {
     "logo": "/organizacoes/megaedu.png",
@@ -39,8 +39,8 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       513
     ],
     "summary": "Conectividade e uso de tecnologia e dados na gestão da educação pública.",
-    "description": "A MegaEdu é uma organização sem fins lucrativos que apoia a transformação digital da educação pública brasileira. Atua para ampliar o acesso das escolas à internet de qualidade e fortalecer o uso de tecnologia e dados na gestão educacional.\n\nNa frente de Conectividade, oferece apoio técnico a governos e redes de ensino. Em Sistemas de Gestão, contribui para a integração de informações sobre a trajetória dos estudantes e para o desenvolvimento de soluções que apoiem secretarias e escolas.",
-    "source": "https://www.megaedu.org.br/post/tecnologia-na-educacao-2025-retrospectiva"
+    "description": "A MegaEdu é uma organização sem fins lucrativos que trabalha para levar internet de alta velocidade para todas as escolas públicas do Brasil. Com atuação iniciada em 2022, a organização oferece apoio técnico a diretores de escolas e gestores de secretarias de educação para identificar problemas de conectividade e planejar a universalização do acesso nas redes. Também colabora com o governo federal na formulação e no aperfeiçoamento de políticas públicas para essa área. Seu trabalho utiliza dados para aproximar as necessidades das escolas das soluções capazes de atendê-las, considerando os diferentes contextos do território brasileiro. A atuação abrange as condições necessárias ao uso pedagógico da internet, incluindo velocidade adequada, sinal de Wi-Fi e computadores, para que professores e estudantes possam utilizar os recursos digitais nas atividades de ensino e aprendizagem.",
+    "source": "https://www.megaedu.org.br/"
   },
   "motriz": {
     "logo": "/organizacoes/motriz.png",
@@ -53,7 +53,7 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       115
     ],
     "summary": "Fortalecimento da gestão pública e de lideranças para reduzir desigualdades.",
-    "description": "A Motriz é uma organização suprapartidária, formada pela união do Vetor Brasil com o Instituto Gesto, que trabalha para fortalecer governos e melhorar a qualidade dos serviços públicos. Sua atuação tem como compromisso a equidade e a redução das desigualdades sociais.\n\nA organização apoia secretarias de educação na implementação de políticas e no fortalecimento da gestão, com atenção à aprendizagem dos estudantes. Também desenvolve lideranças públicas e colabora para a formação de equipes diversas e preparadas para atuar nos governos.",
+    "description": "Somos uma organização suprapartidária que tem como missão fortalecer governos para que entreguem serviços públicos de qualidade e com equidade a todas as pessoas no Brasil, reduzindo as desigualdades sociais e fortalecendo a democracia. A Motriz surge da união de duas organizações de referência no fortalecimento da gestão pública e da educação pública no Brasil: Vetor Brasil e Instituto Gesto. Com quase 10 anos de trajetória, ambas uniram suas forças para potencializar resultados e impacto positivo. A Motriz chega para contribuir ainda mais para a construção e a implementação de políticas e serviços públicos mais efetivos, inclusivos e diversos.",
     "source": "https://www.motriz.org/quem-somos"
   },
   "ane": {
@@ -67,7 +67,7 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       299
     ],
     "summary": "Recursos e formação para fortalecer a prática dos professores da Educação Básica.",
-    "description": "A Associação Nova Escola é uma organização de impacto social sem fins lucrativos que apoia professoras e professores da Educação Básica no aprimoramento de suas práticas e na promoção da aprendizagem dos estudantes.\n\nCriada em 2015, com o apoio da Fundação Lemann, é herdeira da revista Nova Escola, lançada em 1986 pela Fundação Victor Civita. Sua plataforma reúne conteúdos pedagógicos e oportunidades de formação, incluindo planos de aula e cursos voltados ao cotidiano dos educadores.",
+    "description": "A Associação Nova Escola é uma organização de impacto social sem fins lucrativos que trabalha para o Brasil ter professores da Educação Básica fortalecidos em suas práticas, contribuindo para a melhoria da aprendizagem e do desenvolvimento dos estudantes. Criada em 2015 com o apoio de sua mantenedora, a Fundação Lemann, a Associação é herdeira da revista de mesmo nome, nascida em 1986 na Fundação Victor Civita. Hoje, a Nova Escola é uma plataforma digital que produz reportagens, cursos autoinstrucionais, formações, planos de aula e materiais educacionais para fortalecer os professores brasileiros e é acessada por cerca de 3,1 milhões de pessoas por mês.",
     "source": "https://novaescola.org.br/quem-somos"
   },
   "reuna": {
@@ -81,8 +81,8 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       440
     ],
     "summary": "Coerência entre currículo, materiais didáticos, formação docente e avaliação.",
-    "description": "O Instituto Reúna é uma organização sem fins lucrativos que apoia redes de ensino e escolas a transformar as diretrizes da Base Nacional Comum Curricular (BNCC) em práticas que favoreçam a aprendizagem com equidade.\n\nPor meio de pesquisas e recursos técnico-pedagógicos, contribui para o alinhamento entre currículo, materiais didáticos, formação de professores e avaliação. O objetivo é fortalecer a coerência do sistema educacional e apoiar a implementação de políticas na Educação Básica.",
-    "source": "https://www.institutoreuna.org.br/instituto/manifesto"
+    "description": "Somos uma organização sem fins lucrativos que trabalha incansavelmente pela educação de qualidade e com equidade no Brasil. Nossa missão é sermos decisivos no desenvolvimento de políticas públicas para aprendizagem coerentes, articuladas e centradas no currículo, por meio da produção de evidências e referências, mobilização e fortalecimento das capacidades técnico-pedagógicas do ecossistema educacional. Contamos com 150 mil usuários cadastrados e mais de 560 mil downloads realizados em nosso site, mais de 4.400 municípios de todos os estados do Brasil acessam nossas produções, e programas realizados em parceria com 39 Secretarias Municipais e 22 Secretarias Estaduais de Educação. Somos parceiros do Ministério da Educação no Pacto Nacional pela Recomposição das Aprendizagens, no Compromisso Nacional Toda Matemática e no programa Escola das Adolescências.",
+    "source": "https://www.institutoreuna.org.br/sobre-nos/conheca-reuna"
   },
   "traj": {
     "logo": "/organizacoes/traj.png",
@@ -95,7 +95,7 @@ export const organizationProfiles:Record<string,{logo:string;logoBounds:number[]
       142
     ],
     "summary": "Acesso à pós-graduação no exterior e desenvolvimento de talentos brasileiros.",
-    "description": "O Instituto Trajetórias é uma iniciativa sem fins lucrativos que amplia o acesso de talentos brasileiros a universidades de excelência no exterior, com foco em oportunidades de mestrado. Seu propósito é apoiar a formação de profissionais e lideranças diversos, comprometidos com o desenvolvimento do Brasil.\n\nA organização articula parcerias para oferecer bolsas e alternativas de financiamento, além de orientar candidatos na preparação para estudar fora. Sua atuação busca ampliar a inclusão social e incentivar o retorno dos talentos ao país.",
+    "description": "O Instituto Trajetórias é uma iniciativa sem fins lucrativos que promove a mobilidade internacional de talentos brasileiros, conectando estudantes a universidades de excelência no exterior e formando lideranças comprometidas com o desenvolvimento do Brasil. O modelo Trajetórias combina parcerias com governos, universidades e filantropias, para criar impacto escalável e sustentável para o desenvolvimento de capital humano do país. Queremos alavancar educação internacional de excelência, inclusão social e redes globais que impulsionam trajetórias transformadoras.",
     "source": "https://www.institutotrajetorias.org.br/sobre-nos"
   }
 };

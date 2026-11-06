@@ -1,5 +1,13 @@
 # Verificação da entrega
 
+## Sincronização do portal atual — 06/11/2026
+
+- Interface e conteúdo sincronizados com a versão publicada 66 do portal, fonte `1ca2c2ec4834a387d6e0cc708d01b60734867ae5`: descrições completas das sete organizações, Motriz sem negrito, textos de apresentação, link da Fundação Lemann, acesso a um programa específico e filtros que preservam foco e rolagem.
+- Preservados o login Google, o banco SQLite persistente, as gravações atômicas, as configurações de produção e os modelos de e-mail já ajustados para a hospedagem independente. Nenhum módulo de autenticação ou armazenamento da plataforma de criação foi copiado.
+- A cópia inicial do mapa foi sincronizada com a fonte atual, sem reescrever os programas: contém a capitalização atual de uma classificação e as quebras de linha das descrições importadas. O deploy não substitui os dados já publicados no banco de produção; novas publicações de dados continuam pelo fluxo administrativo do Google Sheets.
+- 61 testes automatizados aprovados. TypeScript e build Next.js standalone aprovados. Os 13 fluxos HTTP passaram tanto em acesso direto quanto atrás de proxy HTTPS simulado. O importador standalone também passou, incluindo migrações e rejeição de carga duplicada.
+- As verificações usaram banco temporário e serviços externos simulados. A execução do deploy e a disponibilidade real de Google, Sheets e e-mail na Codebit dependem dos serviços configurados na hospedagem.
+
 ## Sincronização do portal atual — 05/11/2026
 
 - Interface e comportamento sincronizados com a versão publicada 52 do portal: início com três acessos, navegação, páginas separadas de Mapa Programático e Mapas de Atuação, filtros revisados, exploração por estratégia, datas, contato oculto nas imersões, documentos e aceite no primeiro acesso.

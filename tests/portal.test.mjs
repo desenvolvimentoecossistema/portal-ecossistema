@@ -50,6 +50,8 @@ test('os perfis têm logos completas, descrições e os novos apoios preservam o
 test('os links da organização escolhem a aba certa e recusam chaves desconhecidas',()=>{
  const dims={motriz:{Edu:{segmento_categoria:'Educação'},Lid:{segmento_categoria:'Liderança'}},traj:{Bolsas:{segmento_categoria:'Liderança'}}};
  assert.deepEqual(resolvePortalMapLink('?organizacao=motriz&busca=Lid',dims),{org:'motriz',query:'Lid',tab:'liderancas'});
+ assert.deepEqual(resolvePortalMapLink('?organizacao=motriz&programa=Lid',dims),{org:'motriz',query:'Lid',tab:'liderancas',program:'Lid'});
+ assert.deepEqual(resolvePortalMapLink('?organizacao=motriz&programa=Desconhecido',dims),{org:'motriz',query:'',tab:'educacao'});
  assert.equal(resolvePortalMapLink('?organizacao=motriz',dims).tab,'educacao');assert.equal(resolvePortalMapLink('?organizacao=traj',dims).tab,'liderancas');
  assert.equal(resolvePortalMapLink('?organizacao=toString',dims).org,'');assert.equal(resolvePortalMapLink('?busca='+('x'.repeat(500)),dims).query.length,300);
 });

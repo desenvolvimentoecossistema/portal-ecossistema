@@ -4,6 +4,17 @@ import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {classificationValues,classificationText} from '../lib/map-classification.js';
 
+test('abrir um programa pela organização não mistura nomes parecidos e a busca continua disponível',async()=>{
+ const source=await readFile(new URL('../modules/mapa/index.html',import.meta.url),'utf8');
+ const context=vm.createContext({portalSelectedProgram:'Jornada 1',kwQuery:'Jornada 1',normTxt:t=>String(t).toLowerCase()});
+ vm.runInContext(source.slice(source.indexOf('function kwMatch('),source.indexOf('function groupMatch(')),context);
+ const matches=entry=>context.kwMatch(entry);
+ assert.equal(matches({name:'Jornada 1',searchText:'jornada 1'}),true);
+ assert.equal(matches({name:'Jornada 10',searchText:'jornada 10'}),false);
+ context.portalSelectedProgram='';context.kwQuery='jornada';
+ assert.equal(matches({name:'Jornada 10',searchText:'jornada 10'}),true);
+});
+
 test('campo vazio não se confunde com não aplicável nem com Geral declarado',()=>{
  assert.deepEqual(classificationValues([],'Sem nível especificado'),['Sem nível especificado']);
  assert.deepEqual(classificationValues(['  '],'Sem especialidade especificada'),['Sem especialidade especificada']);
