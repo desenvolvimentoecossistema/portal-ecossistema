@@ -43,8 +43,8 @@ test('Apps Script distingue aviso ao responsável de confirmação ao participan
   for(const message of messages){
     assert.match(message.body,/Organização anfitriã: Motriz/);
     assert.match(message.body,/10 nov\. de 2026 · 9h–12h/);
-    assert.match(message.htmlBody,/Portal do Ecossistema/);
-    assert.match(message.htmlBody,/IMERSÕES EM EVENTOS/);
+    assert.match(message.htmlBody.replace(/<br\s*\/?\s*>/gi,' '),/Portal do Ecossistema/);
+    assert.match(message.htmlBody,/Imersões em Eventos/);
     assert.equal(message.name,'Portal do Ecossistema');
     assert.doesNotMatch(message.htmlBody,/chatgpt\.site|IMERSÕES DO ECOSSISTEMA/);
     const links=[...message.htmlBody.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
