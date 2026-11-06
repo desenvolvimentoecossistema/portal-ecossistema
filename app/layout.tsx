@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   title: "Portal do Ecossistema | Fundação Lemann",
   description: "Organizações, imersões e programas do Ecossistema.",
   icons: {
-    icon: [{ url: "/favicon-ecosystem.png", type: "image/png", sizes: "any" }],
-    shortcut: "/favicon-ecosystem.png",
-    apple: "/favicon-ecosystem.png",
+    icon: [{ url: "/favicon-ecosystem.png?v=43a189506a6c", type: "image/png", sizes: "any" }],
+    shortcut: "/favicon-ecosystem.png?v=43a189506a6c",
+    apple: "/favicon-ecosystem.png?v=43a189506a6c",
   },
 };
 
