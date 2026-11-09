@@ -50,8 +50,8 @@ test("restringe retornos, e-mails e preserva a edição ao trocar de login", asy
   delete process.env.AUTH_ALLOWED_DOMAINS;
 });
 
-test("a lista institucional aceita apenas os oito domínios exatos", () => {
-  const domains = ["fundacaolemann.org.br", "megaedu.org.br", "motriz.org", "abemcomum.org", "novaescola.org.br", "institutoreuna.org.br", "institutotrajetorias.org.br", "centrolemann.org.br"];
+test("a lista institucional aceita apenas os nove domínios exatos", () => {
+  const domains = ["fundacaolemann.org.br", "megaedu.org.br", "motriz.org", "abemcomum.org", "novaescola.org.br", "institutoreuna.org.br", "institutotrajetorias.org.br", "centrolemann.org.br", "amplifybrasil.com.br"];
   delete process.env.AUTH_ALLOWED_EMAILS;
   process.env.AUTH_ALLOWED_DOMAINS = domains.join(",");
   try {
