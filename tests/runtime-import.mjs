@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdtempSync,writeFileSync} from 'node:fs';
+import {mkdtempSync,writeFileSync,readdirSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -16,7 +16,7 @@ try{
  assert.equal(db.prepare('SELECT count(*) n FROM events').get().n,1);
  assert.equal(db.prepare('SELECT max_participants FROM events').get().max_participants,3);
  assert.equal(db.prepare('SELECT count(*) n FROM oauth_sessions').get().n,0);
- assert.equal(db.prepare('SELECT count(*) n FROM application_migrations').get().n,4);
+ assert.equal(db.prepare('SELECT count(*) n FROM application_migrations').get().n,readdirSync(resolve('database')).filter(file=>file.endsWith('.sql')).length);
  assert.notEqual(run().status,0,'a imagem não pode importar a mesma carga duas vezes');
  assert.equal(db.prepare('SELECT count(*) n FROM events').get().n,1);
 }finally{db.close();}
