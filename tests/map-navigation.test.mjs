@@ -21,6 +21,7 @@ test('a abertura preserva a visão pedida enquanto os dados carregam',()=>{
 test('as páginas têm endereços distintos, sem transformar APIs e imagens em páginas',()=>{
  assert.equal(portalMapRequestTarget('/mapa-programatico').view,'programas');
  assert.equal(portalMapRequestTarget('/mapa-de-atuacao/liderancas').view,'mapa-lid');
+ assert.equal(portalMapRequestTarget('/mapa-de-atuacao'),null);
  assert.equal(portalMapRequestTarget('/mapa','?visao=mapa-fund2&busca=teste').redirect,'/mapa-de-atuacao/fundamental-2?busca=teste');
  assert.equal(portalMapRequestTarget('/mapa/api/data').path,'/api/data');
  assert.equal(portalMapRequestTarget('/mapa-de-atuacao/constructor'),null);
