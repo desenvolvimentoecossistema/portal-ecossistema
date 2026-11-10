@@ -62,7 +62,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "O acesso é destinado a colaboradores da Fundação Lemann e das organizações do Ecossistema, além de pessoas autorizadas pela gestão do portal. A entrada utiliza uma conta Google com e-mail institucional autorizado."
+            "text": "O acesso é destinado a colaboradores da Fundação Lemann e das organizações do Ecossistema, além de pessoas autorizadas pela gestão do portal. A entrada utiliza uma conta Google com e-mail institucional autorizado. O acesso às funcionalidades depende do aceite destes Termos de Uso e da ciência da Política de Privacidade."
           },
           {
             "text": "\n"
@@ -735,7 +735,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "Também pode solicitar anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a LGPD, além de portabilidade, observada a regulamentação aplicável, e opor-se a tratamento que descumpra a legislação.\n"
+            "text": "Você também pode solicitar anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a LGPD, e portabilidade conforme a regulamentação aplicável. O direito de oposição permite questionar o tratamento dos dados quando houver descumprimento da LGPD, sem dispensar o aceite dos Termos de Uso para acessar o portal.\n"
           }
         ]
       },
