@@ -272,10 +272,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "7. Conteúdo e direitos de uso"
-          },
-          {
-            "text": "\n"
+            "text": "7. Conteúdo e direitos de uso\n"
           }
         ]
       },
@@ -338,7 +335,14 @@
         "bullet": false,
         "runs": [
           {
-            "text": "O tratamento de dados pessoais é explicado na Política de Privacidade do Portal do Ecossistema. O aceite destes Termos não constitui uma autorização genérica para qualquer uso dos dados pessoais."
+            "text": "O tratamento de dados pessoais é explicado na "
+          },
+          {
+            "text": "Política de Privacidade",
+            "href": "https://portalecossistema.fundacaolemann.org.br/privacidade"
+          },
+          {
+            "text": " do Portal do Ecossistema. O aceite destes Termos não constitui uma autorização para qualquer uso dos dados pessoais."
           },
           {
             "text": "\n"
@@ -404,7 +408,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "Para dúvidas sobre o portal, solicitações de privacidade e exercício dos seus direitos, entre em contato pelo e-mail desenvolvimentoecossistema@fundacaolemann.org.br. Esse canal recebe as solicitações relacionadas ao portal e as encaminha às áreas responsáveis pelo atendimento no Instituto Lemann.\n"
+            "text": "Para dúvidas sobre o portal, solicitações de privacidade e exercício dos seus direitos, entre em contato pelo e-mail desenvolvimentoecossistema@fundacaolemann.org.br. Esse canal recebe as solicitações relacionadas ao portal e as encaminha à área responsável.\n"
           }
         ]
       },
@@ -608,7 +612,7 @@
       },
       {
         "kind": "NORMAL_TEXT",
-        "bullet": false,
+        "bullet": true,
         "runs": [
           {
             "text": "Inscrições e dados de contato de organizadores: até dois anos após o encerramento da atividade.\n"
@@ -617,7 +621,7 @@
       },
       {
         "kind": "NORMAL_TEXT",
-        "bullet": false,
+        "bullet": true,
         "runs": [
           {
             "text": "Identificação de usuários, permissões e registros de aceite: durante o acesso autorizado e por até dois anos após seu encerramento.\n"
@@ -753,7 +757,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "Para exercer seus direitos, escreva para desenvolvimentoecossistema@fundacaolemann.org.br, descrevendo a solicitação e o e-mail utilizado no portal. O atendimento é gratuito. Poderão ser solicitadas apenas as informações necessárias para confirmar sua identidade e proteger os dados; não envie sua senha.\n"
+            "text": "Para exercer seus direitos, escreva para desenvolvimentoecossistema@fundacaolemann.org.br, descrevendo a solicitação e o e-mail utilizado no portal. Poderão ser solicitadas apenas as informações necessárias para confirmar sua identidade e proteger os dados.\n"
           }
         ]
       },
@@ -762,7 +766,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "As solicitações são analisadas nos prazos legais, considerando os direitos de outras pessoas e as hipóteses de conservação. Quando uma providência não puder ser atendida, você receberá a explicação dos motivos. Você também pode apresentar uma petição à Autoridade Nacional de Proteção de Dados (ANPD).\n"
+            "text": "As solicitações são analisadas nos prazos legais, considerando os direitos de outras pessoas e as hipóteses de conservação. Quando uma providência não puder ser atendida, você receberá a explicação dos motivos.\n"
           }
         ]
       },
@@ -789,7 +793,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "A versão vigente desta Política permanece disponível no portal. Mudanças relevantes no tratamento de dados serão comunicadas às pessoas afetadas. A ciência desta Política não corresponde a consentimento genérico para outros usos dos dados pessoais.\n"
+            "text": "A versão vigente desta Política permanece disponível no portal. Mudanças relevantes no tratamento de dados serão comunicadas às pessoas afetadas. A ciência desta Política não corresponde a consentimento para outros usos dos dados pessoais.\n"
           }
         ]
       }
