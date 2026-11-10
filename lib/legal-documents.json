@@ -44,6 +44,15 @@
         "bullet": false,
         "runs": [
           {
+            "text": "Atualmente, fazem parte do Ecossistema o Instituto Reúna, o Centro Lemann, a Associação Bem Comum, a Associação Nova Escola, a Motriz, a MegaEdu e o Instituto Trajetórias. Estes Termos também abrangem a participação de outras organizações que futuramente passem a integrar o Ecossistema.\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": false,
+        "runs": [
+          {
             "text": "As informações destinam-se à consulta institucional e à articulação entre as organizações. A divulgação de uma atividade não significa que a Fundação Lemann seja sua organizadora, financiadora ou responsável por todas as condições de participação.\n"
           }
         ]
