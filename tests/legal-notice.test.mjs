@@ -16,7 +16,7 @@ test('o primeiro acesso vai para o aceite e a leitura dos documentos continua di
  for(const path of ['/termos-de-uso','/privacidade','/aceite'])assert.equal((await visit({path,accepted:false})).redirects.length,0);
  assert.equal((await visit()).redirects.length,0);
 });
-test('a prévia é oferecida aos administradores e abre sem registrar aceite',async()=>{
- const admin=await visit({admin:true});assert.equal(admin.buttons.length,1);admin.click();assert(admin.redirects[0].startsWith('/aceite?preview=1'));
+test('somente administradores veem os comprovantes e a prévia abre sem registrar aceite',async()=>{
+ const admin=await visit({admin:true});assert.equal(admin.buttons.length,2);assert.equal(admin.buttons.find(item=>item.textContent==='Registros de aceite').href,'/administracao/aceites');admin.click();assert(admin.redirects[0].startsWith('/aceite?preview=1'));
  assert.equal((await visit()).buttons.length,0);
 });
