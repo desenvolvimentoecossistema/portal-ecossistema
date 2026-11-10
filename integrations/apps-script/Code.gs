@@ -6,7 +6,7 @@ const FL_LOGO_BASE64 = 'iVBORw0KGgoAAAANSUhEUgAAAOAAAABGCAYAAADVaJgSAAA3TklEQVR4
  * WEBHOOK_SECRET permanece exclusivamente nas propriedades do Apps Script.
  * As duas constantes de imagens são incorporadas antes deste arquivo.
  */
-const SITE_ORIGIN = 'https://portalecossistema.fundacaolemann.codebit.biz';
+const SITE_ORIGIN = 'https://portalecossistema.fundacaolemann.org.br';
 const SITE_URL = SITE_ORIGIN + '/imersoes';
 const SENDER_NAME = 'Portal do Ecossistema';
 
@@ -35,7 +35,15 @@ function doPost(e) {
 }
 
 function isParticipantConfirmation_(data) {
-  return data.notificationType === 'participant_confirmation';
+  return data.notificationType === 'participant_confirmation' || data.notificationType === 'event_cancellation';
+}
+
+function notificationCopy_(data) {
+  if (data.notificationType === 'registration_cancellation') return {title:'Inscrição cancelada',intro:data.participantName + ' cancelou a inscrição na agenda abaixo. A vaga foi liberada.',subject:'Inscrição cancelada: ',details:'Inscrição cancelada'};
+  if (data.notificationType === 'event_cancellation') return {title:'Agenda cancelada',intro:'A organização anfitriã cancelou a agenda abaixo' + (data.canceledBy ? ', por meio de ' + data.canceledBy : '') + '. Sua inscrição foi encerrada.',subject:'Agenda cancelada: ',details:'Sua inscrição cancelada'};
+  return isParticipantConfirmation_(data)
+    ? {title:'Sua inscrição foi recebida',intro:'Recebemos sua inscrição na agenda abaixo.',subject:'Inscrição recebida: ',details:'Sua inscrição'}
+    : {title:'Nova inscrição recebida',intro:'Uma pessoa se inscreveu em uma agenda da sua organização.',subject:'Nova inscrição: ',details:'Dados da pessoa inscrita'};
 }
 
 function sendRegistrationEmail_(data) {
@@ -55,7 +63,7 @@ function registrationMessage_(data) {
   return {
     to: String(participant ? (data.recipientEmail || data.contactEmail) : data.contactEmail).trim(),
     replyTo: String(participant ? data.replyToEmail : data.participantEmail).trim(),
-    subject: (participant ? 'Inscrição recebida: ' : 'Nova inscrição: ') + cleanSubject_(data.eventTitle) + ' | Portal do Ecossistema',
+    subject: notificationCopy_(data).subject + cleanSubject_(data.eventTitle) + ' | Portal do Ecossistema',
     body: buildPlainText_(data),
   };
 }
@@ -78,10 +86,9 @@ function loadInlineImages_() {
 function buildHtml_(data, hasLogo, hasCircle) {
   const participant = isParticipantConfirmation_(data);
   const greeting = escapeHtml_(firstName_(participant ? data.participantName : data.contactName));
-  const title = participant ? 'Sua inscrição foi recebida' : 'Nova inscrição recebida';
-  const intro = participant
-    ? 'Recebemos sua inscrição na agenda abaixo.'
-    : 'Uma pessoa se inscreveu em uma agenda da sua organização.';
+  const copy = notificationCopy_(data);
+  const title = copy.title;
+  const intro = escapeHtml_(copy.intro);
   const buttonLabel = participant ? 'Acessar o portal' : 'Consultar inscrições no portal';
   const replyName = participant ? (data.replyToName || data.eventOrganization || 'a organização anfitriã') : data.participantName;
   const replyEmail = participant ? data.replyToEmail : data.participantEmail;
@@ -126,7 +133,7 @@ function buildHtml_(data, hasLogo, hasCircle) {
 <p style="margin:0;font-size:14px;line-height:1.5;"><strong>Local:</strong> ${escapeHtml_(data.eventLocation)}</p>
 ${eventOrganization}
 </td></tr></table>
-<h2 style="margin:0 0 14px;font-size:19px;line-height:1.4;">${participant ? 'Sua inscrição' : 'Dados da pessoa inscrita'}</h2>
+<h2 style="margin:0 0 14px;font-size:19px;line-height:1.4;">${copy.details}</h2>
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed;margin-bottom:26px;border:1px solid #D7E0E5;border-radius:14px;overflow:hidden;">
 ${detailRow_('Nome', escapeHtml_(data.participantName), false)}
 ${detailRow_('E-mail', escapeHtml_(data.participantEmail), true)}
@@ -143,7 +150,7 @@ ${detailRow_('Cargo ou função', escapeHtml_(data.participantRole), true)}
 <td width="50%" valign="top" style="padding-right:12px;">Desenvolvimento de Ecossistema<br><strong>Fundação Lemann</strong></td>
 <td class="footer-links" width="50%" align="right" valign="top" style="text-align:right;">
 <p style="margin:0;"><a href="${SITE_ORIGIN}/termos-de-uso" style="color:#052B47;text-decoration:underline;">Termos de Uso</a></p>
-<p style="margin:6px 0 0;"><a href="${SITE_ORIGIN}/privacidade" style="color:#052B47;text-decoration:underline;">Aviso de Privacidade</a></p>
+<p style="margin:6px 0 0;"><a href="${SITE_ORIGIN}/privacidade" style="color:#052B47;text-decoration:underline;">Política de Privacidade</a></p>
 </td></tr></table>
 </td></tr></table>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -158,13 +165,14 @@ function detailRow_(label, value, withTopBorder) {
 
 function buildPlainText_(data) {
   const participant = isParticipantConfirmation_(data);
+  const copy = notificationCopy_(data);
   const replyName = participant ? (data.replyToName || data.eventOrganization || 'a organização anfitriã') : data.participantName;
   const replyEmail = participant ? data.replyToEmail : data.participantEmail;
   const lines = [
-    participant ? 'Sua inscrição foi recebida' : 'Nova inscrição recebida',
+    copy.title,
     '',
     'Olá, ' + firstName_(participant ? data.participantName : data.contactName) + '.',
-    participant ? 'Recebemos sua inscrição na agenda abaixo.' : 'Uma pessoa se inscreveu em uma agenda da sua organização.',
+    copy.intro,
     '',
     'Agenda: ' + data.eventTitle,
     'Data e horário: ' + data.eventDate,
@@ -172,7 +180,7 @@ function buildPlainText_(data) {
   ];
   if (data.eventOrganization) lines.push('Organização anfitriã: ' + data.eventOrganization);
   return lines.concat([
-    '', participant ? 'Sua inscrição:' : 'Dados da pessoa inscrita:',
+    '', copy.details + ':',
     'Nome: ' + data.participantName,
     'E-mail: ' + data.participantEmail,
     'Organização: ' + data.participantOrganization,
@@ -184,7 +192,7 @@ function buildPlainText_(data) {
     '', 'Portal do Ecossistema · Imersões em Eventos',
     'Desenvolvimento de Ecossistema · Fundação Lemann',
     'Termos de Uso: ' + SITE_ORIGIN + '/termos-de-uso',
-    'Aviso de Privacidade: ' + SITE_ORIGIN + '/privacidade',
+    'Política de Privacidade: ' + SITE_ORIGIN + '/privacidade',
   ]).join('\n');
 }
 
@@ -193,7 +201,7 @@ function validatePayload_(data) {
     if (typeof data[field] !== 'string' || !data[field].trim()) throw new Error('Campo obrigatório ausente: ' + field + '.');
   });
   if (!isValidEmail_(data.contactEmail) || !isValidEmail_(data.participantEmail)) throw new Error('Um dos endereços de e-mail é inválido.');
-  if (data.notificationType && data.notificationType !== 'host_notification' && data.notificationType !== 'participant_confirmation') throw new Error('Tipo de notificação inválido.');
+  if (data.notificationType && ['host_notification','participant_confirmation','registration_cancellation','event_cancellation'].indexOf(data.notificationType) === -1) throw new Error('Tipo de notificação inválido.');
   if (isParticipantConfirmation_(data)) {
     if (!isValidEmail_(data.replyToEmail)) throw new Error('O e-mail de resposta da organização anfitriã é inválido.');
     const recipient = data.recipientEmail || data.contactEmail;

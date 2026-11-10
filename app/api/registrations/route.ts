@@ -1,5 +1,5 @@
 import { isSameOriginMutation } from "@/lib/request-origin";
-import { and, eq, sql } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSqliteDatabase, getDb } from "@/db";
@@ -14,6 +14,25 @@ import { registrationInsert, registrationSchema } from "@/lib/registration-rules
 import { hostNotification, participantConfirmation } from "@/lib/registration-email";
 
 export const dynamic = "force-dynamic";
+
+export async function GET() {
+  try {
+    const user = await getSiteUser();
+    if (!user) return NextResponse.json({ error: "Faça login para consultar suas inscrições." }, { status: 401 });
+    const rows = await getDb().select({
+      id: registrations.id, eventId: registrations.eventId,
+      name: registrations.name, email: registrations.email, organization: registrations.organization,
+      role: registrations.role, createdAt: registrations.createdAt,
+      eventTitle: events.title, eventStartDate: events.startDate, eventEndDate: events.endDate,
+    }).from(registrations).innerJoin(events, eq(registrations.eventId, events.id))
+      .where(sql`lower(trim(${registrations.email})) = ${user.email.trim().toLowerCase()}`)
+      .orderBy(desc(registrations.createdAt));
+    return NextResponse.json(rows, { headers: { "Cache-Control": "private, no-store" } });
+  } catch (error) {
+    console.error("Unable to load own registrations", error);
+    return NextResponse.json({ error: "Não foi possível carregar suas inscrições agora." }, { status: 503 });
+  }
+}
 
 async function sendRegistrationEmail(payload: ReturnType<typeof hostNotification> | ReturnType<typeof participantConfirmation>) {
   const webhookUrl = process.env.EMAIL_WEBHOOK_URL?.trim();

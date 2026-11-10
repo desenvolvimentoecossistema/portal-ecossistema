@@ -7,13 +7,15 @@ import {getPortalUser as getSiteUser} from "@/app/portal-access";
 import {formTermsVersionError} from '@/lib/legal-acceptance';
 import {acceptanceRecord} from '@/lib/record-legal-acceptance';
 import {acceptedMutation} from '@/lib/accepted-mutation.mjs';
-import { getDb } from "@/db";
+import { getDb, getSqliteDatabase } from "@/db";
 import { events, registrations, removedDemoEvents } from "@/db/schema";
 import { DEMO_EVENTS } from "@/lib/event-data";
 import { pendingEventSchema } from "@/lib/pending-event-validation";
 import { isEventReadyForRegistration } from "@/lib/event-rules";
 import { eventSchema, eventValidationMessage } from "@/lib/event-validation";
 import { isEventOwner } from "@/lib/event-ownership";
+import {eventCancellation} from '@/lib/registration-email';
+import {queueNotification,flushNotifications} from '@/lib/email-notifications.mjs';
 
 export const dynamic = "force-dynamic";
 
@@ -129,10 +131,17 @@ export async function DELETE(
       return NextResponse.json({ error: "Somente quem publicou esta experiência pode excluí-la." }, { status: 403 });
     }
 
-    await db.batch([
-      db.delete(registrations).where(eq(registrations.eventId, id)),
-      db.delete(events).where(eq(events.id, id)),
-    ]);
+    const storage=getSqliteDatabase();
+    storage.exec('BEGIN IMMEDIATE');
+    try{
+      const participants=storage.prepare('SELECT name,email,organization,role FROM registrations WHERE event_id=?').all(id);
+      storage.prepare('DELETE FROM registrations WHERE event_id=?').run(id);
+      const deleted=storage.prepare('DELETE FROM events WHERE id=?').run(id);
+      if(!deleted.changes){storage.exec('ROLLBACK');return NextResponse.json({error:'Esta agenda já foi cancelada.'},{status:404});}
+      for(const participant of participants)queueNotification(storage,eventCancellation(existing,participant,user.displayName));
+      storage.exec('COMMIT');
+    }catch(error){storage.exec('ROLLBACK');throw error;}
+    await flushNotifications();
 
     return NextResponse.json({ status: "deleted" });
   } catch (error) {

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import test from 'node:test';
-import {hostNotification, participantConfirmation} from '../lib/registration-email.ts';
+import {hostNotification, participantConfirmation,registrationCancellation,eventCancellation} from '../lib/registration-email.ts';
 
 const source=fs.readFileSync(new URL('../integrations/apps-script/Code.gs',import.meta.url),'utf8');
 const event={title:'Visita à escola',type:'Evento institucional',organization:'Motriz',contactName:'Equipe anfitriã',contactEmail:'anfitria@example.org',startDate:'2026-11-10',endDate:'2026-11-10',startTime:'09:00',endTime:'12:00',venue:'Escola parceira',city:'São Paulo',state:'SP'};
@@ -52,9 +52,25 @@ test('Apps Script distingue aviso ao responsável de confirmação ao participan
     assert.equal(message.name,'Portal do Ecossistema');
     assert.doesNotMatch(message.htmlBody,/chatgpt\.site|IMERSÕES DO ECOSSISTEMA/);
     const links=[...message.htmlBody.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
-    assert.deepEqual(links,['https://portalecossistema.fundacaolemann.codebit.biz/imersoes','https://portalecossistema.fundacaolemann.codebit.biz/termos-de-uso','https://portalecossistema.fundacaolemann.codebit.biz/privacidade']);
+    assert.deepEqual(links,['https://portalecossistema.fundacaolemann.org.br/imersoes','https://portalecossistema.fundacaolemann.org.br/termos-de-uso','https://portalecossistema.fundacaolemann.org.br/privacidade']);
     assert.equal(Object.keys(message.inlineImages).length,2);
   }
+});
+
+test('cancelamento de inscrição avisa o anfitrião e cancelamento de agenda avisa a pessoa inscrita',()=>{
+ const {post,messages}=app();
+ assert.equal(post(registrationCancellation(event,person)).ok,true);
+ assert.equal(post(eventCancellation(event,person,'Pessoa anfitriã')).ok,true);
+ assert.equal(messages[0].to,event.contactEmail);
+ assert.match(messages[0].subject,/^Inscrição cancelada:/);
+ assert.match(messages[0].body,/Maria Exemplo cancelou a inscrição/);
+ assert.doesNotMatch(messages[0].body,/Nova inscrição recebida/);
+ assert.equal(messages[1].to,person.email);
+ assert.match(messages[1].subject,/^Agenda cancelada:/);
+ assert.match(messages[1].body,/Pessoa anfitriã/);
+ assert.match(messages[1].htmlBody,/Sua inscrição foi encerrada/);
+ assert.equal(messages[1].replyTo,event.contactEmail);
+ assert.doesNotMatch(messages[1].body,/Recebemos sua inscrição/);
 });
 
 test('Apps Script preserva chamadas antigas sem tipo de notificação',()=>{

@@ -3,9 +3,11 @@ import { and, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import {getPortalUser as getSiteUser} from "@/app/portal-access";
 import { getAppRole } from "@/app/authz";
-import { getDb } from "@/db";
+import { getDb, getSqliteDatabase } from "@/db";
 import { events, registrations } from "@/db/schema";
 import { isEventOwner } from "@/lib/event-ownership";
+import {registrationCancellation} from '@/lib/registration-email';
+import {queueNotification,flushNotifications} from '@/lib/email-notifications.mjs';
 
 export const dynamic = "force-dynamic";
 
@@ -28,24 +30,31 @@ export async function DELETE(
       return NextResponse.json({ error: "Experiência não encontrada." }, { status: 404 });
     }
 
-    const canManage = isEventOwner(event, user) || await getAppRole(user) === "admin";
-    if (!canManage) {
-      return NextResponse.json({ error: "Você não tem permissão para excluir esta inscrição." }, { status: 403 });
-    }
-
     const [registration] = await db
-      .select({ id: registrations.id })
+      .select()
       .from(registrations)
       .where(and(eq(registrations.id, registrationId), eq(registrations.eventId, id)))
       .limit(1);
+
+    const canManage = isEventOwner(event, user) || await getAppRole(user) === "admin";
+    const isParticipant = registration?.email.trim().toLowerCase() === user.email.trim().toLowerCase();
+    if (!canManage && !isParticipant) {
+      return NextResponse.json({ error: "Você só pode cancelar a inscrição vinculada ao seu próprio e-mail." }, { status: 403 });
+    }
 
     if (!registration) {
       return NextResponse.json({ error: "Inscrição não encontrada." }, { status: 404 });
     }
 
-    await db
-      .delete(registrations)
-      .where(and(eq(registrations.id, registrationId), eq(registrations.eventId, id)));
+    const storage=getSqliteDatabase();
+    storage.exec('BEGIN IMMEDIATE');
+    try {
+      const deleted=storage.prepare('DELETE FROM registrations WHERE id=? AND event_id=?'+(canManage?'':' AND lower(trim(email))=?')).run(registrationId,id,...(canManage?[]:[user.email.trim().toLowerCase()]));
+      if(!deleted.changes){storage.exec('ROLLBACK');return NextResponse.json({error:'Esta inscrição já foi cancelada.'},{status:404});}
+      if(isParticipant)queueNotification(storage,registrationCancellation(event,registration));
+      storage.exec('COMMIT');
+    } catch(error){storage.exec('ROLLBACK');throw error;}
+    if(isParticipant)await flushNotifications();
 
     return NextResponse.json({ status: "deleted" });
   } catch (error) {

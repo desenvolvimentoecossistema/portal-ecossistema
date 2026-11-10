@@ -71,3 +71,11 @@ export function participantConfirmation(event: RegistrationEmailEvent, participa
     text,
   };
 }
+
+export function registrationCancellation(event: RegistrationEmailEvent, participant: RegistrationEmailParticipant) {
+  return {...hostNotification(event,participant),notificationType:'registration_cancellation' as const};
+}
+
+export function eventCancellation(event: RegistrationEmailEvent, participant: RegistrationEmailParticipant, canceledBy: string) {
+  return {...participantConfirmation(event,participant),notificationType:'event_cancellation' as const,canceledBy};
+}

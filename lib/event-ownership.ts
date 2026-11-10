@@ -20,5 +20,5 @@ export function eventForViewer<T extends { contactName: string; contactEmail: st
   isAdmin: boolean,
 ): T {
   if (isAdmin || isEventOwner(event, user)) return event;
-  return { ...event, contactName: "", contactEmail: "", creatorEmail: "" };
+  return { ...event, creatorEmail: "" };
 }

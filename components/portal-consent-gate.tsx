@@ -27,16 +27,16 @@ export function PortalConsentGate({preview,returnTo}:{preview:boolean;returnTo:s
      <label><input type="checkbox" required aria-label="Li e aceito os Termos de Uso." checked={terms} disabled={!read[0]} onChange={event=>setTerms(event.target.checked)}/><span>Li e aceito.</span></label>
     </div>
     <div className="consent-document" role="group" aria-labelledby="consent-privacy">
-     <button id="consent-privacy" type="button" onClick={()=>setDocument(1)}><ShieldCheck className="consent-document-icon" aria-hidden="true"/><span>Aviso de Privacidade</span><ChevronRight className="consent-document-arrow" aria-hidden="true"/></button>
+     <button id="consent-privacy" type="button" onClick={()=>setDocument(1)}><ShieldCheck className="consent-document-icon" aria-hidden="true"/><span>Política de Privacidade</span><ChevronRight className="consent-document-arrow" aria-hidden="true"/></button>
      <p>Como seus dados são utilizados e protegidos.</p>
-     <label><input type="checkbox" required aria-label="Li e estou ciente do Aviso de Privacidade." checked={privacy} disabled={!read[1]} onChange={event=>setPrivacy(event.target.checked)}/><span>Li e estou ciente.</span></label>
+     <label><input type="checkbox" required aria-label="Li e estou ciente da Política de Privacidade." checked={privacy} disabled={!read[1]} onChange={event=>setPrivacy(event.target.checked)}/><span>Li e estou ciente.</span></label>
     </div>
    </div>
    {error&&<p role="alert">{error}</p>}
    <button className="consent-primary" type="submit" disabled={!read.every(Boolean)||!terms||!privacy||saving}>{saving?'Registrando…':preview?'Concluir prévia':'Aceitar e continuar'}</button>
    {preview&&<button className="consent-secondary" type="button" onClick={()=>location.assign(returnTo)}>Fechar prévia</button>}
   </form>:<section className="consent-reader-section">
-   <h2>{document===0?'Termos de Uso':'Aviso de Privacidade'}</h2>
+   <h2>{document===0?'Termos de Uso':'Política de Privacidade'}</h2>
    <div className="legal-document consent-reader" ref={reader} onScroll={checkEnd} tabIndex={0}><LegalDocumentBody index={document}/></div>
    <button className="consent-primary" type="button" onClick={()=>setDocument(null)}>{read[document]?'Voltar às confirmações':'Voltar'}</button>
   </section>}

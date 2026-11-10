@@ -35,7 +35,7 @@ page=page.replace(/function renderMapList\(view,mk,counts\) \{[\s\S]*?\n\}/,
 page=page.replace("  if (v !== 'programas' && (!Object.hasOwn(VIEW_TAB, v) || VIEW_TAB[v] !== activeTab)) v = 'programas';",
  "  if(v!=='programas'&&!Object.hasOwn(VIEW_TAB,v))v='programas';\n  if(VIEW_TAB[v]&&VIEW_TAB[v]!==activeTab){activeTab=VIEW_TAB[v];clearKw();reloadProgramsData();}");
 page=page.replace("  activeView = v;","  activeView = v;\n  syncPortalMapNavigation(v,document,sharedReady||!IS_HOSTED);");
-page=page.replaceAll('Clique numa estratégia com número para ver, em Programas, os programas ligados a ela.','Clique numa estratégia enumerada para ver os programas que correspondem a ela.');
+page=page.replaceAll('Clique numa estratégia com número para ver, em Programas, os programas ligados a ela.','Clique em uma estratégia enumerada para ver os programas que correspondem a ela.');
 // Capture the requested view before the initial render updates the address.
 page=page.replace("let activeView = 'programas';",`${portalMapPath.toString()}\n${portalStrategyHref.toString()}\n${resolvePortalStrategyLink.toString()}\nconst portalRequestedSearch=location.search;\nconst portalRequestedView=(${resolvePortalMapView.toString()})(portalRequestedSearch,location.pathname);\n${syncPortalMapNavigation.toString()}\n${setPortalMapLoadState.toString()}\nlet activeView = 'programas';`);
 page=page.replace('"label": "Centro Lemann de Sobral"','"label": "Centro Lemann"');

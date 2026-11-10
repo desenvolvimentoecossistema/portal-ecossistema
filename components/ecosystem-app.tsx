@@ -16,6 +16,7 @@ import {
   Clock3,
   FileText,
   MapPin,
+  Mail,
   Pencil,
   Search,
   List,
@@ -91,6 +92,13 @@ type ManagedUser = {
   displayName: string;
   role: "admin" | "user";
   protected: boolean;
+};
+
+type OwnRegistration = EventRegistration & {
+  eventId: string;
+  eventTitle: string;
+  eventStartDate: string;
+  eventEndDate: string;
 };
 
 function asDate(date: string) {
@@ -265,6 +273,12 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
   const [loadingRegistrations, setLoadingRegistrations] = useState(false);
   const [registrationToDelete, setRegistrationToDelete] = useState<EventRegistration | null>(null);
   const [deletingRegistration, setDeletingRegistration] = useState(false);
+  const [ownRegistrations, setOwnRegistrations] = useState<OwnRegistration[]>([]);
+  const [ownRegistrationsOpen, setOwnRegistrationsOpen] = useState(false);
+  const [loadingOwnRegistrations, setLoadingOwnRegistrations] = useState(false);
+  const [ownRegistrationsError, setOwnRegistrationsError] = useState("");
+  const [ownRegistrationToCancel, setOwnRegistrationToCancel] = useState<OwnRegistration | null>(null);
+  const [cancelingOwnRegistration, setCancelingOwnRegistration] = useState(false);
   const [eventToDelete, setEventToDelete] = useState<EcosystemEvent | null>(null);
   const [deletingEvent, setDeletingEvent] = useState(false);
   const [publishOrganization, setPublishOrganization] = useState<string>("");
@@ -294,6 +308,35 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
   }, []);
 
   useEffect(() => { void Promise.resolve().then(loadEvents); }, [loadEvents]);
+
+  const loadOwnRegistrations = useCallback(async () => {
+    setLoadingOwnRegistrations(true);
+    setOwnRegistrationsError("");
+    try {
+      const response = await fetch("/api/registrations", { cache: "no-store" });
+      const result = await response.json() as OwnRegistration[] | { error?: string };
+      if (!response.ok || !Array.isArray(result)) throw new Error(!Array.isArray(result) ? result.error : undefined);
+      setOwnRegistrations(result);
+    } catch (error) {
+      setOwnRegistrationsError(error instanceof Error ? error.message : "Não foi possível carregar suas inscrições.");
+    } finally { setLoadingOwnRegistrations(false); }
+  }, []);
+
+  async function cancelOwnRegistration() {
+    if (!ownRegistrationToCancel) return;
+    setCancelingOwnRegistration(true);
+    try {
+      const response = await fetch(`/api/events/${ownRegistrationToCancel.eventId}/registrations/${ownRegistrationToCancel.id}`, { method: "DELETE" });
+      const result = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(result.error || "Não foi possível cancelar a inscrição.");
+      setOwnRegistrations(current => current.filter(item => item.id !== ownRegistrationToCancel.id));
+      setOwnRegistrationToCancel(null);
+      await loadEvents();
+      toast.success("Inscrição cancelada", { description: "Sua vaga foi liberada. As inscrições de outras pessoas foram mantidas." });
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Não foi possível cancelar a inscrição.");
+    } finally { setCancelingOwnRegistration(false); }
+  }
 
   useEffect(() => {
     const sections = ["agenda", "como-funciona"]
@@ -461,7 +504,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       setRegistrationEvent(null);
       setRegistrationOrganization("");
       setIncludeSecondParticipant(false);
-      toast.success(participants.length === 2 ? "Duas inscrições recebidas" : "Inscrição recebida", { description: result.confirmationsRequested === participants.length ? "A confirmação foi solicitada por e-mail para cada pessoa inscrita." : "A inscrição foi registrada, mas não foi possível solicitar a confirmação por e-mail. Consulte a organização anfitriã se precisar confirmar os detalhes." });
+      toast.success(participants.length === 2 ? "Duas inscrições confirmadas" : "Inscrição confirmada", { description: "Consulte sua participação em ‘Minhas inscrições’ com a conta vinculada ao e-mail utilizado na inscrição." });
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Não foi possível concluir a inscrição.");
     } finally {
@@ -498,7 +541,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       setEvents((current) => current.filter((item) => item.id !== eventToDelete.id));
       setSelected(null);
       if (registrationsEvent?.id === eventToDelete.id) setRegistrationsEvent(null);
-      toast.success(eventToDelete.isDemo ? "Exemplo excluído" : "Agenda excluída", { description: eventToDelete.isDemo ? "O exemplo não aparece mais na agenda." : "A atividade e suas inscrições foram removidas." });
+      toast.success(eventToDelete.isDemo ? "Exemplo excluído" : "Agenda cancelada", { description: eventToDelete.isDemo ? "O exemplo não aparece mais na agenda." : "As inscrições foram encerradas e o aviso aos participantes foi registrado para envio." });
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Não foi possível excluir a agenda.");
     } finally {
@@ -555,6 +598,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
               <button type="button" aria-pressed={viewMode === "cards"} onClick={() => setViewMode("cards")} className={`flex h-10 items-center gap-2 rounded-full px-4 text-sm font-extrabold transition ${viewMode === "cards" ? "bg-[#052B47] text-white" : "text-[#052B47] hover:bg-[#E8F3EF]"}`}><List className="size-4" aria-hidden="true" />Lista</button>
               <button type="button" aria-pressed={viewMode === "calendar"} onClick={() => setViewMode("calendar")} className={`flex h-10 items-center gap-2 rounded-full px-4 text-sm font-extrabold transition ${viewMode === "calendar" ? "bg-[#052B47] text-white" : "text-[#052B47] hover:bg-[#E8F3EF]"}`}><CalendarDays className="size-4" aria-hidden="true" />Calendário</button>
             </div>
+            <Button variant="outline" onClick={() => { setOwnRegistrationsOpen(true); void loadOwnRegistrations(); }} className="mt-3 rounded-full border-[#052B47]/25 bg-white text-[#052B47]"><ClipboardList className="mr-2 size-4"/>Minhas inscrições</Button>
           </div>
           <div className="flex w-full flex-col gap-2 rounded-2xl border border-[#052B47]/10 bg-white p-1.5 shadow-[0_8px_24px_rgba(5,43,71,0.06)] sm:flex-row sm:items-center ">
             <Button onClick={openCreateForm} className="h-11 shrink-0 rounded-xl bg-[#052B47] px-4 font-bold text-white hover:bg-[#007F68]"><Sparkles className="mr-2 size-4"/>Compartilhar agenda</Button>
@@ -628,6 +672,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                 {selected.transport && <InfoRow icon={Bus} title="Transporte local">{selected.transport}</InfoRow>}
                 {selected.accommodation && <InfoRow icon={BedDouble} title="Hospedagem">{selected.accommodation}</InfoRow>}
                 {selected.meals && <InfoRow icon={Utensils} title="Alimentação">{selected.meals}</InfoRow>}
+                {(selected.contactName || selected.contactEmail) && <InfoRow icon={Mail} title="Contato da organização anfitriã"><span className="block">{selected.contactName}</span>{selected.contactEmail && <a className="break-all underline underline-offset-4" href={`mailto:${selected.contactEmail}`}>{selected.contactEmail}</a>}</InfoRow>}
 
                 {selected.additionalNotes && <InfoRow icon={FileText} title="Observações adicionais">{selected.additionalNotes}</InfoRow>}
               </div>
@@ -636,7 +681,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                 <Button disabled={!isEventReadyForRegistration(selected) || selected.availableSpots === 0 || selected.isDemo || !isRegistrationOpen(selected.registrationDeadline)} onClick={() => { setRegistrationEvent(selected); setSelected(null); }} className="mt-5 h-12 w-full justify-center rounded-full bg-[#052B47] px-4 text-sm font-extrabold leading-tight text-white hover:bg-[#007F68]">{selected.isDemo ? "Exemplo demonstrativo" : !isEventReadyForRegistration(selected) ? "Inscrições em preparação" : !isRegistrationOpen(selected.registrationDeadline) ? "Inscrições encerradas" : selected.availableSpots === 0 ? "Vagas preenchidas" : "Tenho interesse em participar"} {!selected.isDemo && selected.availableSpots > 0 && isEventReadyForRegistration(selected) && isRegistrationOpen(selected.registrationDeadline) && <ArrowRight className="size-4 shrink-0" />}</Button>
                 {!selected.isDemo && (isEventOwner(selected, user) || user.role === "admin") && <Button variant="outline" onClick={() => openEditForm(selected)} className="mt-3 h-11 w-full rounded-full border-[#052B47]/30 bg-transparent font-extrabold text-[#052B47] hover:bg-white"><Pencil className="mr-1.5 size-4" />Editar agenda</Button>}
                 {!selected.isDemo && (isEventOwner(selected, user) || user.role === "admin") && <Button variant="outline" onClick={() => void openRegistrations(selected)} className="mt-3 h-11 w-full rounded-full border-[#052B47]/30 bg-transparent font-extrabold text-[#052B47] hover:bg-white"><ClipboardList className="mr-1.5 size-4" />Ver inscrições recebidas</Button>}
-                {(user.role === "admin" || (!selected.isDemo && isEventOwner(selected, user))) && <Button variant="outline" onClick={() => setEventToDelete(selected)} className="mt-3 h-11 w-full rounded-full border-[#B42318]/40 bg-transparent font-extrabold text-[#B42318] hover:border-[#B42318] hover:bg-[#B42318]/10 hover:text-[#B42318]"><Trash2 className="mr-1.5 size-4" />Excluir atividade</Button>}
+                {(user.role === "admin" || (!selected.isDemo && isEventOwner(selected, user))) && <Button variant="outline" onClick={() => setEventToDelete(selected)} className="mt-3 h-11 w-full rounded-full border-[#B42318]/40 bg-transparent font-extrabold text-[#B42318] hover:border-[#B42318] hover:bg-[#B42318]/10 hover:text-[#B42318]"><Trash2 className="mr-1.5 size-4" />{selected.isDemo ? "Excluir exemplo" : "Cancelar agenda"}</Button>}
               </aside>
             </div>
           </DialogContent>
@@ -700,10 +745,10 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
                   <SelectContent>{CORE_ORGANIZATIONS.map((organization) => <SelectItem key={organization} value={organization}>{organization}</SelectItem>)}</SelectContent>
                 </Select>
               </label>
-              <Field label="Nome completo" name="name" className="sm:col-span-2" /><Field label="E-mail" name="email" type="email" autoComplete="off" /><Field label="Cargo ou função" name="role" />
+              <Field label="Nome completo" name="name" className="sm:col-span-2" /><Field label="E-mail" name="email" type="email" autoComplete="off" /><Field label="Cargo" name="role" />
               {includeSecondParticipant ? <div className="grid gap-4 rounded-xl border border-[#052B47]/15 bg-[#E8F3EF] p-4 sm:col-span-2 sm:grid-cols-2">
                 <div className="flex items-center justify-between sm:col-span-2"><p className="text-sm font-black">Segunda pessoa</p><Button type="button" variant="ghost" size="sm" onClick={() => setIncludeSecondParticipant(false)} className="text-[#B42318]">Remover</Button></div>
-                <Field label="Nome completo" name="secondName" className="sm:col-span-2" /><Field label="E-mail" name="secondEmail" type="email" autoComplete="off" /><Field label="Cargo ou função" name="secondRole" />
+                <Field label="Nome completo" name="secondName" className="sm:col-span-2" /><Field label="E-mail" name="secondEmail" type="email" autoComplete="off" /><Field label="Cargo" name="secondRole" />
               </div> : registrationEvent.availableSpots > 1 ? <Button type="button" variant="outline" onClick={() => setIncludeSecondParticipant(true)} className="w-fit rounded-full border-[#052B47]/30 font-bold sm:col-span-2">Adicionar mais uma pessoa</Button> : <p className="text-sm text-[#052B47]/75 sm:col-span-2">Há apenas uma vaga disponível nesta atividade.</p>}
               <p className="text-xs leading-relaxed text-[#052B47] sm:col-span-2">Os dados e e-mails informados serão compartilhados com a organização anfitriã para organizar a participação.</p>
               <LegalFormNotice/>
@@ -756,7 +801,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
               <TextArea label="Alimentação" name="meals" defaultValue={editingEvent?.meals} required={false} maxLength={400} placeholder="Informe se há ou não refeições incluídas e em quais momentos da agenda." />
               <TextArea label="Observações adicionais" name="additionalNotes" defaultValue={editingEvent?.additionalNotes} required={false} className="sm:col-span-2 lg:col-span-3" placeholder="Compartilhe orientações importantes que não estejam contempladas nos itens anteriores." />
             </fieldset>
-            <fieldset className="grid min-w-0 gap-4 border-t border-[#052B47]/15 pt-6 sm:grid-cols-2"><Field label="Pessoa de contato" name="contactName" defaultValue={editingEvent?.contactName} /><Field label="E-mail" name="contactEmail" type="email" defaultValue={editingEvent?.contactEmail} /></fieldset>
+            <fieldset className="grid min-w-0 gap-4 border-t border-[#052B47]/15 pt-6 sm:grid-cols-2"><Field label="Pessoa de contato" name="contactName" defaultValue={editingEvent?.contactName} /><Field label="E-mail profissional de contato" name="contactEmail" type="email" defaultValue={editingEvent?.contactEmail} /><p className="text-sm leading-relaxed text-[#052B47]/75 sm:col-span-2">O nome e o e-mail de contato serão exibidos nos detalhes da agenda para as pessoas com acesso ao portal.</p></fieldset>
             <LegalFormNotice action="event"/>
             <DialogFooter><Button type="submit" disabled={submitting} className="h-12 rounded-full bg-[#052B47] px-7 font-extrabold text-white hover:bg-[#007F68]">{submitting ? (editingEvent ? "Salvando…" : "Publicando…") : (editingEvent ? "Salvar alterações" : "Publicar agenda")}</Button></DialogFooter>
           </form>
@@ -795,6 +840,18 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
         </DialogContent>
       </Dialog>
 
+      <Dialog open={ownRegistrationsOpen} onOpenChange={setOwnRegistrationsOpen}>
+        <DialogContent className={`${dialogCloseButtonClass} max-h-[90vh] overflow-y-auto rounded-[22px] border-[#052B47]/20 sm:max-w-2xl`}>
+          <DialogHeader><DialogTitle className="text-2xl font-black text-[#052B47]">Minhas inscrições</DialogTitle><DialogDescription>Inscrições vinculadas a {user.email}. Você pode cancelar somente a sua participação.</DialogDescription></DialogHeader>
+          {loadingOwnRegistrations ? <p role="status">Carregando suas inscrições…</p> : ownRegistrationsError ? <div role="alert"><p>{ownRegistrationsError}</p><Button variant="outline" onClick={() => void loadOwnRegistrations()}>Tentar novamente</Button></div> : ownRegistrations.length === 0 ? <p>Você não tem inscrições registradas com este e-mail.</p> : <ul className="space-y-4">{ownRegistrations.map(item => <li key={item.id} className="rounded-2xl border border-[#052B47]/15 p-5"><h3 className="font-extrabold text-[#052B47]">{item.eventTitle}</h3><p className="mt-2 text-sm text-[#052B47]/80">{item.eventStartDate ? formatEventDateRange(item.eventStartDate,item.eventEndDate) : "Data a confirmar"}</p><p className="mt-1 text-sm text-[#052B47]/80">{item.name} · {item.organization}</p><Button variant="outline" className="mt-4 rounded-full border-[#B42318]/30 text-[#B42318]" onClick={() => setOwnRegistrationToCancel(item)}>Cancelar minha inscrição</Button></li>)}</ul>}
+        </DialogContent>
+      </Dialog>
+      <AlertDialog open={Boolean(ownRegistrationToCancel)} onOpenChange={open => { if (!open && !cancelingOwnRegistration) setOwnRegistrationToCancel(null); }}>
+        <AlertDialogContent className="rounded-[22px] border-[#052B47]/20">
+          <AlertDialogHeader><AlertDialogTitle>Cancelar sua inscrição?</AlertDialogTitle><AlertDialogDescription>Sua participação em “{ownRegistrationToCancel?.eventTitle}” será cancelada e a vaga será liberada. O anfitrião receberá um aviso por e-mail. As inscrições de outras pessoas serão mantidas.</AlertDialogDescription></AlertDialogHeader>
+          <AlertDialogFooter><AlertDialogCancel disabled={cancelingOwnRegistration}>Manter inscrição</AlertDialogCancel><Button disabled={cancelingOwnRegistration} onClick={() => void cancelOwnRegistration()} className="rounded-full bg-[#B42318] text-white hover:bg-[#8F1C13]">{cancelingOwnRegistration ? "Cancelando…" : "Confirmar cancelamento"}</Button></AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       <AlertDialog open={Boolean(registrationToDelete)} onOpenChange={(open) => !open && setRegistrationToDelete(null)}>
         <AlertDialogContent className="rounded-[22px] border-[#052B47]/20">
           <AlertDialogHeader>
@@ -812,16 +869,16 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       <AlertDialog open={Boolean(eventToDelete)} onOpenChange={(open) => !open && setEventToDelete(null)}>
         <AlertDialogContent className="rounded-[22px] border-[#052B47]/20">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-xl font-black text-[#052B47]">Excluir esta atividade?</AlertDialogTitle>
+            <AlertDialogTitle className="text-xl font-black text-[#052B47]">{eventToDelete?.isDemo ? "Excluir este exemplo?" : "Cancelar esta agenda?"}</AlertDialogTitle>
             <AlertDialogDescription className="text-base leading-relaxed text-[#052B47]/75">
               {eventToDelete?.isDemo
                 ? `O exemplo “${eventToDelete.title}” será removido da agenda.`
-                : `A atividade “${eventToDelete?.title}” e todas as suas inscrições serão excluídas permanentemente.`}
+                : `A agenda “${eventToDelete?.title}” será cancelada e removida do portal, e suas inscrições serão encerradas. As pessoas inscritas receberão um aviso por e-mail. A remoção é permanente.`}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={deletingEvent} className="rounded-full">Cancelar</AlertDialogCancel>
-            <AlertDialogAction disabled={deletingEvent} onClick={() => void deleteEvent()} className="rounded-full bg-[#B42318] text-white hover:bg-[#8F1C13]">{deletingEvent ? "Excluindo…" : "Excluir atividade"}</AlertDialogAction>
+            <AlertDialogCancel disabled={deletingEvent} className="rounded-full">Manter agenda</AlertDialogCancel>
+            <AlertDialogAction disabled={deletingEvent} onClick={() => void deleteEvent()} className="rounded-full bg-[#B42318] text-white hover:bg-[#8F1C13]">{deletingEvent ? "Cancelando…" : eventToDelete?.isDemo ? "Excluir exemplo" : "Confirmar cancelamento"}</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

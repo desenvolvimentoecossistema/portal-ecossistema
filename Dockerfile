@@ -17,4 +17,4 @@ RUN mkdir -p /data && chown node:node /data
 USER node
 EXPOSE 3000
 VOLUME ["/data"]
-CMD ["node","server.js"]
+CMD ["node","scripts/production-start.mjs"]
