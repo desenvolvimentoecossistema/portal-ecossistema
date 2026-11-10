@@ -24,7 +24,7 @@ export async function POST(request:Request){
  try{
   const input=await request.json(),error=portalConsentError(input);
   if(error)return Response.json({error},{status:400,headers});
-  const record=await acceptanceRecord(user.userId,'portal-access','portal');
+  const record=await acceptanceRecord(user.userId,'portal-access','portal',user);
   await getDb().insert(legalAcceptances).values(record);
   return Response.json({accepted:true,version:legalDocumentVersion},{headers});
  }catch{return Response.json({error:'Não foi possível registrar o aceite. Tente novamente.'},{status:503,headers});}

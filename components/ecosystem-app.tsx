@@ -813,6 +813,7 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
           <div className="bg-[#052B47] px-6 py-7 pr-14 text-white sm:px-8">
             <DialogHeader>
               <DialogTitle className="text-2xl font-black">Administradores</DialogTitle>
+              <a className="mt-3 inline-flex font-bold underline underline-offset-4" href="/administracao/aceites">Consultar registros de aceite</a>
               <DialogDescription className="text-base text-white">Conceda ou remova o perfil de administrador da agenda.</DialogDescription>
             </DialogHeader>
           </div>

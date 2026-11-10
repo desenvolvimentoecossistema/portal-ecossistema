@@ -1,5 +1,13 @@
 # Verificação da entrega
 
+## Conservação e comprovantes de aceite — 10/11/2026
+
+- A migração 0005 preserva os registros existentes e acrescenta arquivo imutável dos documentos, identificação no momento do aceite, atividade da conta, prazos e reservas legais específicas. O histórico do Git fornece cópias antigas somente por correspondência exata do SHA-256; lacunas e identificação recuperada do cadastro atual são informadas nos comprovantes.
+- Administradores podem consultar `/administracao/aceites`, pesquisar por nome ou e-mail e baixar JSON ou abrir HTML para impressão. A API exige sessão, aceite vigente e administração. Não há consulta pública nem permissão ampliada para usuários comuns.
+- Conservação diária, aplicada também antes de abrir o servidor, elimina registros vencidos após dois anos conforme a política. Atividades futuras, o dia-limite, sessões válidas e reservas legais vigentes são preservados. A limpeza é transacional e não envia avisos de cancelamento para atividades antigas. As cópias locais geradas pelo próprio portal têm rotação de trinta dias; cópias externas da infraestrutura permanecem sob gestão da hospedagem.
+- 70 testes automatizados aprovados; TypeScript, build standalone e importador aprovados. Os 16 fluxos HTTP passaram em acesso direto e atrás de proxy HTTPS simulado, incluindo acesso restrito e integridade dos comprovantes. A interface e o download foram conferidos no Chrome com identidade e banco fictícios locais. Nenhuma agenda, inscrição ou concordância foi criada em produção durante esses testes.
+- Os documentos do portal foram sincronizados com os Google Docs, com ciência da Política e aceite obrigatório dos Termos, versão r2. Países e mecanismos efetivos de transferência internacional e a identificação institucional do encarregado não foram presumidos: dependem de confirmação da hospedagem e da Fundação.
+
 ## Sincronização do portal atual — 06/11/2026
 
 - Interface e conteúdo sincronizados com a versão publicada 66 do portal, fonte `1ca2c2ec4834a387d6e0cc708d01b60734867ae5`: descrições completas das sete organizações, Motriz sem negrito, textos de apresentação, link da Fundação Lemann, acesso a um programa específico e filtros que preservam foco e rolagem.

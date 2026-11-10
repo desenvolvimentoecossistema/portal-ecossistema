@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
-import {readFile} from 'node:fs/promises';
+import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {formTermsVersionError,legalAcceptanceRecord,registrationAcceptanceStatement} from '../lib/legal-acceptance.js';
 import {legalDocumentVersion} from '../lib/portal-legal.js';
@@ -20,7 +20,7 @@ test('o registro usa a identidade autenticada, data e impressão do documento',a
 test('só registra o aceite de inscrição se o lote anterior inseriu todas as pessoas',async()=>{
  const db=new DatabaseSync(':memory:');
  try{
-  db.exec(await readFile(new URL('../database/0003_legal_acceptances.sql',import.meta.url),'utf8'));
+  for(const file of (await readdir(new URL('../database/',import.meta.url))).filter(f=>f.endsWith('.sql')).sort())db.exec(await readFile(new URL('../database/'+file,import.meta.url),'utf8'));
   db.exec('CREATE TABLE registration_fixture(id INTEGER PRIMARY KEY);');
   const write=async(changes)=>{
    const statement=registrationAcceptanceStatement(await legalAcceptanceRecord('u','registration','e','terms'),2);

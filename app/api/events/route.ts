@@ -86,7 +86,7 @@ export async function POST(request: Request) {
       updatedAt: new Date().toISOString(),
     };
     const db=getDb();
-    await db.batch([db.insert(events).values(event),db.insert(legalAcceptances).values(await acceptanceRecord(user.userId,'agenda-create',event.id))]);
+    await db.batch([db.insert(events).values(event),db.insert(legalAcceptances).values(await acceptanceRecord(user.userId,'agenda-create',event.id,{...user,endDate:event.endDate}))]);
     return NextResponse.json({ ...event, availableSpots: event.maxParticipants }, { status: 201 });
   } catch (error) {
     if (error instanceof z.ZodError) {

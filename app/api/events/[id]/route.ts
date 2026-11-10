@@ -81,7 +81,7 @@ export async function PATCH(
       updatedAt: new Date().toISOString(),
     };
     const mutation=db.update(events).set(updated).where(and(eq(events.id,id),sql`(SELECT count(*) FROM registrations WHERE event_id = ${id}) <= ${payload.maxParticipants}`)).toSQL();
-    const changed=acceptedMutation(mutation,await acceptanceRecord(user.userId,'agenda-update',id),1);
+    const changed=acceptedMutation(mutation,await acceptanceRecord(user.userId,'agenda-update',id,{...user,endDate:payload.endDate}),1);
     if(!changed.changes)return NextResponse.json({error:'As inscrições mudaram durante a edição. Recarregue a atividade e confira as vagas.'},{status:409});
 
     return NextResponse.json({
@@ -136,6 +136,8 @@ export async function DELETE(
     try{
       const participants=storage.prepare('SELECT name,email,organization,role FROM registrations WHERE event_id=?').all(id);
       storage.prepare('DELETE FROM registrations WHERE event_id=?').run(id);
+      // Cancellation ends the activity now, even if its planned date was later.
+      storage.prepare("UPDATE legal_acceptances SET resource_end_date=? WHERE resource_id=? AND action<>'portal-access'").run(new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()),id);
       const deleted=storage.prepare('DELETE FROM events WHERE id=?').run(id);
       if(!deleted.changes){storage.exec('ROLLBACK');return NextResponse.json({error:'Esta agenda já foi cancelada.'},{status:404});}
       for(const participant of participants)queueNotification(storage,eventCancellation(existing,participant,user.displayName));

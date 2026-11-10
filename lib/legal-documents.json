@@ -372,7 +372,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "A versão vigente destes Termos permanece disponível no portal. Mudanças relevantes serão comunicadas aos usuários, e um novo aceite será solicitado quando necessário. Os aceites são registrados com a identificação da conta, a versão do documento e a data e o horário da confirmação."
+            "text": "A versão vigente destes Termos permanece disponível no portal. Mudanças relevantes serão comunicadas aos usuários, e um novo aceite será solicitado quando necessário. Os aceites são registrados com a identificação da conta, a versão do documento e a data e o horário da confirmação. A cópia exata dos documentos apresentada no momento do aceite é preservada para comprovar as regras aplicáveis à utilização do portal."
           },
           {
             "text": "\n"
@@ -499,6 +499,24 @@
         "runs": [
           {
             "text": "No cadastro de uma agenda, são utilizados o nome e o e-mail profissional da pessoa de contato, a identificação de quem realizou o cadastro e as informações da atividade. O nome e o e-mail de contato são exibidos nos detalhes da agenda às pessoas com acesso ao portal, para esclarecer dúvidas e organizar a participação.\n"
+          }
+        ]
+      },
+      {
+        "kind": "HEADING_2",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "Registros de acesso e de aceite\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "O portal registra a identificação da sua conta, nome, e-mail, data e hora do acesso e das confirmações, a operação realizada e a versão dos documentos apresentada. A cópia exata dos documentos é preservada para permitir a comprovação do aceite. Esses comprovantes são acessados somente por administradores autorizados e utilizados para administrar o acesso e comprovar as regras aplicáveis à utilização do serviço.\n"
           }
         ]
       },
@@ -669,7 +687,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "Os prazos de conservação consideram a finalidade de cada registro. Aplicam-se os seguintes períodos, ressalvadas as hipóteses legais que exijam ou autorizem conservação adicional:\n"
+            "text": "A conservação segue os prazos abaixo, ressalvadas as hipóteses legais que exijam ou autorizem conservação adicional:\n"
           }
         ]
       },
@@ -678,7 +696,7 @@
         "bullet": true,
         "runs": [
           {
-            "text": "Inscrições e dados de contato de organizadores: até dois anos após o encerramento da atividade.\n"
+            "text": "Agendas, inscrições e dados de contato de organizadores: até dois anos após o encerramento da atividade. Para agendas sem data definida, o prazo é contado da última edição.\n"
           }
         ]
       },
@@ -687,7 +705,16 @@
         "bullet": true,
         "runs": [
           {
-            "text": "Identificação de usuários, permissões e registros de aceite: durante o acesso autorizado e por até dois anos após seu encerramento.\n"
+            "text": "Identificação de usuários, permissões e registros de aceite de acesso: até dois anos após a última utilização do portal.\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": true,
+        "runs": [
+          {
+            "text": "Aceites relativos ao cadastro, à edição ou à inscrição em agendas: até dois anos após o encerramento da atividade ou a operação registrada, considerando a data mais recente.\n"
           }
         ]
       },
@@ -696,7 +723,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "Encerrado o prazo aplicável e não havendo fundamento legal para a conservação, os dados são eliminados ou anonimizados. O cancelamento de uma inscrição retira a pessoa da lista de participantes e libera a vaga; os registros necessários à comprovação do aceite e às comunicações operacionais seguem os critérios de conservação desta Política.\n"
+            "text": "As informações necessárias a agendas e inscrições ainda vigentes permanecem vinculadas a elas até o prazo correspondente. Rascunhos não publicados são eliminados após dois anos sem edição.\n"
           }
         ]
       },
@@ -705,7 +732,25 @@
         "bullet": false,
         "runs": [
           {
-            "text": "As cópias de segurança destinam-se à recuperação e à proteção do serviço, têm acesso restrito e estão sujeitas às regras de conservação aplicáveis, sem utilização para novas finalidades.\n"
+            "text": "A rotina automática de conservação elimina os registros que atingiram esses prazos. A conservação excepcional por obrigação legal ou exercício regular de direitos deve ter justificativa e prazo de revisão. O cancelamento de uma inscrição retira a pessoa da lista de participantes e libera a vaga; os comprovantes da operação seguem os prazos aplicáveis.\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "As cópias dos Termos de Uso e da Política de Privacidade, sem os dados pessoais dos usuários que os aceitaram, podem ser mantidas para preservar o histórico das regras do portal.\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "As cópias de segurança geradas pelo próprio portal têm acesso restrito e ciclo de substituição de até trinta dias. Não são utilizadas para novas finalidades. Em caso de restauração, a rotina de conservação é reaplicada antes da disponibilização do serviço.\n"
           }
         ]
       },
@@ -820,7 +865,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "Para exercer seus direitos, escreva para desenvolvimentoecossistema@fundacaolemann.org.br, descrevendo a solicitação e o e-mail utilizado no portal. Poderão ser solicitadas apenas as informações necessárias para confirmar sua identidade e proteger os dados.\n"
+            "text": "Para exercer seus direitos, escreva para desenvolvimentoecossistema@fundacaolemann.org.br, descrevendo a solicitação e o e-mail utilizado no portal. O atendimento é gratuito. Poderão ser solicitadas apenas as informações necessárias para confirmar sua identidade e proteger os dados. Você também pode apresentar uma petição à ANPD.\n"
           }
         ]
       },

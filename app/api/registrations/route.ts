@@ -88,7 +88,7 @@ export async function POST(request: Request) {
 
     const createdAt = new Date().toISOString();
     const insert = registrationInsert(payload.participants, payload.eventId, payload.organization, today, createdAt);
-    const result = acceptedMutation({sql:insert.sql,params:insert.values},await acceptanceRecord(user.userId,'registration',payload.eventId),payload.participants.length);
+    const result = acceptedMutation({sql:insert.sql,params:insert.values},await acceptanceRecord(user.userId,'registration',payload.eventId,{...user,endDate:event.endDate}),payload.participants.length);
 
     if (Number(result.changes ?? 0) !== payload.participants.length) {
       const [currentEvent, duplicate, organizationCount, totalCount] = await Promise.all([

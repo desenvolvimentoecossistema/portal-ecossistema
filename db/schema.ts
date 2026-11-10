@@ -8,6 +8,9 @@ export const legalAcceptances = sqliteTable("legal_acceptances",{
  acceptedAt:text("accepted_at").notNull(),
  action:text("action").notNull(),
  resourceId:text("resource_id").notNull(),
+ userEmail:text("user_email").notNull().default(''),
+ userName:text("user_name").notNull().default(''),
+ resourceEndDate:text("resource_end_date").notNull().default(''),
 });
 
 export const portalImports = sqliteTable("portal_imports", {
