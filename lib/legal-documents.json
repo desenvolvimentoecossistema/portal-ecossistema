@@ -561,6 +561,24 @@
         "bullet": false,
         "runs": [
           {
+            "text": "Os dados pessoais são compartilhados apenas quando necessário para organizar as atividades, manter o funcionamento do portal ou cumprir uma obrigação legal, conforme as situações descritas a seguir.\n"
+          }
+        ]
+      },
+      {
+        "kind": "HEADING_2",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "Administradores e organizações do Ecossistema\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": false,
+        "runs": [
+          {
             "text": "Os administradores autorizados e os responsáveis pelo gerenciamento de cada agenda acessam as inscrições necessárias à organização da respectiva atividade. O anfitrião recebe avisos de inscrição e de cancelamento, e o participante recebe as comunicações relacionadas à sua participação.\n"
           }
         ]
@@ -570,7 +588,16 @@
         "bullet": false,
         "runs": [
           {
-            "text": "A divulgação de uma agenda por uma organização não dá às demais organizações acesso irrestrito às inscrições. O compartilhamento com a anfitriã limita-se aos dados necessários para organizar a atividade, controlar vagas e comunicar-se com as pessoas inscritas.\n"
+            "text": "Quando a atividade for oferecida pelo Instituto Reúna, Centro Lemann, Associação Bem Comum, Associação Nova Escola, Motriz, MegaEdu, Instituto Trajetórias ou por outra organização que venha a integrar o Ecossistema, a respectiva anfitriã recebe somente os dados necessários para organizar a participação, controlar vagas e comunicar-se com as pessoas inscritas. A participação no Ecossistema não dá às demais organizações acesso irrestrito às inscrições.\n"
+          }
+        ]
+      },
+      {
+        "kind": "HEADING_2",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "Prestadores de serviços\n"
           }
         ]
       },
@@ -579,7 +606,7 @@
         "bullet": false,
         "runs": [
           {
-            "text": "A Codebit e os serviços de infraestrutura utilizados na hospedagem, como a AWS, participam da disponibilização e do suporte técnico do portal. Os serviços do Google são utilizados na autenticação e no envio de e-mails operacionais. Esses prestadores tratam os dados necessários à execução das respectivas funções, observadas as obrigações aplicáveis de proteção de dados.\n"
+            "text": "A Codebit e os serviços de infraestrutura utilizados na hospedagem, como a AWS, participam da disponibilização e do suporte técnico do portal. Os serviços do Google são utilizados na autenticação e no envio de e-mails operacionais. Esses prestadores tratam os dados necessários à execução das respectivas funções, observadas as diretrizes do Instituto Lemann e as obrigações aplicáveis de proteção de dados.\n"
           }
         ]
       },
@@ -593,11 +620,38 @@
         ]
       },
       {
+        "kind": "HEADING_2",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "Autoridades públicas\n"
+          }
+        ]
+      },
+      {
         "kind": "NORMAL_TEXT",
         "bullet": false,
         "runs": [
           {
-            "text": "Dados poderão ser fornecidos a autoridades competentes quando houver obrigação legal, regulatória ou determinação válida, nos limites necessários ao seu cumprimento. O portal não compartilha inscrições indistintamente com outras organizações, com futuros parceiros ou para finalidades estranhas às atividades e à operação do serviço.\n"
+            "text": "Dados poderão ser fornecidos a autoridades competentes quando houver obrigação legal, regulatória ou determinação válida, nos limites necessários ao seu cumprimento.\n"
+          }
+        ]
+      },
+      {
+        "kind": "HEADING_2",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "Outros terceiros\n"
+          }
+        ]
+      },
+      {
+        "kind": "NORMAL_TEXT",
+        "bullet": false,
+        "runs": [
+          {
+            "text": "O portal não compartilha inscrições indistintamente com terceiros ou futuros parceiros. Qualquer compartilhamento adicional deve ser necessário, compatível com as finalidades informadas nesta Política e amparado por uma base legal aplicável.\n"
           }
         ]
       },
