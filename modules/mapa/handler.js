@@ -3,9 +3,8 @@ const BODY_LIMIT = 2 * 1024 * 1024;
 function json(body,status=200) {
   return Response.json(body,{status,headers:{'cache-control':'no-store','x-content-type-options':'nosniff'}});
 }
-function canEdit(user,env) {
-  const allowed=String(env.MAP_ADMIN_EMAILS||'').split(/[;,]/).map(x=>x.trim().toLowerCase()).filter(Boolean);
-  return !!user && allowed.includes(user.email);
+function canEdit(user) {
+  return user?.role==='admin';
 }
 async function readBody(request) {
   if(!request.body)throw Error('Envie os dados da atualização.');
@@ -27,7 +26,7 @@ async function handleData(request,env,user) {
     }catch(_){return json({error:'Não foi possível carregar a versão compartilhada. A versão atual não foi alterada.'},503);}
   }
   if(request.method!=='PUT')return json({error:'Método não permitido.'},405);
-  if(!canEdit(user,env))return json({error:'Sua conta não tem permissão para publicar atualizações.'},403);
+  if(!canEdit(user))return json({error:'Sua conta não tem permissão para publicar atualizações.'},403);
   const origin=request.headers.get('origin'),expected=env.MAP_ORIGIN||new URL(request.url).origin;
   if(origin!==expected||request.headers.get('sec-fetch-site')==='cross-site')return json({error:'Origem da solicitação não permitida.'},403);
   if(!request.headers.get('content-type')?.toLowerCase().startsWith('application/json'))return json({error:'Formato de solicitação inválido.'},415);
@@ -72,12 +71,12 @@ export default {
       return new Response(request.method==='HEAD'?null:Uint8Array.from(atob(asset.base64),c=>c.charCodeAt(0)),{headers});
     }
     if(pathname==='/api/session'&&request.method==='GET'){
-      const editor=canEdit(user,env);
+      const editor=canEdit(user);
       const sourceUrl=editor&&/^[A-Za-z0-9_-]{20,150}$/.test(env.GOOGLE_SHEETS_ID||'')?'https://docs.google.com/spreadsheets/d/'+env.GOOGLE_SHEETS_ID+'/edit':null;
       return json({canEdit:editor,sourceUrl});
     }
     if(pathname==='/api/sheets/preview'){
-      if(!canEdit(user,env))return json({error:'Sua conta não tem permissão para atualizar o mapa.'},403);
+      if(!canEdit(user))return json({error:'Sua conta não tem permissão para atualizar o mapa.'},403);
       if(request.method!=='POST')return json({error:'Método não permitido.'},405);
       const expected=env.MAP_ORIGIN||new URL(request.url).origin;
       if(request.headers.get('origin')!==expected||request.headers.get('sec-fetch-site')==='cross-site')return json({error:'Origem da solicitação não permitida.'},403);

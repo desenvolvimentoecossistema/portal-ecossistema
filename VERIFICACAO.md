@@ -1,5 +1,12 @@
 # Verificação da entrega
 
+## Administração única do portal e espaçamento de controles — 11/11/2026
+
+- A atualização pelo Google Sheets e a publicação do mapa usam a mesma função de administração do portal. A lista antiga MAP_ADMIN_EMAILS deixa de conceder acesso. O servidor resolve a função da identidade autenticada a cada solicitação; campos enviados pelo visitante não definem a permissão.
+- Os testes HTTP verificam administrador principal, concessão e revogação de um administrador cadastrado no banco, recusa de usuário comum mesmo presente na lista antiga e recusa de cabeçalho forjado. A prévia do Sheets é testada sem credenciais externas, distinguindo recusa de permissão da falta de configuração da fonte.
+- 70 testes automatizados aprovados; TypeScript, build standalone e importação local de agenda e mapa aprovados. Os 17 fluxos HTTP passaram em acesso direto e atrás de proxy HTTPS simulado. Nenhuma permissão real ou dado publicado foi alterado durante esses testes.
+- Os controles Lista/Calendário e Minhas inscrições usam um espaço de 12 px, com quebra de linha em telas menores.
+
 ## Conservação e comprovantes de aceite — 10/11/2026
 
 - A migração 0005 preserva os registros existentes e acrescenta arquivo imutável dos documentos, identificação no momento do aceite, atividade da conta, prazos e reservas legais específicas. O histórico do Git fornece cópias antigas somente por correspondência exata do SHA-256; lacunas e identificação recuperada do cadastro atual são informadas nos comprovantes.

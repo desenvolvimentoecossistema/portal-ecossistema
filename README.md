@@ -15,7 +15,7 @@ Também há Dockerfile com saída standalone. O volume /data deve ser persistent
 
 ## Configuração
 
-O acesso usa Google OAuth. Cadastrar no cliente a URL `<SITE_ORIGIN>/auth/callback/google`. O segredo e a conta de serviço do Google Sheets ficam somente nas variáveis protegidas da hospedagem. A conta de serviço precisa de leitura da planilha configurada. Administradores da agenda e do mapa são definidos separadamente em BOOTSTRAP_ADMIN_EMAILS e MAP_ADMIN_EMAILS.
+O acesso usa Google OAuth. Cadastrar no cliente a URL `<SITE_ORIGIN>/auth/callback/google`. O segredo e a conta de serviço do Google Sheets ficam somente nas variáveis protegidas da hospedagem. A conta de serviço precisa de leitura da planilha configurada. A administração é única: os administradores do portal, definidos em BOOTSTRAP_ADMIN_EMAILS ou cadastrados no banco, também podem atualizar pelo Google Sheets e publicar os dados do mapa. A autorização é verificada no servidor em cada solicitação. A antiga variável MAP_ADMIN_EMAILS não é utilizada.
 
 Em hospedagem com proxy HTTPS, `SITE_ORIGIN` deve conter o domínio público exato, sem caminho, como `https://portalecossistema.fundacaolemann.codebit.biz`. O endereço interno de escuta, definido por `HOSTNAME` e `PORT`, pode ser diferente. A aplicação usa a origem pública configurada para login, redirecionamentos e validação das gravações, sem confiar em cabeçalhos de origem encaminhados pelo visitante.
 

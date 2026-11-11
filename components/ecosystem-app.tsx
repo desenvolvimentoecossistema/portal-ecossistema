@@ -593,12 +593,12 @@ export default function EcosystemApp({ user, initialQuery="" }: { user: AppUser;
       </div></details></div>
       <section id="agenda" className="mx-auto max-w-[1240px] scroll-mt-24 px-5 pb-12 pt-2 sm:px-8 sm:pb-16">
         <div className="mb-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_520px] lg:items-end">
-          <div className="max-w-[680px]">
+          <div className="flex max-w-[680px] flex-wrap items-center gap-3">
 <div className="inline-flex rounded-full border border-[#052B47]/15 bg-white p-1 shadow-[0_5px_18px_rgba(5,43,71,0.06)]" aria-label="Modo de visualização">
               <button type="button" aria-pressed={viewMode === "cards"} onClick={() => setViewMode("cards")} className={`flex h-10 items-center gap-2 rounded-full px-4 text-sm font-extrabold transition ${viewMode === "cards" ? "bg-[#052B47] text-white" : "text-[#052B47] hover:bg-[#E8F3EF]"}`}><List className="size-4" aria-hidden="true" />Lista</button>
               <button type="button" aria-pressed={viewMode === "calendar"} onClick={() => setViewMode("calendar")} className={`flex h-10 items-center gap-2 rounded-full px-4 text-sm font-extrabold transition ${viewMode === "calendar" ? "bg-[#052B47] text-white" : "text-[#052B47] hover:bg-[#E8F3EF]"}`}><CalendarDays className="size-4" aria-hidden="true" />Calendário</button>
             </div>
-            <Button variant="outline" onClick={() => { setOwnRegistrationsOpen(true); void loadOwnRegistrations(); }} className="mt-3 rounded-full border-[#052B47]/25 bg-white text-[#052B47]"><ClipboardList className="mr-2 size-4"/>Minhas inscrições</Button>
+            <Button variant="outline" onClick={() => { setOwnRegistrationsOpen(true); void loadOwnRegistrations(); }} className="rounded-full border-[#052B47]/25 bg-white text-[#052B47]"><ClipboardList className="mr-2 size-4"/>Minhas inscrições</Button>
           </div>
           <div className="flex w-full flex-col gap-2 rounded-2xl border border-[#052B47]/10 bg-white p-1.5 shadow-[0_8px_24px_rgba(5,43,71,0.06)] sm:flex-row sm:items-center ">
             <Button onClick={openCreateForm} className="h-11 shrink-0 rounded-xl bg-[#052B47] px-4 font-bold text-white hover:bg-[#007F68]"><Sparkles className="mr-2 size-4"/>Compartilhar agenda</Button>

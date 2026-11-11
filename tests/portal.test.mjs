@@ -11,8 +11,8 @@ class Bucket{
  async get(key){const r=this.rows.get(key);return r?{etag:r.etag,json:async()=>JSON.parse(r.body)}:null;}
  async put(key,body,{onlyIf}={}){const old=this.rows.get(key);if(onlyIf instanceof Headers&&onlyIf.get('if-none-match')==='*'&&old||onlyIf?.etagMatches&&old?.etag!==onlyIf.etagMatches)return null;const etag=crypto.randomUUID();this.rows.set(key,{body,etag});return{etag};}
 }
-const origin='https://portal.example.test',admin={userId:'site:owner',email:'owner@example.test',displayName:'Owner'},visitor={...admin,email:'viewer@example.test'};
-const config=()=>({BUCKET:new Bucket(),MAP_ORIGIN:origin,MAP_ADMIN_EMAILS:admin.email,PORTAL_SIGN_OUT:'/auth/logout',GOOGLE_SHEETS_ID:'1lzSTCKlcUU7BdzsQeseQ1AFVDCihXesEcINLM6S99bQ'});
+const origin='https://portal.example.test',admin={userId:'site:owner',email:'owner@example.test',displayName:'Owner',role:'admin'},visitor={...admin,email:'viewer@example.test',role:'user'};
+const config=()=>({BUCKET:new Bucket(),MAP_ORIGIN:origin,MAP_ADMIN_EMAILS:visitor.email,PORTAL_SIGN_OUT:'/auth/logout',GOOGLE_SHEETS_ID:'1lzSTCKlcUU7BdzsQeseQ1AFVDCihXesEcINLM6S99bQ'});
 test('o mapa usa o acesso do portal e mantém API e recursos no seu caminho',async()=>{
  const env=config(),response=await map.fetch(new Request(origin+'/'),env,admin),page=await response.text();
  assert.equal(response.status,200);assert(page.includes('aria-label="Áreas do portal"'));assert(page.includes('href="/imersoes"'));assert(page.includes('href="/mapa-programatico"'));assert(page.includes("fetch('/mapa/api/data'"));assert(!page.includes("fetch('/api/data'"));assert(!page.includes('class="portal-signout"'));assert(page.includes('<script nonce="'));
@@ -24,6 +24,9 @@ test('os dados atuais e complementares estão completos e a gravação respeita 
  const request=()=>new Request(origin+'/api/data',{method:'PUT',headers:{origin,'content-type':'application/json'},body:JSON.stringify({snapshot:initial.snapshot,revision:null})});
  assert.equal((await map.fetch(request(),env,visitor)).status,403);assert.equal((await map.fetch(request(),env,admin)).status,200);assert.equal((await map.fetch(request(),env,admin)).status,409);assert((await(await get()).json()).revision);
  assert.equal((await(await map.fetch(new Request(origin+'/api/session'),env,visitor)).json()).canEdit,false);
+ assert.equal((await(await map.fetch(new Request(origin+'/api/session'),env,admin)).json()).canEdit,true);
+ assert.equal((await map.fetch(new Request(origin+'/api/sheets/preview',{method:'POST',headers:{origin}}),env,visitor)).status,403);
+ assert.equal((await map.fetch(request(),env,{email:admin.email,userId:'ordinary-user'})).status,403);
 });
 test('a migração recusa sessões antigas, colunas extras e inscrições sem evento',()=>{
  const empty=Object.fromEntries(Object.keys(IMPORT_COLUMNS).map(k=>[k,[]]));assert.deepEqual(validateImport(empty),empty);assert.throws(()=>validateImport({...empty,oauth_sessions:[]}));assert.throws(()=>validateImport({...empty,registrations:[Object.fromEntries(IMPORT_COLUMNS.registrations.map(k=>[k,'x']))]}));assert.throws(()=>validateImport({...empty,events:[{id:'x',unexpected:'x'}]}));
