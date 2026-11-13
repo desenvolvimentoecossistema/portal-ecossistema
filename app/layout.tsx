@@ -28,7 +28,7 @@ export default function RootLayout({
         {portalFonts.map(font=><link key={font.family} rel="preload" href={font.href} as="font" type="font/woff2" crossOrigin="anonymous" fetchPriority="high"/>)}
         <style dangerouslySetInnerHTML={{__html:portalFontFaceCSS}}/>
       </head>
-      <body className="antialiased"><PortalNavigation signOutPath={siteSignOutPath()} />{children}<PortalLegalFooter/><script src="/portal-legal.js" defer /></body>
+      <body className="antialiased"><PortalNavigation signOutPath={siteSignOutPath()} />{children}<PortalLegalFooter/><script src="/portal-legal.js" defer /><script src="/portal-view.js" defer /></body>
     </html>
   );
 }

@@ -80,7 +80,7 @@ page=page.replace('<div class="data-toolbar-actions">','<div class="data-toolbar
 const mapFooter=portalLegalFooterHTML();
 page=page.replace('<div class="programs-grid" id="programs-grid"></div>','<div class="programs-grid" id="programs-grid"></div>'+mapFooter);
 page=page.replace(/(<div class="l2-view l2-view-mapa"[^>]*>[\s\S]*?)(\n<\/div>)/g,'$1'+mapFooter+'$2');
-page=page.replace('</body>',`<script src="/portal-legal.js" defer></script><script>(${bindPortalMenu.toString()})();(${bindPortalMapLayout.toString()})();</script></body>`);
+page=page.replace('</body>',`<script src="/portal-legal.js" defer></script><script src="/portal-view.js" defer></script><script>(${bindPortalMenu.toString()})();(${bindPortalMapLayout.toString()})();</script></body>`);
 const css=(await readFile('public/portal.css','utf8'))+'\n'+(await readFile('public/hub.css','utf8'))+'\n'+(await readFile('public/map-portal.css','utf8'))+'\n'+(await readFile('public/portal-legal.css','utf8'))+'\n'+(await readFile('public/portal-map-menu.css','utf8'))+'\n'+(await readFile('public/portal-map-explorer.css','utf8'));
 page=page.replace('</head>',`<style>${css}\n.top-header{padding:10px 24px}.top-header-right{display:block}.top-header-title h1{font-size:17px}.top-header-title p{display:none}.session-logout{display:none!important}@media(max-width:760px){.top-header{padding:6px 12px}.top-header-title{display:none}}</style></head>`);
 page=page.replace(/(["'])\/api\//g,'$1/mapa/api/');

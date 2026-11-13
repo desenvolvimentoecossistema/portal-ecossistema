@@ -6,7 +6,7 @@ const code=await readFile(new URL('../public/portal-legal.js',import.meta.url),'
 async function visit({path='/',accepted=true,admin=false}={}){
  const changes=[],buttons=[];
  const nav={querySelector:()=>null,append:button=>buttons.push(button)};
- const document={head:{append(){}},querySelector:()=>null,querySelectorAll:()=>[nav],createElement:()=>({setAttribute(){},addEventListener:(event,fn)=>changes.push(fn)})};
+ const document={querySelectorAll:()=>[nav],createElement:()=>({setAttribute(){},addEventListener:(event,fn)=>changes.push(fn)})};
  const redirects=[];
  await vm.runInNewContext(code,{document,location:{pathname:path,search:'',replace:url=>redirects.push(url),assign:url=>redirects.push(url)},encodeURIComponent,fetch:async()=>({ok:true,json:async()=>({accepted,canPreview:admin})})});
  return {buttons,redirects,click:()=>changes[0]?.()};
