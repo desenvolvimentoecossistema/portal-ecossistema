@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/db";
 import { oauthSessions } from "@/db/schema";
 import { SESSION_COOKIE, siteOrigin, tokenHash, usesOAuth } from "@/lib/oauth-config";
+import {VISITOR_VIEW_COOKIE} from "@/lib/visitor-view";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ export async function GET(request: Request) {
   const target = "/login";
   const response = NextResponse.redirect(new URL(target, origin));
   response.cookies.delete(SESSION_COOKIE);
+  response.cookies.delete(VISITOR_VIEW_COOKIE);
   response.headers.set("Cache-Control", "no-store");
   response.headers.set("Referrer-Policy", "no-referrer");
   return response;

@@ -22,6 +22,7 @@ export default async function Home({searchParams}:{searchParams:Promise<{organiz
         userId: user.userId,
         displayName: user.displayName,
         email: user.email,
+        visitorView: user.visitorView,
         role,
       }}
     />

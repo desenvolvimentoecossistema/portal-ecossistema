@@ -1,5 +1,6 @@
 (async function(){
  if(/^\/(login|auth|aceite)(\/|$)/.test(location.pathname))return;
+ if(!document.querySelector('script[data-portal-view-script]')){const script=document.createElement('script');script.src='/portal-view.js';script.setAttribute('data-portal-view-script','');document.head.append(script);}
  let state;try{const response=await fetch('/api/legal-notice',{credentials:'same-origin',cache:'no-store'});if(!response.ok)return;state=await response.json();}catch{return;}
  if(state.canPreview===true){
   document.querySelectorAll('.portal-legal-footer nav').forEach(nav=>{

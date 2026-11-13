@@ -9,7 +9,13 @@ export { bootstrapAdminEmails } from "@/lib/runtime-config";
 
 export type AppRole = "admin" | "user";
 
-export async function getAppRole(user: Pick<SiteUser, "email" | "userId">): Promise<AppRole> {
+export async function getAppRole(user: Pick<SiteUser, "email" | "userId" | "visitorView">): Promise<AppRole> {
+  if (user.visitorView) return "user";
+  return getAccountRole(user);
+}
+
+// Only view switching uses the account role; portal features use getAppRole.
+export async function getAccountRole(user: Pick<SiteUser, "email" | "userId">): Promise<AppRole> {
   if (!canUseEmailPermissions(user)) return "user";
   const email = user.email.trim().toLowerCase();
   if (bootstrapAdminEmails().has(email)) return "admin";

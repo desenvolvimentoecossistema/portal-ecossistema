@@ -6,14 +6,15 @@ import { oauthSessions } from '@/db/schema';
 import {emailIsAllowed,SESSION_COOKIE,tokenHash,safeReturnPath} from '@/lib/oauth-config';
 import {hasPortalConsent} from '@/lib/portal-consent-store';
 import {recordUserActivity} from '@/lib/legal-archive.mjs';
-export type SiteUser={userId:string;displayName:string;email:string;fullName:string|null;sessionExpiresAt?:number};
+import {VISITOR_VIEW_COOKIE,isVisitorView} from '@/lib/visitor-view';
+export type SiteUser={userId:string;displayName:string;email:string;fullName:string|null;sessionExpiresAt?:number;visitorView?:boolean};
 export async function getSiteUser():Promise<SiteUser|null>{
  const token=(await cookies()).get(SESSION_COOKIE)?.value;
  if(!token||!/^[-_A-Za-z0-9]{40,100}$/.test(token))return null;
  const [session]=await getDb().select().from(oauthSessions).where(eq(oauthSessions.id,await tokenHash(token))).limit(1);
  if(!session||session.expiresAt<=Math.floor(Date.now()/1000)||!session.userId.startsWith('google:')||!emailIsAllowed(session.email))return null;
  recordUserActivity(session);
- return {...session,fullName:session.displayName,sessionExpiresAt:session.expiresAt*1000};
+ return {...session,fullName:session.displayName,sessionExpiresAt:session.expiresAt*1000,visitorView:await isVisitorView((await cookies()).get(VISITOR_VIEW_COOKIE)?.value,session.userId)};
 }
 export async function requireSiteUser(returnTo:string):Promise<SiteUser>{const user=await getSiteUser();if(user){if(!/^\/(termos-de-uso|privacidade|aceite)(\/|\?|$)/.test(returnTo)&&!await hasPortalConsent(user.userId))redirect('/aceite?return_to='+encodeURIComponent(safeReturnPath(returnTo)));return user;}redirect('/login?return_to='+encodeURIComponent(safeReturnPath(returnTo)));}
 export function siteSignOutPath(){return '/auth/logout';}

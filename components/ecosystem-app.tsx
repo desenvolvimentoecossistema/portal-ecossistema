@@ -76,6 +76,7 @@ type AppUser = {
   displayName: string;
   email: string;
   role: "admin" | "user";
+  visitorView?: boolean;
 };
 
 type EventRegistration = {

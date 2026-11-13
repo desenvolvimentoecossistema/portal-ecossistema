@@ -1,8 +1,10 @@
 "use client";
 import {usePathname} from 'next/navigation';
+import {useEffect} from 'react';
 import {portalLegalFooterHTML,legalDocumentVersion} from '@/lib/portal-legal';
 export function PortalLegalFooter(){
  const path=usePathname()||'/';
+ useEffect(()=>{document.dispatchEvent(new Event('portal:footer-ready'));},[path]);
  if(path.startsWith('/auth/')||path==='/login')return null;
  return <div dangerouslySetInnerHTML={{__html:portalLegalFooterHTML()}}/>;
 }
